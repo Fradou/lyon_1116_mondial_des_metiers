@@ -1,0 +1,4 @@
+chasse:
+    resource: "@ChasseBundle/Resources/config/routing.yml"
+    prefix:   /
+
