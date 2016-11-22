@@ -12,4 +12,9 @@ ChasseBundle\Entity\Answer:
         word:
             type: string
             length: 255
+
+    manyToMany:
+        interviews:
+          targetEntity: Interview
+          mappedBy: answers
     lifecycleCallbacks: {  }
