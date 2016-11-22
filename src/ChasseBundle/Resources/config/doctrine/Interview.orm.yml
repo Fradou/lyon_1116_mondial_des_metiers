@@ -1,0 +1,16 @@
+ChasseBundle\Entity\Interview:
+    type: entity
+    table: null
+    repositoryClass: ChasseBundle\Repository\InterviewRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        bonusWord:
+            type: string
+            length: 255
+            column: bonus_word
+    lifecycleCallbacks: {  }
