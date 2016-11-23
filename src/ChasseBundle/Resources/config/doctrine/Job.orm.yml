@@ -1,0 +1,25 @@
+ChasseBundle\Entity\Job:
+    type: entity
+    table: null
+    repositoryClass: ChasseBundle\Repository\JobRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+            unique: true
+        domain:
+            type: string
+            length: 255
+
+    oneToMany:
+        interviews:
+          targetEntity: Interview
+          mappedBy: job
+
+    lifecycleCallbacks: {  }

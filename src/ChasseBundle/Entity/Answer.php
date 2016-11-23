@@ -2,29 +2,74 @@
 
 namespace ChasseBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
-class User extends BaseUser
+/**
+ * Answer
+ */
+class Answer
 {
-    protected $id;
+    /**
+     * @var int
+     */
+    private $id;
 
-    public function __construct()
+    /**
+     * @var string
+     */
+    private $word;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
     {
-        parent::__construct();
+        return $this->id;
+    }
 
+    /**
+     * Set word
+     *
+     * @param string $word
+     * @return Answer
+     */
+    public function setWord($word)
+    {
+        $this->word = $word;
+
+        return $this;
+    }
+
+    /**
+     * Get word
+     *
+     * @return string 
+     */
+    public function getWord()
+    {
+        return $this->word;
     }
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
     private $interviews;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->interviews = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Add interviews
      *
      * @param \ChasseBundle\Entity\Interview $interviews
-     * @return User
+     * @return Answer
      */
     public function addInterview(\ChasseBundle\Entity\Interview $interviews)
     {
@@ -51,5 +96,10 @@ class User extends BaseUser
     public function getInterviews()
     {
         return $this->interviews;
+    }
+
+    public function __toString()
+    {
+        return strval($this->word);
     }
 }

@@ -1,3 +1,7 @@
+chasse_interview:
+    resource: "@ChasseBundle/Resources/config/routing/interview.yml"
+    prefix:   /interview
+
 index:
     path:     /
     defaults: { _controller: ChasseBundle:Front:index }
