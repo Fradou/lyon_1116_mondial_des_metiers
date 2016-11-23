@@ -2,6 +2,7 @@
 
 namespace ChasseBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,7 +14,13 @@ class InterviewType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('bonusWord')->add('user')->add('job')->add('answers')        ;
+        $builder->add('bonusWord')->add('user')->add('job')->add('answers', EntityType::class, array(
+            // query choices from this entity
+            'class' => 'ChasseBundle:Answer',
+            'choice_label' => 'word',
+            'multiple' => true,
+            'expanded' => true,
+            'label' => 'Reponse'));
     }
     
     /**
