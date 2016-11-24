@@ -34,4 +34,11 @@ class FrontController extends Controller
         ));
     }
 
+    public function countdownAction()
+    {
+        return $this->render('Front/countdown.html.twig', array(
+            // ...
+        ));
+    }
+
 }
