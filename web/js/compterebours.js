@@ -1,7 +1,3 @@
-/**
- * Created by ciloo on 23/11/16.
- */
-
 
 function compte_a_rebours()
 {
