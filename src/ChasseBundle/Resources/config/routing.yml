@@ -17,3 +17,8 @@ legalmention:
 inscript:
     path:     /inscription
     defaults: { _controller: ChasseBundle:Front:inscript }
+
+
+countdown:
+    path:     /countdown
+    defaults: { _controller: ChasseBundle:Front:countdown }

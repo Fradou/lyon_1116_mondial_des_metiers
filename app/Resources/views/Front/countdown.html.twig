@@ -4,7 +4,7 @@
 
 {% block body %}
     <h1>Welcome to the Front:countdown page</h1>
-<div id="compte_a_rebours">
+<div id="countdown">
 </div>
 
 
@@ -12,5 +12,5 @@
 {% endblock %}
 
   {% block javascripts %}
-<script type="text/javascript" src="compterebours.js"></script>
+<script type="text/javascript" src="{{ asset ('js/countdown.js')  }}"></script>
   {% endblock %}
