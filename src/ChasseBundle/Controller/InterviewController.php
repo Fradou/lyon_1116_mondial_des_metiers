@@ -33,6 +33,35 @@ class InterviewController extends Controller
      */
     public function newAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $query = $em-> createQuery(
+            'SELECT a 
+            FROM ChasseBundle:Answer a');
+
+        $products = $query->getResult();
+
+// Debut method 2
+
+        /**      $repository = $this->getDoctrine()
+        ->getRepository('AppBundle:Product');
+
+        // createQueryBuilder() automatically selects FROM AppBundle:Product
+        // and aliases it to "p"
+        $query = $repository->createQueryBuilder('p')
+        ->where('p.price > :price')
+        ->setParameter('price', '19.99')
+        ->orderBy('p.price', 'ASC')
+        ->getQuery();
+
+        $products = $query->getResult(); **/
+
+
+// fin method 2
+        $answers=[];
+        foreach ($products as $product) {
+            array_push($answers, $product->getWord());
+        }
+
         $interview = new Interview();
         $form = $this->createForm('ChasseBundle\Form\InterviewType', $interview);
         $form->handleRequest($request);
@@ -47,6 +76,7 @@ class InterviewController extends Controller
 
         return $this->render('interview/new.html.twig', array(
             'interview' => $interview,
+            'answers' => $answers,
             'form' => $form->createView(),
         ));
     }
@@ -119,6 +149,6 @@ class InterviewController extends Controller
             ->setAction($this->generateUrl('interview_delete', array('id' => $interview->getId())))
             ->setMethod('DELETE')
             ->getForm()
-        ;
+            ;
     }
 }

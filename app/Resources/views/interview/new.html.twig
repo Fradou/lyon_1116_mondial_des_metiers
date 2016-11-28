@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
     <h1>Interview creation</h1>
 
     {{ form_start(form) }}
@@ -13,4 +14,19 @@
             <a href="{{ path('interview_index') }}">Back to the list</a>
         </li>
     </ul>
+
+
+    <div class="ui-widget">
+        <label for="tags">Tag programming languages: </label>
+        <input id="tags" size="50">
+
+        {% for answer in answers %}
+            {{ answer }}
+        {% endfor %}
+
+
+
+
+
+    </div>
 {% endblock %}
