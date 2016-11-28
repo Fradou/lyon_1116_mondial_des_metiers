@@ -1,32 +1,62 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div class="container">
 
-    <h1>Interview creation</h1>
+        <h1>Interview creation</h1>
 
-    {{ form_start(form) }}
+        {{ form_start(form) }}
         {{ form_widget(form) }}
         <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('interview_index') }}">Back to the list</a>
-        </li>
-    </ul>
-
-
-    <div class="ui-widget">
-        <label for="tags">Tag programming languages: </label>
-        <input id="tags" size="50">
-
-        {% for answer in answers %}
-            {{ answer }}
-        {% endfor %}
+        <ul>
+            <li>
+                <a href="{{ path('interview_index') }}">Back to the list</a>
+            </li>
+        </ul>
 
 
+        <div class="ui-widget">
+            <label for="tags">Tag programming languages: </label>
+            <input id="tags">
+        </div>
 
-
+        <div id="tagsname"></div>
+        <div id="nbreponse"></div>
+        <div id="tagdisplay"></div>
 
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!-- Script autocomplete -->
+    <script type="text/javascript">
+
+        var response = [];
+        i=0;
+        {% for answer in answers %}
+        response[i]= "{{ answer }}";
+        i=i+1;
+        {% endfor %}
+
+        $( function() {
+
+            $( "#tags" ).autocomplete({
+                source: response,
+                minLength: 1
+            });
+        });
+    </script>
+
+    <script type="text/javascript" src="{{ asset('/js/autocomp.js') }}"></script>
+
+    <!-- Materialize -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 {% endblock %}

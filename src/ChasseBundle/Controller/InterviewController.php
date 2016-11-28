@@ -40,23 +40,6 @@ class InterviewController extends Controller
 
         $products = $query->getResult();
 
-// Debut method 2
-
-        /**      $repository = $this->getDoctrine()
-        ->getRepository('AppBundle:Product');
-
-        // createQueryBuilder() automatically selects FROM AppBundle:Product
-        // and aliases it to "p"
-        $query = $repository->createQueryBuilder('p')
-        ->where('p.price > :price')
-        ->setParameter('price', '19.99')
-        ->orderBy('p.price', 'ASC')
-        ->getQuery();
-
-        $products = $query->getResult(); **/
-
-
-// fin method 2
         $answers=[];
         foreach ($products as $product) {
             array_push($answers, $product->getWord());
