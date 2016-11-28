@@ -7,13 +7,18 @@ index:
     defaults: { _controller: ChasseBundle:Front:index }
 
 howto:
-    path:     /howto
+    path:     /regles-du-jeu
     defaults: { _controller: ChasseBundle:Front:howto }
 
 legalmention:
-    path:     /legalmention
+    path:     /mentions-legales
     defaults: { _controller: ChasseBundle:Front:legalmention }
 
 inscript:
-    path:     /inscript
+    path:     /inscription
     defaults: { _controller: ChasseBundle:Front:inscript }
+
+
+countdown:
+    path:     /countdown
+    defaults: { _controller: ChasseBundle:Front:countdown }
