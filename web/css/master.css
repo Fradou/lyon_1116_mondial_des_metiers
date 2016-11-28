@@ -1,0 +1,22 @@
+header {
+    background-color: #f7952a;
+    padding: 20px 0px;
+}
+
+header img {
+    width: 100%;
+    height: auto;
+}
+
+footer {
+    background-color: #72BD2A;
+    /*padding: 20px 0px;*/
+}
+
+footer img {
+    width: 100%;
+    height: auto;
+}
+footer div {
+    margin: 10px 0px;
+}
