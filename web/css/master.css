@@ -20,11 +20,3 @@ footer img {
 footer div {
     margin: 10px 0px;
 }
-
-div .answerchosen {
-    display: inline;
-    margin-left: 2px;
-    margin-right: 2px;
-    background-color: #99CDD8;
-    z-index: 99;
-}
