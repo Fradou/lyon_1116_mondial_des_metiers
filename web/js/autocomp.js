@@ -11,7 +11,7 @@ $(document).ready( function() {
        $('#tagsname').html('You selected: ' + this.value);
        nbrep ++;
        $('#nbreponse').html('Il vous reste encore ' + (5- nbrep) + ' reponses à donner');
-       $('#tagdisplay').after('<div class="answerchosen">' + $('#tags').val() + '</div>');
+       $('#tagdisplay').after('<div class="answerchosen">X  ' + $('#tags').val() + '</div>');
 
    });
 
