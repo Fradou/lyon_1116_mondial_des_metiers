@@ -159,4 +159,3 @@ class Interview
         return strval($this->word);
     }
 }
-

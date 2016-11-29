@@ -46,8 +46,9 @@ $(document).ready( function() {
         if (nbrep == 4) {
             enabchoice ()
         }
+        response.push($(this).val());
         $(this).remove();
-        $('#nbresponse').html('Il vous reste encore maximum ' + (5- nbrep) + ' reponses à donner.');
+        $('#nbresponse').html('Il vous reste encore maximum ' + (5-nbrep) + ' reponses à donner.');
     });
 });
 

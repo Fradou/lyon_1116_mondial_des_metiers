@@ -13,6 +13,7 @@ ChasseBundle\Entity\Interview:
             type: string
             length: 255
             column: bonus_word
+            nullable: true
 
     manyToOne:
         user:
