@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ciloo
- * Date: 28/11/16
- * Time: 19:06
- */
 
 namespace ChasseBundle\DataFixtures\ORM;
 
