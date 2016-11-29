@@ -5,9 +5,20 @@ $(document).ready( function() {
 
    var nbrep = 0;
 
+   function disabchoice () {
+        $('#tags').prop('disabled', true);
+   }
+   function enabchoice () {
+        $('#tags').prop('disabled', false);
+   }
+
    $('#tags').change(function () {
        $('#tagsname').html('You selected: ' + this.value);
        nbrep ++;
+        if (nbrep == 5) {
+            disabchoice();
+        }
+
        $('#nbreponse').html('Il vous reste encore maximum ' + (5- nbrep) + ' reponses à donner.');
        $('#tagdisplay').after(
            '<div class="chip">' + $('#tags').val() + '<i class="close material-icons">close</i></div>');
@@ -19,6 +30,10 @@ $(document).ready( function() {
 
    $(document).on('click', '.chip', function() {
        nbrep--;
+       if (nbrep == 4) {
+           enabchoice ()
+       }
+
        $(this).remove();
        $('#nbreponse').html('Il vous reste encore maximum ' + (5- nbrep) + ' reponses à donner.');
    });

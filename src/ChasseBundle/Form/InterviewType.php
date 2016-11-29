@@ -14,7 +14,12 @@ class InterviewType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('bonusWord')->add('user')->add('job')->add('answers', EntityType::class, array(
+        $builder->add('bonusWord')
+            ->add('user')
+
+            ->add('job')
+
+            ->add('answers', EntityType::class, array(
             // query choices from this entity
             'class' => 'ChasseBundle:Answer',
             'choice_label' => 'word',
