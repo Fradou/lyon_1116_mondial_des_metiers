@@ -16,17 +16,18 @@ class LoadAnswerData implements FixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        $answers = ["fort", "habile", "humain", "social", "concentration", "conscienscieux"];
+        $answers = ["fort", "habile", "humain", "social", "concentration", "conscienscieux", "phallique"];
 
-        for ($i = 0; $i < count($answers); $i++) {
+        foreach ($answers as $answer) {
             $newAnswer = new Answer();
-            $newAnswer->setWord($answers [$i]);
+            $newAnswer->setWord($answer);
 
             $manager->persist($newAnswer);
-            $manager->flush();
-            $manager->clear();
+
 
             }
+        $manager->flush();
+        $manager->clear();
 
     }
 }
