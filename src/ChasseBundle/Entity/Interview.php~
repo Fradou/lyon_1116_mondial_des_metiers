@@ -52,4 +52,105 @@ class Interview
     {
         return $this->bonusWord;
     }
+    /**
+     * @var \ChasseBundle\Entity\User
+     */
+    private $user;
+
+    /**
+     * @var \ChasseBundle\Entity\Job
+     */
+    private $job;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $answers;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->answers = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set user
+     *
+     * @param \ChasseBundle\Entity\User $user
+     * @return Interview
+     */
+    public function setUser(\ChasseBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \ChasseBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set job
+     *
+     * @param \ChasseBundle\Entity\Job $job
+     * @return Interview
+     */
+    public function setJob(\ChasseBundle\Entity\Job $job = null)
+    {
+        $this->job = $job;
+
+        return $this;
+    }
+
+    /**
+     * Get job
+     *
+     * @return \ChasseBundle\Entity\Job 
+     */
+    public function getJob()
+    {
+        return $this->job;
+    }
+
+    /**
+     * Add answers
+     *
+     * @param \ChasseBundle\Entity\Answer $answers
+     * @return Interview
+     */
+    public function addAnswer(\ChasseBundle\Entity\Answer $answers)
+    {
+        $this->answers[] = $answers;
+
+        return $this;
+    }
+
+    /**
+     * Remove answers
+     *
+     * @param \ChasseBundle\Entity\Answer $answers
+     */
+    public function removeAnswer(\ChasseBundle\Entity\Answer $answers)
+    {
+        $this->answers->removeElement($answers);
+    }
+
+    /**
+     * Get answers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAnswers()
+    {
+        return $this->answers;
+    }
 }
