@@ -52,4 +52,54 @@ class Answer
     {
         return $this->word;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $interviews;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->interviews = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add interviews
+     *
+     * @param \ChasseBundle\Entity\Interview $interviews
+     * @return Answer
+     */
+    public function addInterview(\ChasseBundle\Entity\Interview $interviews)
+    {
+        $this->interviews[] = $interviews;
+
+        return $this;
+    }
+
+    /**
+     * Remove interviews
+     *
+     * @param \ChasseBundle\Entity\Interview $interviews
+     */
+    public function removeInterview(\ChasseBundle\Entity\Interview $interviews)
+    {
+        $this->interviews->removeElement($interviews);
+    }
+
+    /**
+     * Get interviews
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInterviews()
+    {
+        return $this->interviews;
+    }
+
+    public function __toString()
+    {
+        return strval($this->word);
+    }
 }

@@ -14,4 +14,42 @@ class User extends BaseUser
         parent::__construct();
 
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $interviews;
+
+
+    /**
+     * Add interviews
+     *
+     * @param \ChasseBundle\Entity\Interview $interviews
+     * @return User
+     */
+    public function addInterview(\ChasseBundle\Entity\Interview $interviews)
+    {
+        $this->interviews[] = $interviews;
+
+        return $this;
+    }
+
+    /**
+     * Remove interviews
+     *
+     * @param \ChasseBundle\Entity\Interview $interviews
+     */
+    public function removeInterview(\ChasseBundle\Entity\Interview $interviews)
+    {
+        $this->interviews->removeElement($interviews);
+    }
+
+    /**
+     * Get interviews
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInterviews()
+    {
+        return $this->interviews;
+    }
 }
