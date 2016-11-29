@@ -18,7 +18,7 @@ class LoadAnswerData implements FixtureInterface
     {
         $answers = ["fort", "habile", "humain", "social", "concentration", "conscienscieux"];
 
-        for ($i = 0; $i < count($answers)-1; $i++) {
+        for ($i = 0; $i < count($answers); $i++) {
             $newAnswer = new Answer();
             $newAnswer->setWord($answers [$i]);
 
