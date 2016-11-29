@@ -1,16 +1,17 @@
 {% extends "::base.html.twig" %}
 
 {% block title %}ChasseBundle:Front:countdown{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/countdown.css') }}">{% endblock %}
 
 {% block body %}
     <h1>Welcome to the Front:countdown page</h1>
-<div id="countdown">
-</div>
+    <div id="countdown"></div>
 
 
 
 {% endblock %}
 
   {% block javascripts %}
-<script type="text/javascript" src="{{ asset ('js/countdown.js')  }}"></script>
+      <script type="text/javascript" src="{{ asset ('js/countdown.js') }}"></script>
   {% endblock %}
