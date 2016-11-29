@@ -153,4 +153,9 @@ class Interview
     {
         return $this->answers;
     }
+
+    public function __toString()
+    {
+        return strval($this->word);
+    }
 }
