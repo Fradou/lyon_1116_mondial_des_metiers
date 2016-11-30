@@ -24,8 +24,7 @@ class InterviewType extends AbstractType
             'class' => 'ChasseBundle:Answer',
             'choice_label' => 'word',
             'multiple' => true,
-            'expanded' => true,
-            'label' => 'Reponse'));
+            'expanded' => true));
     }
     
     /**

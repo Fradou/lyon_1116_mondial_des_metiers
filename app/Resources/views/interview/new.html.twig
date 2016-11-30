@@ -5,20 +5,9 @@
 
         <h1>Interview creation</h1>
 
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-        {{ form_end(form) }}
-
-        <ul>
-            <li>
-                <a href="{{ path('interview_index') }}">Back to the list</a>
-            </li>
-        </ul>
-
-
+        <h2>Choisissez vos mots-clés :</h2>
         <div class="ui-widget">
-            <label for="tags">Tag programming languages: </label>
+            <label for="tags">Choisissez vos mots-clés:</label>
             <input id="tags">
         </div>
 
@@ -26,6 +15,20 @@
         <div id="nbresponse"></div>
         <div id="tagdisplay"></div>
 
+
+        {{ form_start(form) }}
+        <div>
+            {{ form_row(form.bonusWord, {label:'Mot libre :'})}}
+        </div>
+
+        <div id="checkboxfield">
+            {{ form_row(form.answers, {label:none, 'attr': {'class': 'hidden-row'}})}}
+            {{ form_widget(form) }}
+        </div>
+
+        <input type="submit" value="Valider vote">
+
+        {{ form_end(form) }}
     </div>
 {% endblock %}
 
