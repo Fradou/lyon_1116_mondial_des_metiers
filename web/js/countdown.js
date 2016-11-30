@@ -18,8 +18,8 @@ function countdown() {
         var seconds = Math.floor(total_seconds - ((days * 60 * 60 * 24 + hours * 60 * 60 + minutes * 60)));
 
         countdown.innerHTML =
-            '<p id="countTime">' + doubleZero(hours) + ':' + doubleZero(minutes) + ':' + doubleZero(seconds) + '</p><br />' +
-            '<p id="countDay">' + days + '</p>';
+            '<p id="countTime">' + doubleZero(hours) + ':' + doubleZero(minutes) + ':' + doubleZero(seconds) + '</p>' +
+            '<p id="countDay">J - ' + days + '<br />Coming soon</p>';
     }
 
     var actualisation = setTimeout("countdown()", 1000);
