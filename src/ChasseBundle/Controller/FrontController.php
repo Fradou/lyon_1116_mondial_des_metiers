@@ -12,26 +12,29 @@ class FrontController extends Controller
 
     public function __construct()
     {
-        $this->openDate = new DateTime('2016-11-29 08:25:00');
+        $this->openDate = new DateTime('2016-11-30 17:25:00');
         $this->currentDate = new DateTime();
     }
 
-    private function countDown()
+    private function checkCount()
     {
         if ($this->openDate > $this->currentDate) {
-            $direct = $this->forward('ChasseBundle:Front:countdown');
-
-            return $direct;
-        } else {
-            return;
+            return 1;
+        } else
+        {
+            return 0;
         }
     }
 
     public function indexAction()
     {
-        $this->countDown();
-        return $this->render('Front/index.html.twig', array(// ...
-        ));
+        if (self::checkCount()){
+            return $this->forward('ChasseBundle:Front:countdown');
+        }
+        else {
+        return $this->render('Front/index.html.twig', array()
+        );
+        }
 
     }
 
