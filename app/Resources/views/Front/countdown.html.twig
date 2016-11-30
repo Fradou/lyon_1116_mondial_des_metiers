@@ -5,13 +5,13 @@
     <link rel="stylesheet" href="{{ asset('css/countdown.css') }}">
 {% endblock %}
 {% block body %}
-
-    <div id="countdown"></div>
-    <div id="countRegistration">
-        <p>Envie de participer à la chasse aux métiers ?</p>
-        <a id="countRegisterButton" href="{{ path('fos_user_registration_register') }}">Préinscris-toi</a>
+    <div id="countContent">
+        <div id="countdown"></div>
+        <div id="countRegistration">
+            <p>Envie de participer à la chasse aux métiers ?</p>
+            <a id="countRegisterButton" href="{{ path('fos_user_registration_register') }}">Préinscris-toi</a>
+        </div>
     </div>
-
 
 
 {% endblock %}

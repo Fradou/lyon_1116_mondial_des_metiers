@@ -1,19 +1,21 @@
-#countdown{
+#countContent {
     text-align: center;
-    font-size: 5rem;
     color: #ff6939;
+}
+
+#countdown {
+    font-size: 4.5rem;
     line-height: 0;
     font-weight: bold;
 }
 
 #countdown #countDay {
     font-size: 3rem;
+    line-height: 0;
 }
 
 #countRegistration {
-    color: #ff6939;
     line-height: 1;
-    text-align: center;
     font-size: 1.75rem;
     padding: 10px 0px 20px 0px;
 }

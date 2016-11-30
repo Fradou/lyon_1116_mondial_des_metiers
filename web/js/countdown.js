@@ -1,7 +1,7 @@
 function countdown() {
     var countdown = document.getElementById("countdown");
     var current_date = new Date();
-    var event_date = new Date("Nov 30 12:00:00 2016");
+    var event_date = new Date("Nov 30 18:00:00 2016");
     var total_seconds = (event_date - current_date) / 1000;
 
     function doubleZero($time) {
