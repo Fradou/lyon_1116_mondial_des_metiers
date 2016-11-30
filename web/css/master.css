@@ -11,6 +11,8 @@ header img {
 footer {
     background-color: #72BD2A;
     /*padding: 20px 0px;*/
+    position: absolute;
+    bottom: 0;
 }
 
 footer img {

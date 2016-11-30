@@ -1,17 +1,19 @@
-@font-face {
-    font-family: "Akashi";
-    font-weight: bold;
-    src: url("../polices/Akashi.ttf");
-}
-
 #countdown{
     text-align: center;
-    font-family: "Akashi";
     font-size: 5rem;
     color: #ff6939;
-    margin: 5px;
+    line-height: 0;
+    font-weight: bold;
 }
 
 #countdown #countDay {
     font-size: 3rem;
+}
+
+#countRegistration {
+    color: #ff6939;
+    line-height: 1;
+    text-align: center;
+    font-size: 1.75rem;
+    padding: 10px 0px 20px 0px;
 }

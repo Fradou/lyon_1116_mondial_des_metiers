@@ -3,11 +3,14 @@
 {% block title %}ChasseBundle:Front:countdown{% endblock %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/countdown.css') }}">
-    <link rel="stylesheet" href="{{ asset('polices/Akashi.ttf') }}">
 {% endblock %}
 {% block body %}
 
     <div id="countdown"></div>
+    <div id="countRegistration">
+        <p>Envie de participer à la chasse aux métiers ?</p>
+        <a id="countRegisterButton" href="{{ path('fos_user_registration_register') }}">Préinscris-toi</a>
+    </div>
 
 
 
