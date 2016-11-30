@@ -5,6 +5,7 @@ namespace ChasseBundle\Controller;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+
 class FrontController extends Controller
 {
     private $openDate;
@@ -12,7 +13,7 @@ class FrontController extends Controller
 
     public function __construct()
     {
-        $this->openDate = new DateTime('2016-11-29 08:25:00');
+        $this->openDate = new DateTime('2016-12-30 18:00:00');
         $this->currentDate = new DateTime();
     }
 
