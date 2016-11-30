@@ -1,16 +1,17 @@
 $(document).ready( function() {
-    /** $('#tags').on('autocompletechange change', function () {
-        $('#tagsname').html('You selected: ' + this.value);
-    }).change(); **/
 
     var nbrep = 0;
+
+    function resetfield () {
+        document.getElementById("tags").value = "";
+    }
 
     function disabchoice () {
         $('#tags').prop('disabled', true);
         document.getElementById("tags").value = "5 mots choisis, vous êtes au maximum !"
     }
     function enabchoice () {
-        document.getElementById("tags").value = "";
+        resetfield();
         $('#tags').prop('disabled', false);
     }
 
@@ -22,23 +23,22 @@ $(document).ready( function() {
 
         if (resppos == -1 ) {
             $('#tagsname').html('Mauvais mot, reessayez !');
-            document.getElementById("tags").value = "";
-
+            resetfield ();
         }
         else if ($(idchosen).is(':checked')) {
-            $('#tagsname').html('Mot déjà selectionné connard !');
-            document.getElementById("tags").value = "";
-
+            $('#tagsname').html('Mot déjà selectionné !');
+            resetfield ();
         }
         else {
             nbrep ++;
 
-            $('#tagsname').html('');
+            $('#tagsname').html(' ');
             $(idchosen).prop( "checked", true );
-            document.getElementById("tags").value = "";
+            resetfield ();
 
             $('#tagdisplay').after(
-                '<div class="chip" id="'+idchosen+'">' + respchosen + '<i class="close material-icons">close</i></div>');
+                '<div class="chip" id="'+idchosen+'">' + respchosen + '<i class="close material-icons">close</i></div>'
+            );
 
             if (nbrep == 5) {
                 disabchoice();
@@ -51,7 +51,6 @@ $(document).ready( function() {
         }
 
     });
-
 
     $(document).on('click', '.chip', function() {
 
@@ -66,15 +65,3 @@ $(document).ready( function() {
         $('#nbresponse').html('Il vous reste encore maximum ' + (5-nbrep) + ' reponses à donner.');
     });
 });
-
-/**
- $('#tags').on('change', function () {
-
-
-   }).change();
-
- $('#tags').on('autocompleteselect', function (e, ui) {
-        $('#tagsname').html('You selected: ' + ui.item.value);
-        nbrep ++
-    });
- **/
