@@ -125,4 +125,9 @@ class Job
     {
         return $this->interviews;
     }
+
+    public function __toString()
+    {
+        return strval($this->word);
+    }
 }
