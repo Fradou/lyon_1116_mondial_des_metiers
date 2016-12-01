@@ -50,8 +50,8 @@
         var response = [];
         i=0;
         {% for answer in answers %}
-        response[i]= "{{ answer }}";
-        i=i+1;
+            response[i]= "{{ answer }}";
+            i=i+1;
         {% endfor %}
 
         $( function() {
