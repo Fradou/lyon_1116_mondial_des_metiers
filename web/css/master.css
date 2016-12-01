@@ -25,3 +25,11 @@ footer div {
     display: none;
   /*  visibility: hidden; */
 }
+
+.bloc_sp_s  {
+height: 5vh;
+}
+
+.bloc_sp_xs  {
+height: 2.5vh;
+}
