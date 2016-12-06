@@ -29,6 +29,20 @@ class InterviewRepository extends EntityRepository
         return $qb->getSingleScalarResult();
     }
 
+    public function getCountDomains() { //fonction qui compte le nombre d'entrée distinctes pour 'domain' dans la table (combien de domains ont été répondus)
+        $qb = $this->createQueryBuilder('i')
+            ->select('count(DISTINCT j.domain)')
+            ->innerJoin( 'i.job', 'j')
+            ->getQuery();
+
+        return $qb->getSingleScalarResult();
+    }
+/*
+select count(distinct j.domain)
+from interview as i
+join job as j on j.id = i.job_id
+
+*/
     public function get20jobs() { // fonction qui retourne les 20 métiers les plus répondus (donc c'est un array)
         $qb = $this->createQueryBuilder('i')
             ->select('i', 'j.name as name', 'count(i.id) as total')
@@ -57,7 +71,3 @@ class InterviewRepository extends EntityRepository
     }
 
 }
-
-/*
-
- */

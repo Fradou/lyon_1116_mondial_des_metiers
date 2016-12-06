@@ -18,8 +18,13 @@ class BackController extends Controller
         //nombre de métiers répondus
         $nbjobs = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getCountJobs();
 
+        //nombre de domaines répondus
+        $nbDomains = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getCountDomains();
+
+        // les 20 métiers les plus répondus
         $mostAnsweredJobs = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->get20jobs();
 
+        //les 20 domaines les plus répondus
         $mostAnsweredDomains = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->get20domains();
 
 
@@ -27,6 +32,7 @@ class BackController extends Controller
             "totalusers" => $users,
             "activeusers" => $activeUsers,
             "nbjobs"    => $nbjobs,
+            "nbdomains" => $nbDomains,
             "mostAnsweredJobs" => $mostAnsweredJobs,
             "mostAnsweredDomains" => $mostAnsweredDomains,
 
