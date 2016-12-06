@@ -17,50 +17,49 @@ class FrontController extends Controller
         $this->currentDate = new DateTime();
     }
 
-    private function countDown()
+    private function countDown($render)
     {
         if ($this->openDate > $this->currentDate) {
-            $direct = $this->forward('ChasseBundle:Front:countdown');
+            $direct = $this->render('Front/countdown.html.twig');
 
             return $direct;
         } else {
-            return;
+            return $render;
         }
     }
 
     public function indexAction()
     {
-        $this->countDown();
-        return $this->render('Front/index.html.twig', array(// ...
+        $render = $this->render('Front/index.html.twig', array(// ...
         ));
-
+        return $this->countDown($render);
     }
 
     public function howtoAction()
     {
-        $this->countDown();
-        return $this->render('Front/howto.html.twig', array(// ...
+        $render = $this->render('Front/howto.html.twig', array(// ...
         ));
+        return $this->countDown($render);
     }
 
     public function legalmentionAction()
     {
-        $this->countDown();
-        return $this->render('Front/legalmention.html.twig', array(// ...
+        $render = $this->render('Front/legalmention.html.twig', array(// ...
         ));
+        return $this->countDown($render);
     }
 
     public function inscriptAction()
     {
-        $this->countDown();
-        return $this->render('Front/inscript.html.twig', array(// ...
+        $render = $this->render('Front/inscript.html.twig', array(// ...
         ));
+        return $this->countDown($render);
     }
 
     public function countdownAction()
     {
         if ($this->openDate < $this->currentDate) {
-            $direct = $this->forward('ChasseBundle:Front:index');
+            $direct = $this->render('Front/index.html.twig');
 
             return $direct;
         }
