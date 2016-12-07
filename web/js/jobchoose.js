@@ -10,7 +10,7 @@ $( document ).ready(function() {
                 var jobs = JSON.parse(response.data);
                 html = "";
                 for (i = 0; i < jobs.length; i++) {
-                    html += "<option value=" + i + ">" +jobs[i].name + "</option>";
+                    html += "<option value=" + jobs[i].id + ">" +jobs[i].name + "</option>";
                 }
                 console.log(html);
                 $('#job_choices').html(html).material_select();
