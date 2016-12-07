@@ -30,6 +30,9 @@ framework:
         handler_id:  ~
     fragments:       ~
     http_method_override: true
+  # Activate serializer for FOSRest
+    serializer:
+        enabled: true
 
 # Twig Configuration
 twig:
@@ -71,6 +74,13 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: ChasseBundle\Entity\User
+
+#    registration:
+ #       confirmation:
+  #          enabled: true
+   # from_email:
+    #    address:        noreply@example.com
+     #   sender_name:    Site name
 
 # Easy Admin
 easy_admin:

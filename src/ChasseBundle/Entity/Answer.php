@@ -100,6 +100,6 @@ class Answer
 
     public function __toString()
     {
-        return strval($this->word);
+        return strval($this->id);
     }
 }
