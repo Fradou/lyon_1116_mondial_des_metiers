@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Job creation</h1>
+
+    {{ form_start(form) }}
+        <div>
+            {{ form_label(form.domain) }}
+            {{ form_errors(form.domain) }}
+            {{ form_widget(form.domain) }}
+        </div>
+   {#     <div>
+            {{ form_label(form.name) }}
+            {{ form_errors(form.name), {label:'Métier :', 'attr':{'class' : 'form-control'}}) }}
+            {{ form_widget(form.name) }}
+        </div> #}
+
+    <div class="input-field col s12">
+        <select id="job_choices">
+            <option value="" disabled selected>Choose your option</option>
+        </select>
+        <label>Métier :</label>
+    </div>
+
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('job_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="input-field col s12">
+        <select id="chassebundle_job_domain">
+            <option value="" disabled selected>Choose your option</option>
+            {% for job in jobs %}
+            <option value="{{ job.domain }}">{{ job.domain }}</option>
+            {% endfor %}
+        </select>
+        <label>Materialize Select</label>
+    </div>
+
+    <div class="input-field col s12">
+        <select id="job_choices">
+            <option value="" disabled selected>Choose your option</option>
+        </select>
+        <label>Métier :</label>
+    </div>
+
+{% endblock %}
