@@ -44,3 +44,8 @@ footer div {
     display: none;
   /*  visibility: hidden; */
 }
+
+#lisere {
+    width: 100%;
+    border-bottom: solid 1px grey;
+}
