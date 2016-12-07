@@ -20,3 +20,8 @@ footer img {
 footer div {
     margin: 10px 0px;
 }
+
+#checkboxfield {
+    display: none;
+  /*  visibility: hidden; */
+}

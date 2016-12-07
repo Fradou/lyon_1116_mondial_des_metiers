@@ -1,16 +1,67 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Interview creation</h1>
+    <div class="container">
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        <h1>Interview creation</h1>
 
-    <ul>
-        <li>
-            <a href="{{ path('interview_index') }}">Back to the list</a>
-        </li>
-    </ul>
+        <h2>Choisissez vos mots-clés :</h2>
+        <div class="ui-widget">
+            <label for="tags">Choisissez vos mots-clés:</label>
+            <input id="tags">
+        </div>
+
+        <div id="tagsname"></div>
+        <div id="nbresponse"></div>
+        <div id="tagdisplay"></div>
+
+
+        {{ form_start(form) }}
+        <div>
+            {{ form_row(form.bonusWord, {label:'Mot libre :'})}}
+        </div>
+
+        <div id="checkboxfield">
+            {{ form_row(form.answers, {label:none, 'attr': {'class': 'hidden-row'}})}}
+            {{ form_widget(form) }}
+        </div>
+
+        <input type="submit" value="Valider vote">
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!-- Script autocomplete -->
+    <script type="text/javascript">
+
+        var response = [];
+        i=0;
+        {% for answer in answers %}
+        response[i]= "{{ answer }}";
+        i=i+1;
+        {% endfor %}
+
+        $( function() {
+
+            $( "#tags" ).autocomplete({
+                source: response,
+                minLength: 1
+            });
+        });
+    </script>
+
+    <script type="text/javascript" src="{{ asset('/js/autocomp.js') }}"></script>
+    <!-- Main script -->
+    <script type="text/javascript" src="{{ asset('/js/main.js') }}"></script>
+
+    <!-- Materialize -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 {% endblock %}
