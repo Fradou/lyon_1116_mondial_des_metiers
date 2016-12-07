@@ -15,25 +15,17 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
  */
 class InterviewController extends Controller
 {
-
-
-    public function jobselectAction(){
-        $em = $this->getDoctrine()->getManager();
-        $jobs = $em->getRepository('ChasseBundle:Job')->getDomains();
-
-        return $this->render('job/jobselect.html.twig', array(
-            'jobs' => $jobs,
-        ));
-
-
-    }
-
+    /**
+     * Ajax request to display jobs once domain is chosen.
+     * @param Request $request
+     * @param $domain
+     * @return JsonResponse
+     */
     public function jobchooseAction(Request $request, $domain)
     {
         if ($request->isXmlHttpRequest()){
             /**
              * @var $repository JobRepository
-             * Utile pour que PHPStorm fasse l'autocompletion
              */
             $repository = $this->getDoctrine()->getRepository('ChasseBundle:Job');
             $data = $repository->getJobsName($domain);
@@ -41,6 +33,21 @@ class InterviewController extends Controller
         } else {
             throw new HttpException('500', 'Invalid call');
         }
+    }
+
+    /**
+     * Lists all domains.
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function jobselectAction(){
+        $em = $this->getDoctrine()->getManager();
+        $jobs = $em->getRepository('ChasseBundle:Job')->getDomains();
+
+        return $this->render('interview/jobselect.html.twig', array(
+            'jobs' => $jobs,
+        ));
+
+
     }
 
     /**
