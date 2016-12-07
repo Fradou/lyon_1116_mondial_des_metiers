@@ -3,7 +3,7 @@ $( document ).ready(function() {
         var domain = $(this).val();
         $.ajax({
             type: "POST",
-            url: "/job/choose/" + domain,
+            url: "/interview/choose/" + domain,
             dataType: 'json',
             timeout: 3000,
             success: function(response){

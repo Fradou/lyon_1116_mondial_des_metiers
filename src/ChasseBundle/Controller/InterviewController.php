@@ -3,8 +3,11 @@
 namespace ChasseBundle\Controller;
 
 use ChasseBundle\Entity\Interview;
+use ChasseBundle\Repository\JobRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 /**
  * Interview controller.
@@ -12,6 +15,34 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class InterviewController extends Controller
 {
+
+
+    public function jobselectAction(){
+        $em = $this->getDoctrine()->getManager();
+        $jobs = $em->getRepository('ChasseBundle:Job')->getDomains();
+
+        return $this->render('job/jobselect.html.twig', array(
+            'jobs' => $jobs,
+        ));
+
+
+    }
+
+    public function jobchooseAction(Request $request, $domain)
+    {
+        if ($request->isXmlHttpRequest()){
+            /**
+             * @var $repository JobRepository
+             * Utile pour que PHPStorm fasse l'autocompletion
+             */
+            $repository = $this->getDoctrine()->getRepository('ChasseBundle:Job');
+            $data = $repository->getJobsName($domain);
+            return new JsonResponse(array("data" => json_encode($data)));
+        } else {
+            throw new HttpException('500', 'Invalid call');
+        }
+    }
+
     /**
      * Lists all interview entities.
      *

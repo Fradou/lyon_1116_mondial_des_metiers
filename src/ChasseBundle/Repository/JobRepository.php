@@ -25,7 +25,8 @@ class JobRepository extends EntityRepository
         return $qb->getResult();
     }
 
-    public function findDom(){
+
+    public function getDomains(){
         $qb= $this->createQueryBuilder('j')
             -> select('j.domain')
             ->distinct('true')
