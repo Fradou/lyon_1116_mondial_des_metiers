@@ -21,6 +21,7 @@
 
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 </head>
@@ -29,35 +30,37 @@
 
 <header>
     <div class="row">
-        <div class="col offset-s1 s5 offset-m2 m2">
+        <div class="col s4 offset-s1 offset-m3 m2">
             <img src="{{ asset('img/LOGO-21MDM-AURA.png') }}">
         </div>
-        <div class="col s5 offset-m1 m2">
-            <img src="{{ asset('img/logo_tag.png') }}">
+        <div class="col s4 offset-s2 offset-m2 m2">
+            <img src="{{ asset('img/PictoTagBLANC2.PNG') }}">
         </div>
     </div>
 </header>
-
+<div id="content">
 {% block body %}{% endblock %}
-
-<footer>
+</div>
+<hr id="lisere"/>
+<footer class="container">
     <div class="row">
-        <div class="col s4 m5 offset-m1 l3 offset-l2">
+        <div class="col s10 offset-s1 m6 offset-m3 l5 offset-l1">
             <img src="{{ asset('img/region.png') }}">
         </div>
-        <div class="col s2 m1 offset-m1">
+        <div class="col s2 m1 offset-s2 offset-m4 offset-l1 l1">
             <img src="{{ asset('img/16_2014_lyon.png') }}">
         </div>
-        <div class="col s2 m1">
+        <div class="col s2 m1 l1">
             <img src="{{ asset('img/clermont.png') }}">
         </div>
-        <div class="col s2 m1">
+        <div class="col s2 m1 l1">
             <img src="{{ asset('img/LOGO_AC_Grenoble_2014.png') }}">
         </div>
-        <div class="col s2 m1">
+        <div class="col s2 m1 l1">
             <img src="{{ asset('img/BM_REG-AUVERGNE-RHONE-ALPES.png') }}">
         </div>
     </div>
+
 </footer>
 
 {% block javascripts %}
@@ -70,7 +73,6 @@
 
 <!-- Main script -->
 <script type="text/javascript" src="{{ asset('/js/main.js') }}"></script>
-<script type="text/javascript" src="{{ asset('/js/jobchoose.js') }}"></script>
 
 <!-- Materialize -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>

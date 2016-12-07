@@ -1,16 +1,21 @@
 {% extends "::base.html.twig" %}
 
 {% block title %}ChasseBundle:Front:countdown{% endblock %}
-
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/countdown.css') }}">
+{% endblock %}
 {% block body %}
-    <h1>Welcome to the Front:countdown page</h1>
-<div id="countdown">
-</div>
-
+    <div id="countContent">
+        <div id="countdown"></div>
+        <div id="countRegistration">
+            <p>Envie de participer à la chasse aux métiers ?</p>
+            <a id="countRegisterButton" href="{{ path('fos_user_registration_register') }}">Préinscris-toi</a>
+        </div>
+    </div>
 
 
 {% endblock %}
 
   {% block javascripts %}
-<script type="text/javascript" src="{{ asset ('js/countdown.js')  }}"></script>
+      <script type="text/javascript" src="{{ asset ('js/countdown.js') }}"></script>
   {% endblock %}
