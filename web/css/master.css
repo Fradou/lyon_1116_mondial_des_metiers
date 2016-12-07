@@ -36,3 +36,11 @@ footer .row {
     padding-top: 10px;
 }
 
+footer div {
+    margin: 10px 0px;
+}
+
+#checkboxfield {
+    display: none;
+  /*  visibility: hidden; */
+}

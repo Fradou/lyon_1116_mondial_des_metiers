@@ -1,50 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="UTF-8"/>
+
     <title>{% block title %}Welcome!{% endblock %}</title>
+
+    <!-- Materialize -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-    <link rel="stylesheet" href="{{ asset('css/master.css') }}">
+
+    <!--Materialize - Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
+    <!-- CSS Project -->
+    <link rel="stylesheet" href="{{ asset('css/master.css')}} ">
+
     {% block stylesheets %}{% endblock %}
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 </head>
+
 <body>
+
 <header>
     <div class="row">
-        <div class="col s4 offset-s1 offset-m3 m2">
+        <div class="col s4 offset-m2 m2">
             <img src="{{ asset('img/LOGO-21MDM-AURA.png') }}">
         </div>
-        <div class="col s4 offset-s2 offset-m2 m2">
-            <img src="{{ asset('img/PictoTagBLANC2.PNG') }}">
+        <div class="col s4 offset-m1 m2">
+            <img src="{{ asset('img/temp_logo.jpg') }}">
         </div>
     </div>
 </header>
-<div id="content">
+
 {% block body %}{% endblock %}
-</div>
-<footer class="container">
+
+<footer>
     <div class="row">
-        <div class="col s10 offset-s1 m6 offset-m3 l5 offset-l1">
+        <div class="col s4 m5 offset-m1 l3 offset-l2">
             <img src="{{ asset('img/region.png') }}">
         </div>
-        <div class="col s2 m1 offset-s2 offset-m4 offset-l1 l1">
+        <div class="col s2 m1 offset-m1">
             <img src="{{ asset('img/16_2014_lyon.png') }}">
         </div>
-        <div class="col s2 m1 l1">
+        <div class="col s2 m1">
             <img src="{{ asset('img/clermont.png') }}">
         </div>
-        <div class="col s2 m1 l1">
+        <div class="col s2 m1">
             <img src="{{ asset('img/LOGO_AC_Grenoble_2014.png') }}">
         </div>
-        <div class="col s2 m1 l1">
+        <div class="col s2 m1">
             <img src="{{ asset('img/BM_REG-AUVERGNE-RHONE-ALPES.png') }}">
         </div>
     </div>
-
 </footer>
+
+{% block javascripts %}
+
+<!-- jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-{% block javascripts %}{% endblock %}
+
+<!-- jQuery UI -->
+<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!-- Main script -->
+<script type="text/javascript" src="{{ asset('/js/main.js') }}"></script>
+
+<!-- Materialize -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+
+{% endblock %}
+
 </body>
 </html>
