@@ -5,6 +5,7 @@ namespace ChasseBundle\Controller;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+
 class FrontController extends Controller
 {
     private $openDate;
@@ -12,54 +13,53 @@ class FrontController extends Controller
 
     public function __construct()
     {
-        $this->openDate = new DateTime('2016-11-29 08:25:00');
+        $this->openDate = new DateTime('2016-12-30 18:00:00');
         $this->currentDate = new DateTime();
     }
 
-    private function countDown()
+    private function countDown($render)
     {
         if ($this->openDate > $this->currentDate) {
-            $direct = $this->forward('ChasseBundle:Front:countdown');
+            $direct = $this->render('Front/countdown.html.twig');
 
             return $direct;
         } else {
-            return;
+            return $render;
         }
     }
 
     public function indexAction()
     {
-        $this->countDown();
-        return $this->render('Front/index.html.twig', array(// ...
+        $render = $this->render('Front/index.html.twig', array(// ...
         ));
-
+        return $this->countDown($render);
     }
 
     public function howtoAction()
     {
-        $this->countDown();
-        return $this->render('Front/howto.html.twig', array(// ...
+        $render = $this->render('Front/howto.html.twig', array(// ...
         ));
+        return $this->countDown($render);
     }
 
     public function legalmentionAction()
     {
-        $this->countDown();
-        return $this->render('Front/legalmention.html.twig', array(// ...
+        $render = $this->render('Front/legalmention.html.twig', array(// ...
         ));
+        return $this->countDown($render);
     }
 
     public function inscriptAction()
     {
-        $this->countDown();
-        return $this->render('Front/inscript.html.twig', array(// ...
+        $render = $this->render('Front/inscript.html.twig', array(// ...
         ));
+        return $this->countDown($render);
     }
 
     public function countdownAction()
     {
         if ($this->openDate < $this->currentDate) {
-            $direct = $this->forward('ChasseBundle:Front:index');
+            $direct = $this->render('Front/index.html.twig');
 
             return $direct;
         }
