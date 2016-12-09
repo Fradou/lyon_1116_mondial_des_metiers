@@ -8,23 +8,23 @@ class BackController extends Controller
 {
     public function statsAction()
     {
-        //nb de user enregistrés
+        //nb of registered users
         $userManager = $this->container->get('fos_user.user_manager');
         $users = count($userManager->findUsers());
 
-        //nb de user ayant au moins répondu à un métier
+        //nb of user who answered at least one job
         $activeUsers = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getCountUsers();
 
-        //nombre de métiers répondus
+        //nb of aswered jobs
         $nbjobs = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getCountJobs();
 
-        //nombre de domaines répondus
+        //nb of answered domains
         $nbDomains = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getCountDomains();
 
-        // les 20 métiers les plus répondus
+        //  20 most answered jobs
         $mostAnsweredJobs = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->get20jobs();
 
-        //les 20 domaines les plus répondus
+        // 20 most answered domains
         $mostAnsweredDomains = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->get20domains();
 
 

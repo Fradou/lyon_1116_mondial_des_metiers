@@ -13,7 +13,7 @@ use ChasseBundle\Entity\Job;
  */
 class InterviewRepository extends EntityRepository
 {
-    public function getCountUsers() { //fonction qui compte le nombre d'entrée distinctes dans la table pour user (combien de user ont au moins répondus à un job)
+    public function getCountUsers() { //function that count number of distinct entry in the table user (how many user hav at least answered to one job)
          $qb = $this->createQueryBuilder('i')
             ->select('count(DISTINCT i.user)')
             ->getQuery();
@@ -21,7 +21,7 @@ class InterviewRepository extends EntityRepository
              return $qb->getSingleScalarResult();
     }
 
-    public function getCountJobs() { //fonction qui compte le nombre d'entrée distinctes pour 'name' dans la table (combien de jobs ont été répondus)
+    public function getCountJobs() { //function that count the number of distinc entry for 'name' in the table (how many jobs has been answered)
         $qb = $this->createQueryBuilder('i')
             ->select('count(DISTINCT i.job)')
             ->getQuery();
@@ -29,21 +29,16 @@ class InterviewRepository extends EntityRepository
         return $qb->getSingleScalarResult();
     }
 
-    public function getCountDomains() { //fonction qui compte le nombre d'entrée distinctes pour 'domain' dans la table (combien de domains ont été répondus)
+    public function getCountDomains()
+    { //function that count number of distinct entry for' domain' in the table (how many domains has been answered)
         $qb = $this->createQueryBuilder('i')
             ->select('count(DISTINCT j.domain)')
-            ->innerJoin( 'i.job', 'j')
+            ->innerJoin('i.job', 'j')
             ->getQuery();
 
         return $qb->getSingleScalarResult();
     }
-/*
-select count(distinct j.domain)
-from interview as i
-join job as j on j.id = i.job_id
-
-*/
-    public function get20jobs() { // fonction qui retourne les 20 métiers les plus répondus (donc c'est un array)
+    public function get20jobs() { // function that returns the 20 most asnwered jobs
         $qb = $this->createQueryBuilder('i')
             ->select('i', 'j.name as name', 'count(i.id) as total')
             //->innerJoin( 'i', 'Job', 'j', 'j.id = i.job')
@@ -57,7 +52,7 @@ join job as j on j.id = i.job_id
 
     }
 
-    public function get20domains() { // fonction qui retourne les 20 domaines les plus répondus (donc c'est un array)
+    public function get20domains() { //  function that returns the 20 most asnwered domains
         $qb = $this->createQueryBuilder('i')
             ->select('i', 'j.domain as domain', 'count(i.id) as total')
             ->innerJoin( 'i.job', 'j')
