@@ -74,7 +74,9 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: ChasseBundle\Entity\User
-
+    registration:
+        form:
+            type: ChasseBundle\Form\RegistrationType
 #    registration:
  #       confirmation:
   #          enabled: true
