@@ -3,6 +3,7 @@
 namespace ChasseBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use ChasseBundle\Entity\Job;
 
 /**
  * InterviewRepository
@@ -12,4 +13,56 @@ use Doctrine\ORM\EntityRepository;
  */
 class InterviewRepository extends EntityRepository
 {
+    public function getCountUsers() { //function that count number of distinct entry in the table user (how many user hav at least answered to one job)
+         $qb = $this->createQueryBuilder('i')
+            ->select('count(DISTINCT i.user)')
+            ->getQuery();
+
+             return $qb->getSingleScalarResult();
+    }
+
+    public function getCountJobs() { //function that count the number of distinc entry for 'name' in the table (how many jobs has been answered)
+        $qb = $this->createQueryBuilder('i')
+            ->select('count(DISTINCT i.job)')
+            ->getQuery();
+
+        return $qb->getSingleScalarResult();
+    }
+
+    public function getCountDomains()
+    { //function that count number of distinct entry for' domain' in the table (how many domains has been answered)
+        $qb = $this->createQueryBuilder('i')
+            ->select('count(DISTINCT j.domain)')
+            ->innerJoin('i.job', 'j')
+            ->getQuery();
+
+        return $qb->getSingleScalarResult();
+    }
+    public function get20jobs() { // function that returns the 20 most asnwered jobs
+        $qb = $this->createQueryBuilder('i')
+            ->select('i', 'j.name as name', 'count(i.id) as total')
+            //->innerJoin( 'i', 'Job', 'j', 'j.id = i.job')
+            ->innerJoin( 'i.job', 'j')
+            ->groupBy('i.job')
+            ->orderBy('total', 'DESC')
+            ->setMaxResults(20)
+            ->getQuery();
+
+        return $qb->getResult();
+
+    }
+
+    public function get20domains() { //  function that returns the 20 most asnwered domains
+        $qb = $this->createQueryBuilder('i')
+            ->select('i', 'j.domain as domain', 'count(i.id) as total')
+            ->innerJoin( 'i.job', 'j')
+            ->groupBy('j.domain')
+            ->orderBy('total', 'DESC')
+            ->setMaxResults(20)
+            ->getQuery();
+
+        return $qb->getResult();
+
+    }
+
 }
