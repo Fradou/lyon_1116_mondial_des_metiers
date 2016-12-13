@@ -17,4 +17,4 @@ inscript:
 
 countdown:
     path:     /countdown
-    defaults: { _controller: ChasseBundle:Front:countdown }
+    defaults: { _controller: ChasseBundle:Front:countDown }
