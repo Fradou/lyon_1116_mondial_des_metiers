@@ -7,6 +7,16 @@ ChasseBundle\Entity\User:
             generator:
                 strategy: AUTO
 
+    fields:
+        gender:
+            type: string
+            length: 10
+        department:
+            type: smallint
+        newsletter:
+            type: boolean
+
+
     oneToMany:
         interviews:
           targetEntity: Interview

@@ -1,0 +1,55 @@
+
+<div>
+    il y a actuellement {{ totalusers }} utilisateurs enregistrés.
+</div>
+
+
+<div>
+    il y a actuellement {{ activeusers }} utilisateurs actifs.
+</div>
+
+<div>
+    {{ nbjobs }} métiers ont reçus des réponses
+
+</div>
+
+<div>
+    {{ nbdomains }} domaines ont reçus des réponses
+
+</div>
+
+<div>
+
+    Classement des jobs les plus répondus:
+
+    <table>
+{% for job in mostAnsweredJobs %}
+
+       <tr>
+           <td>{{ job.name }}</td>
+
+       </tr>
+
+
+{% endfor %}
+
+    </table>
+</div>
+
+<div>
+
+    Classement des domaines les plus répondus:
+
+    <table>
+        {% for domain in mostAnsweredDomains %}
+
+            <tr>
+                <td>{{ domain.domain }}</td>
+
+            </tr>
+
+
+        {% endfor %}
+
+    </table>
+</div>

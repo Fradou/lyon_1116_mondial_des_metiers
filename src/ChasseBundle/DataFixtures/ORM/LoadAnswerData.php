@@ -16,7 +16,7 @@ class LoadAnswerData implements FixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        $answers = ["fort", "habile", "humain", "social", "concentration", "conscienscieux", "phallique"];
+        $answers = ["fort", "habile", "humain", "social", "concentration", "conscienscieux", "créatif"];
 
         foreach ($answers as $answer) {
             $newAnswer = new Answer();
