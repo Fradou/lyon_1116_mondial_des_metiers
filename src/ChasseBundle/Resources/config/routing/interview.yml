@@ -8,10 +8,10 @@ interview_show:
     defaults: { _controller: "ChasseBundle:Interview:show" }
     methods:  GET
 
-#interview_new:
- #   path:     /new/{job}
-  #  defaults: { _controller: "ChasseBundle:Interview:new" }
-   # methods:  [GET, POST]
+interview_new:
+    path:     /new
+    defaults: { _controller: "ChasseBundle:Interview:new" }
+    methods:  [GET, POST]
 
 interview_edit:
     path:     /{id}/edit

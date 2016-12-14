@@ -2,6 +2,11 @@ chasse_interview:
     resource: "@ChasseBundle/Resources/config/routing/interview.yml"
     prefix:   /interview
 
+
 chasse_front:
     resource: "@ChasseBundle/Resources/config/routing/front.yml"
     prefix:   /
+
+stats:
+    path:     /stats
+    defaults: { _controller: ChasseBundle:Back:stats }

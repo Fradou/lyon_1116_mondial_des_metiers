@@ -22,3 +22,21 @@
    {# <a href="{{ path('interview_new', { 'id': interview.id }) }}" class="waves-effect waves-light btn">Choisir le métier</a> #}
 
 {% endblock %}
+
+{% block javascripts %}
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!-- Main script -->
+    <script type="text/javascript" src="{{ asset('/js/main.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/jobchoose.js') }}"></script>
+
+    <!-- Materialize -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+
+{% endblock %}
