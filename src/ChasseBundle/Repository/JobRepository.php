@@ -14,11 +14,8 @@ class JobRepository extends EntityRepository
 {
     public function getJobsName($domain)
     {
-        /** On met les % pour pouvoir utiliser "like" et ainsi utiliser de la wildcard.
-         * Si pas de % le like se comporterait comme un simple where */
         $qb= $this->createQueryBuilder('j')
             -> select(array('j.name', 'j.id'))
-            /**   :country le ":" indique que country est un paramter */
             ->where('j.domain = :domain')
             ->setParameter('domain', $domain)
             ->getQuery();
