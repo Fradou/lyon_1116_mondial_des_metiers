@@ -22,3 +22,13 @@ interview_delete:
     path:     /{id}/delete
     defaults: { _controller: "ChasseBundle:Interview:delete" }
     methods:  DELETE
+
+job_choose:
+    path:     /choose/{domain}
+    defaults: { _controller: "ChasseBundle:Interview:jobchoose" }
+    methods:  POST
+
+job_select:
+    path:     /select
+    defaults: { _controller: "ChasseBundle:Interview:jobselect" }
+    methods:  [GET, POST]

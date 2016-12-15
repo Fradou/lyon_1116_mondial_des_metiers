@@ -89,9 +89,46 @@ easy_admin:
     entities:
         Answer:
             class: ChasseBundle\Entity\Answer
+            label: 'Mots prédéfinies'
+            list:
+                title: "Liste des mots inclus dans l'autocompletion"
+                fields:
+                    - 'id'
+                    - { property: 'word', label: 'Mot' }
+                    - { property: 'interviews', label: 'Nombre de séléction' }
+
+
         Interview:
             class: ChasseBundle\Entity\Interview
+            label: 'Bulletins de vote'
+            list:
+                title: "Resultats des formulaires"
+                fields:
+                    - 'id'
+                    - { property: 'bonus_word', label: 'Mot libre' }
+                    - { property: 'interviews_answers', label: 'Mots séléctionnés' }
+                    - { property: 'job', label: 'Métier' }
+                    - { property: 'user', label: 'Utilisateur' }
+
         Job:
             class: ChasseBundle\Entity\Job
+            label: 'Metier'
+            list:
+                title: "Liste des métier"
+                fields:
+                    - 'id'
+                    - { property: 'name', label: 'Métier' }
+                    - { property: 'domain', label: 'Domaine' }
+
         User:
             class: ChasseBundle\Entity\User
+            label: 'Utilisateur'
+            list:
+                title: "Liste des utilisateurs / inscrits"
+                fields:
+                    - 'id'
+                    - { property: 'username', label: "Utilisateur" }
+                    - { property: 'email', label: 'Mail', type: 'email' }
+                    - { property: 'last_login', label: 'Dernière connexion' }
+                    - { property: 'enabled', label: 'Compte activé' }
+                    - { property: 'roles', label: 'Droits' }

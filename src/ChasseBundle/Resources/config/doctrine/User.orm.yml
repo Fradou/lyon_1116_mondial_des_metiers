@@ -11,6 +11,11 @@ ChasseBundle\Entity\User:
         gender:
             type: string
             length: 10
+        status:
+            type: string
+            length: 100
+        age:
+            type: smallint
         department:
             type: smallint
         newsletter:
