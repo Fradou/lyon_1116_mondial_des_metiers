@@ -1,0 +1,32 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Merci d'avoir voté !{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col offset-s1 s10">
+                <h4>Merci d'avoir voté !</h4>
+                            <p>Votre vote a bien été enregistré !</p>
+                            <p>Il vous reste encore <span>1</span> métier à renseigner avant de pouvoir participer au tirage au sort !</p>
+
+
+                <p> Qu'avez vous pensé du salon ?</p>
+                <img src="{{ asset('/img/satisfatest.png') }}" style="height:100%; width:100%;">
+
+                <p>Un commentaire ? Une remarque ?</p>
+                <textarea name='comment' id='comment'></textarea><br />
+                <div class="bloc_sp_s"></div>
+
+                            <button href="{{ path('fos_user_profile_show') }}" type="button" class="btn btn-warning">
+                                <i class="fa fa-arrow-circle-o-right"></i> Retour à l'accueil
+                            </button>
+                            <button href="{{ path('fos_user_security_logout') }}" type="button" class="btn btn-warning">
+                                <i class="fa fa-arrow-circle-o-right"></i> Se déconnecter
+                            </button>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
