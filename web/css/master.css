@@ -45,6 +45,14 @@ footer div {
   /*  visibility: hidden; */
 }
 
+.bloc_sp_s  {
+height: 5vh;
+}
+
+.bloc_sp_xs  {
+height: 2.5vh;
+}
+
 #lisere {
     width: 100%;
     border-bottom: solid 1px grey;
