@@ -13,7 +13,7 @@ class FrontController extends Controller
 
     public function __construct()
     {
-        $this->openDate = new DateTime('2016-12-4 18:00:00');
+        $this->openDate = new DateTime('2017-02-2 10:00:00');
         $this->currentDate = new DateTime();
     }
 
