@@ -7,6 +7,6 @@ chasse_front:
     resource: "@ChasseBundle/Resources/config/routing/front.yml"
     prefix:   /
 
-stats:
-    path:     /stats
-    defaults: { _controller: ChasseBundle:Back:stats }
+chasse_front:
+    resource: "@ChasseBundle/Resources/config/routing/back.yml"
+    prefix:   /back

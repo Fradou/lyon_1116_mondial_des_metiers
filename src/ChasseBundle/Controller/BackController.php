@@ -39,4 +39,14 @@ class BackController extends Controller
         ));
     }
 
+    public function userStatsAction () {
+        //list of email who subscribed newsletter
+
+        //nb of male/female users
+
+        //classment of the most registered status among users (student, employee, etc.)
+
+        //classment by age category
+
+    }
 }
