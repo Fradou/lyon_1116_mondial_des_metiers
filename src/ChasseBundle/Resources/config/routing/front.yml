@@ -18,3 +18,7 @@ inscript:
 countdown:
     path:     /countdown
     defaults: { _controller: ChasseBundle:Front:countDown }
+
+votevalid:
+    path:     /votevalid
+    defaults: { _controller: ChasseBundle:Front:voteValid }

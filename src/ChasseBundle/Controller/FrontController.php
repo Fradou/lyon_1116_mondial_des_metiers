@@ -67,4 +67,11 @@ class FrontController extends Controller
         return $this->render('Front/countdown.html.twig', array(// ...
         ));
     }
+
+    public function voteValidAction()
+    {
+        return $this->render('Front/votevalid.html.twig', array(
+            // ...
+        ));
+    }
 }
