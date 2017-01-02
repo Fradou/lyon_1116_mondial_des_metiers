@@ -92,7 +92,7 @@ class InterviewController extends Controller
             $em->persist($interview);
             $em->flush($interview);
 
-            return $this->redirectToRoute('interview_show', array('id' => $interview->getId()));
+            return $this->redirectToRoute('votevalid', array('id' => $interview->getId()));
         }
 
         return $this->render('interview/new.html.twig', array(
