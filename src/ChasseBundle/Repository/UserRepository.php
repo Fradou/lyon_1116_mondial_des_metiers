@@ -34,6 +34,7 @@ class UserRepository extends EntityRepository
     //classment of the most registered status among users (student, employee, etc.) > ok tested on workbench, SELECT status, COUNT(status) FROM mondialbdd.user group by status
     public function getMostRegStatus()
     {
+        //attention: query not tested yet in dql
         $qb = $this->createQueryBuilder('u')
             ->select('u.status')
             ->groupBy('u.status')
