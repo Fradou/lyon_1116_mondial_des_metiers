@@ -4,6 +4,7 @@ namespace ChasseBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+
 class BackController extends Controller
 {
     public function statsAction()
@@ -41,12 +42,19 @@ class BackController extends Controller
 
     public function userStatsAction () {
         //list of email who subscribed newsletter
-
+        $subscribers = $this->getDoctrine()->getRepository('ChasseBundle:User')->getSubscribers();
         //nb of male/female users
+        $genders = $this->getDoctrine()->getRepository('ChasseBundle:User')->countGender();
 
         //classment of the most registered status among users (student, employee, etc.)
 
         //classment by age category
 
+        return $this->render('Back/userstats.html.twig', array(
+            "subscribers" => $subscribers,
+            "genders" => $genders,
+
+
+        ));
     }
 }

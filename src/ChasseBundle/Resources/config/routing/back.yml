@@ -2,6 +2,6 @@ stats:
     path:     /stats
     defaults: { _controller: ChasseBundle:Back:stats }
 
-stats:
+userstats:
     path:     /userstats
     defaults: { _controller: ChasseBundle:Back:userStats }

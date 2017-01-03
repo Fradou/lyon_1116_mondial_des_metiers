@@ -1,0 +1,17 @@
+liste des inscrits à la newsletter:
+<table>
+{% for subscriber in subscribers %}
+    <tr><td>{{ subscriber.email }}</td></tr>
+{% endfor %}
+</table>
+<br>
+Nombre d'hommes et de femmes
+<table>
+{% for gender in genders %}
+<tr>
+    <td>{{ gender.gender }}</td>
+    <td>{{ gender.nb }}</td>
+
+</tr>
+{% endfor %}
+</table>

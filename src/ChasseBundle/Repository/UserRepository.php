@@ -7,26 +7,27 @@ use Doctrine\ORM\EntityRepository;
 
 class UserRepository extends EntityRepository
 {
-    //nb of male/female users > ok tested on workbench : SELECT username, gender, COUNT(gender) FROM mondialbdd.user group by gender
+    //nb of male/female users > ok tested on workbench : SELECT gender, COUNT(gender) FROM mondialbdd.user group by gender
     public function countGender()
     {
         $qb = $this->createQueryBuilder('u')
-            ->select('count(u.gender)')
+            ->select('u.gender, count(u.gender) as nb')
+            //->select('u.gender')
             ->groupBy('u.gender')
             ->getQuery();
 
-        return $qb->getSingleScalarResult();
+        return $qb->getScalarResult();
     }
 
-    //list of email who subscribed newsletter > ok tested on workbench : SELECT email, newsletter FROM mondialbdd.user WHERE newsletter = true
+    //list of email who subscribed newsletter > ok tested on workbench : SELECT email FROM mondialbdd.user WHERE newsletter = true
     public function getSubscribers()
     {
         $qb = $this->createQueryBuilder('u')
             ->select('u.email')
-            ->where('u.newsletter'=='true')
+            ->where('u.newsletter=true')
             ->getQuery();
 
-        return $qb->getResult();
+        return $qb->getScalarResult();
     }
 
 
