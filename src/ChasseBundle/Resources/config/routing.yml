@@ -10,3 +10,7 @@ chasse_front:
 stats:
     path:     /stats
     defaults: { _controller: ChasseBundle:Back:stats }
+
+chasse_user:
+        resource: "@ChasseBundle/Resources/config/routing/user.yml"
+        prefix:   /user

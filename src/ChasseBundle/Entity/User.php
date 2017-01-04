@@ -197,4 +197,33 @@ class User extends BaseUser
     {
         return $this->age;
     }
+    /**
+     * @var integer
+     */
+    private $satisfaction;
+
+
+    /**
+     * Set satisfaction
+     *
+     * @param integer $satisfaction
+     *
+     * @return User
+     */
+    public function setSatisfaction($satisfaction)
+    {
+        $this->satisfaction = $satisfaction;
+
+        return $this;
+    }
+
+    /**
+     * Get satisfaction
+     *
+     * @return integer
+     */
+    public function getSatisfaction()
+    {
+        return $this->satisfaction;
+    }
 }
