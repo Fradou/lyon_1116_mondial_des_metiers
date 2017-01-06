@@ -15,3 +15,15 @@ Nombre d'hommes et de femmes
 </tr>
 {% endfor %}
 </table>
+
+<br>
+
+Liste des statuts les plus enregistrés
+<table>
+    {% for status in statuses %}
+        <tr>
+            <td>{{ status.status }}</td>
+            <td>{{ status.nb }}</td>
+        </tr>
+    {% endfor %}
+</table>

@@ -12,7 +12,6 @@ class UserRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('u')
             ->select('u.gender, count(u.gender) as nb')
-            //->select('u.gender')
             ->groupBy('u.gender')
             ->getQuery();
 
@@ -36,11 +35,11 @@ class UserRepository extends EntityRepository
     {
         //attention: query not tested yet in dql
         $qb = $this->createQueryBuilder('u')
-            ->select('u.status')
+            ->select('u.status, count(u.status) as nb')
             ->groupBy('u.status')
             ->getQuery();
 
-        return $qb->getResult();
+        return $qb->getScalarResult();
     }
 
     //classment by age category

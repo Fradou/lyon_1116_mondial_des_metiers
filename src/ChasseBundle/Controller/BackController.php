@@ -47,12 +47,14 @@ class BackController extends Controller
         $genders = $this->getDoctrine()->getRepository('ChasseBundle:User')->countGender();
 
         //classment of the most registered status among users (student, employee, etc.)
+        $statuses = $this->getDoctrine()->getRepository('ChasseBundle:User')->getMostRegStatus();
 
         //classment by age category
 
         return $this->render('Back/userstats.html.twig', array(
             "subscribers" => $subscribers,
             "genders" => $genders,
+            "statuses" => $statuses,
 
 
         ));
