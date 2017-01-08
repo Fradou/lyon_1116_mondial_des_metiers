@@ -20,8 +20,6 @@ ChasseBundle\Entity\User:
             type: smallint
         newsletter:
             type: boolean
-        satisfaction:
-            type: tinyint
 
 
     oneToMany:

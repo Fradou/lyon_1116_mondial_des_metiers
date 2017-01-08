@@ -4,6 +4,7 @@ namespace ChasseBundle\Controller;
 
 use ChasseBundle\Entity\Interview;
 use ChasseBundle\Repository\JobRepository;
+use ChasseBundle\Repository\AnswerRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,6 +30,34 @@ class InterviewController extends Controller
              */
             $repository = $this->getDoctrine()->getRepository('ChasseBundle:Job');
             $data = $repository->getJobsName($domain);
+            return new JsonResponse(array("data" => json_encode($data)));
+        } else {
+            throw new HttpException('500', 'Invalid call');
+        }
+    }
+
+    public function jobsearchAction(Request $request, $word)
+    {
+        if ($request->isXmlHttpRequest()){
+            /**
+             * @var $repository AnswerRepository
+             */
+            $repository = $this->getDoctrine()->getRepository('ChasseBundle:Answer');
+            $data = $repository->searchWords($word);
+            return new JsonResponse(array("data" => json_encode($data)));
+        } else {
+            throw new HttpException('500', 'Invalid call');
+        }
+    }
+
+    public function searchhelpAction(Request $request)
+    {
+        if ($request->isXmlHttpRequest()){
+            /**
+             * @var $repository AnswerRepository
+             */
+            $repository = $this->getDoctrine()->getRepository('ChasseBundle:Answer');
+            $data = $repository->searchRecommend();
             return new JsonResponse(array("data" => json_encode($data)));
         } else {
             throw new HttpException('500', 'Invalid call');

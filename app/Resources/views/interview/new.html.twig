@@ -4,12 +4,17 @@
     <div class="container">
 
         <h1><small>Interview creation</small></h1>
-
         <h2><small>Choisissez vos mots-clés :</small></h2>
-        <div class="ui-widget">
+
+   {#    <div class="ui-widget">
             <label for="tags">Mots-clés:</label>
             <input id="tags">
         </div>
+        #}
+
+        <input type="text" id="inputword"><br>
+        <button id="noidea">Pas d'idée ?</button>
+        <div id="wordautocomp"></div>
 
         <div id="tagsname"></div>
         <div id="nbresponse"></div>
@@ -41,18 +46,19 @@
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-    <!-- jQuery UI -->
+    <!-- jQuery UI
     <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    -->
 
-    <!-- Script autocomplete -->
+    <!-- Script autocomplete
     <script type="text/javascript">
 
         var response = [];
         i=0;
-        {% for answer in answers %}
+     {#   {% for answer in answers %}
             response[i]= "{{ answer }}";
             i=i+1;
-        {% endfor %}
+        {% endfor %}#}
 
         $( function() {
 
@@ -62,10 +68,12 @@
             });
         });
     </script>
+    -->
 
     <script type="text/javascript" src="{{ asset('/js/autocomp.js') }}"></script>
     <!-- Main script -->
     <script type="text/javascript" src="{{ asset('/js/main.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/autocomplete.js') }}"></script>
 
     <!-- Materialize -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>

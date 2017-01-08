@@ -197,4 +197,33 @@ class User extends BaseUser
     {
         return $this->age;
     }
+    /**
+     * @var tinyint
+     */
+    private $satisfaction;
+
+
+    /**
+     * Set satisfaction
+     *
+     * @param \tinyint $satisfaction
+     *
+     * @return User
+     */
+    public function setSatisfaction(\tinyint $satisfaction)
+    {
+        $this->satisfaction = $satisfaction;
+
+        return $this;
+    }
+
+    /**
+     * Get satisfaction
+     *
+     * @return \tinyint
+     */
+    public function getSatisfaction()
+    {
+        return $this->satisfaction;
+    }
 }

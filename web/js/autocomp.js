@@ -7,12 +7,12 @@ $(document).ready( function() {
     }
 
     function disabchoice () {
-        $('#tags').prop('disabled', true);
+        $('#inputword').prop('disabled', true);
         document.getElementById("tags").value = "5 mots choisis, vous êtes au maximum !"
     }
     function enabchoice () {
         resetfield();
-        $('#tags').prop('disabled', false);
+        $('#inputword').prop('disabled', false);
     }
 
     $('#tags').change(function () {
@@ -37,7 +37,7 @@ $(document).ready( function() {
             resetfield ();
 
             $('#tagdisplay').after(
-                '<div class="chip" id="'+idchosen+'">' + respchosen + '<i class="close material-icons">close</i></div>'
+                '<div class="chip chipchosen" id="'+idchosen+'">' + respchosen + '<i class="close material-icons">close</i></div>'
             );
 
             if (nbrep == 5) {
@@ -52,7 +52,7 @@ $(document).ready( function() {
 
     });
 
-    $(document).on('click', '.chip', function() {
+    $(document).on('click', '.chipchosen', function() {
 
         nbrep--;
         if (nbrep == 4) {
