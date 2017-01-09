@@ -1,22 +1,22 @@
 $( document ).ready(function() {
 
+    // Var used to track number of chips already chosen
     var nbrep = 0;
 
+    // Used to disable text field and button when reaching maximum number of words
     function disabchoice () {
         $('#inputword').val("").prop('disabled', true);
         $("#noidea").prop('disabled', true);
         $('#wordautocomp').empty();
-        console.log("disab use");
-        //       document.getElementById("tags").value = "5 mots choisis, vous êtes au maximum !"
     }
 
+    // Used to reenable text field and button
     function enabchoice () {
         $('#inputword').prop('disabled', false);
         $("#noidea").prop('disabled', false);
-        console.log("enab use");
-
     }
 
+    // Function used to treat Ajax answer from button and autocomplete and puts chips
     function putchips (word) {
         html = "";
         for (i = 0; i < word.length; i++) {
@@ -30,6 +30,7 @@ $( document ).ready(function() {
         $('#wordautocomp').html(html);
     }
 
+    // Ajax function for autocomplete
     $("#inputword").keyup(function(){
         var wordp = $(this).val();
         if ( wordp.length >= 1 ) {
@@ -48,6 +49,7 @@ $( document ).ready(function() {
         }
     });
 
+    // Ajax function for help button
     $("#noidea").click(function(){
         $.ajax({
             type: "POST",
@@ -64,6 +66,7 @@ $( document ).ready(function() {
 
     });
 
+    // Allow user to pick and remove chips from his choices
     $(document).on('click', '.chip', function() {
         var chipclicked = '#chassebundle_interview_answers_' + $(this).attr('id');
         if ($(this).hasClass("tochoose")) {
@@ -75,7 +78,6 @@ $( document ).ready(function() {
                 nbrep++;
                 $(chipclicked).prop( "checked", true );
                 $(this).addClass('chosen').removeClass('tochoose').append('<i class="close material-icons">close</i>').appendTo($("#chipchosen"));
-                console.log("j'incremente");
                 if (nbrep == 5) {
                     disabchoice();
                     $('#nbresponse').html('Vous avez atteint le maximum de réponses autorisées.');
@@ -87,7 +89,6 @@ $( document ).ready(function() {
         }
         else {
             nbrep--;
-            console.log('je delete v0');
             $(chipclicked).prop("checked", false);
             $(this).remove();
             if (nbrep == 4) {
