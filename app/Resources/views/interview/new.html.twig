@@ -52,31 +52,6 @@
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-    <!-- jQuery UI
-    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    -->
-
-    <!-- Script autocomplete
-    <script type="text/javascript">
-
-        var response = [];
-        i=0;
-     {#   {% for answer in answers %}
-            response[i]= "{{ answer }}";
-            i=i+1;
-        {% endfor %}#}
-
-        $( function() {
-
-            $( "#tags" ).autocomplete({
-                source: response,
-                minLength: 1
-            });
-        });
-    </script>
-    -->
-
-    <script type="text/javascript" src="{{ asset('/js/autocomp.js') }}"></script>
     <!-- Main script -->
     <script type="text/javascript" src="{{ asset('/js/main.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/js/autocomplete.js') }}"></script>
