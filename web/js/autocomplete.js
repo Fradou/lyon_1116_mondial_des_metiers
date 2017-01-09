@@ -70,22 +70,17 @@ $( document ).ready(function() {
     $(document).on('click', '.chip', function() {
         var chipclicked = '#chassebundle_interview_answers_' + $(this).attr('id');
         if ($(this).hasClass("tochoose")) {
-            if ($(chipclicked).is(':checked')) {
-                $('#nbresponse').html('Mot déjà selectionné ! mais il reste '+ (5 - nbrep))
+            nbrep++;
+            $(chipclicked).prop( "checked", true );
+            $(this).addClass('chosen').removeClass('tochoose').append('<i class="close material-icons">close</i>').appendTo($("#chipchosen"));
+            if (nbrep == 5) {
+                disabchoice();
+                $('#nbresponse').html('Vous avez atteint le maximum de réponses autorisées.');
             }
-            else
-            {
-                nbrep++;
-                $(chipclicked).prop( "checked", true );
-                $(this).addClass('chosen').removeClass('tochoose').append('<i class="close material-icons">close</i>').appendTo($("#chipchosen"));
-                if (nbrep == 5) {
-                    disabchoice();
-                    $('#nbresponse').html('Vous avez atteint le maximum de réponses autorisées.');
-                }
-                else {
-                    $('#nbresponse').html('Il vous reste encore maximum ' + (5 - nbrep) + ' reponses à donner.');
-                }
+            else {
+                $('#nbresponse').html('Il vous reste encore maximum ' + (5 - nbrep) + ' reponses à donner.');
             }
+
         }
         else {
             nbrep--;
