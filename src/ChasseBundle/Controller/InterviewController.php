@@ -100,18 +100,6 @@ class InterviewController extends Controller
      */
     public function newAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        $query = $em-> createQuery(
-            'SELECT a 
-            FROM ChasseBundle:Answer a');
-
-        $products = $query->getResult();
-
-        $answers=[];
-        foreach ($products as $product) {
-            array_push($answers, $product->getWord());
-        }
-
         $interview = new Interview();
         $form = $this->createForm('ChasseBundle\Form\InterviewType', $interview);
         $form->handleRequest($request);
@@ -126,7 +114,6 @@ class InterviewController extends Controller
 
         return $this->render('interview/new.html.twig', array(
             'interview' => $interview,
-            'answers' => $answers,
             'form' => $form->createView(),
         ));
     }
