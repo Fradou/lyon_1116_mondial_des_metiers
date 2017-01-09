@@ -52,16 +52,24 @@ $(document).ready( function() {
 
     });
 
-    $(document).on('click', '.chipchosen', function() {
+    $(document).on('click', 'chip chipchosen', function() {
 
         nbrep--;
         if (nbrep == 4) {
             enabchoice ()
         }
+        $(this).remove();
 
         var elemid = $(this).attr('id');
         $(elemid).prop("checked", false);
-        $(this).remove();
         $('#nbresponse').html('Il vous reste encore maximum ' + (5-nbrep) + ' reponses à donner.');
     });
 });
+
+
+//       $('.chosen').on('click',function(){
+//         nbrep--;
+//       console.log('je delete v0');
+//     if (nbrep == 4) {
+//         enabchoice ()
+//     }
