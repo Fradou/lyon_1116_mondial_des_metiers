@@ -8,7 +8,7 @@ body {
 }
 
 header {
-    background-color: #f7952a;
+    background-color: #808180;
     padding: 20px 0px;
 }
 
@@ -58,35 +58,43 @@ height: 2.5vh;
     border-bottom: solid 1px grey;
 }
 
+/* SATISFACTION FORM */
+
 .satis_form h1 {
-    font-size: 1.2em;
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem !important;
 }
 
-#chassebundle_user {
-    margin: auto;
+.satis_form p {
+    padding-bottom: 3rem;
 }
 
-#chassebundle_user img {
-    width: 30px;
-    margin: 0 5% 0 5%;
-}
-
-label[for="chassebundle_user_satisfaction_0"] {
-    margin: 0 1% 0 2%;
-}
-
-label[for="chassebundle_user_satisfaction_1"] {
-    margin: 0 1% 0 7%;
-}
-
-label[for="chassebundle_user_satisfaction_2"] {
-    margin: 0 3% 0 7%;
-}
-
-label[for="chassebundle_user_satisfaction_3"] {
-    margin: 0 -3% 0 5%;
+.satis_form button {
+    margin-top: 1rem;
 }
 
 #chassebundle_user_satisfaction {
-    padding-bottom: 3vh;
+    padding-bottom: 1rem;
+}
+
+#chassebundle_user_satisfaction img {
+    position: absolute;
+    width: 30px;
+    margin: -30px 0 0 -3px;
+}
+
+label[for="chassebundle_user_satisfaction_0"] {
+    margin-right: 10%;
+}
+
+label[for="chassebundle_user_satisfaction_1"] {
+    margin-right: 10%;
+}
+
+label[for="chassebundle_user_satisfaction_2"] {
+    margin-right: 10%;
+}
+
+label[for="chassebundle_user_comment"] {
+    color: black;
 }

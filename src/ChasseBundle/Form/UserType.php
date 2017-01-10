@@ -17,14 +17,15 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('satisfaction', ChoiceType::class, array(
-        'choice_list' => new ChoiceList(
-            array(1, 2, 3, 4),
-            array(' ', ' ', ' ', ' ')
-        ),
-        'multiple' => false,
-        'expanded' => true,
-        'label' => false
-        ));
+                'choice_list' => new ChoiceList(
+                    array(1, 2, 3, 4),
+                    array(' ', ' ', ' ', ' ')
+                ),
+                'multiple' => false,
+                'expanded' => true,
+                'label' => false
+                ))
+                ->add('comment') ;
     }
     
     /**

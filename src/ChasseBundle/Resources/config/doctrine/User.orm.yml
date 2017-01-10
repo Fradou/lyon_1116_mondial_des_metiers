@@ -22,6 +22,8 @@ ChasseBundle\Entity\User:
             type: boolean
         satisfaction:
             type: smallint
+        comment:
+            type: text
 
 
     oneToMany:
