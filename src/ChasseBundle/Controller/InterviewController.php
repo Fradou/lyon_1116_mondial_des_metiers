@@ -3,6 +3,7 @@
 namespace ChasseBundle\Controller;
 
 use ChasseBundle\Entity\Interview;
+use ChasseBundle\Entity\Job;
 use ChasseBundle\Repository\JobRepository;
 use ChasseBundle\Repository\AnswerRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -68,13 +69,32 @@ class InterviewController extends Controller
      * Lists all domains.
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function jobselectAction(){
+    public function jobselectAction(Request $request){
         $em = $this->getDoctrine()->getManager();
-        $jobs = $em->getRepository('ChasseBundle:Job')->getDomains();
+        $domains = $em->getRepository('ChasseBundle:Job')->getDomains();
+
+        $job = new Job();
+        $form = $this->createForm('ChasseBundle\Form\JobType', $job, array('domains' => $domains));
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+         /*   $em = $this->getDoctrine()->getManager();
+            $em->persist($interview);
+            $em->flush($interview); */
+
+            return $this->redirectToRoute('votevalid', array('id' => $interview->getId()));
+        }
 
         return $this->render('interview/jobselect.html.twig', array(
-            'jobs' => $jobs,
+            'job' => $job,
+            'form' => $form->createView(),
+            'domains' => $domains
         ));
+
+
+    /*    return $this->render('interview/jobselect.html.twig', array(
+            'jobs' => $jobs,
+        )); */
 
 
     }

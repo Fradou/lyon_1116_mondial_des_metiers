@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    <div class="input-field col s12">
+ {#   <div class="input-field col s12">
         <select id="chassebundle_job_domain">
             <option value="" disabled selected>Choose your option</option>
             {% for job in jobs %}
@@ -19,7 +19,15 @@
         <label>Métier :</label>
     </div>
 
-   {# <a href="{{ path('interview_new', { 'id': interview.id }) }}" class="waves-effect waves-light btn">Choisir le métier</a> #}
+   <a href="{{ path('interview_new', { 'id': interview.id }) }}" class="waves-effect waves-light btn">Choisir le métier</a> #}
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+
+    <input type="submit" value="Valider vote">
+
+    {{ form_end(form) }}
+
 
 {% endblock %}
 
