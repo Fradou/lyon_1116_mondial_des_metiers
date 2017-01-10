@@ -1,6 +1,7 @@
 ChasseBundle\Entity\User:
     type:  entity
     table: user
+    repositoryClass: ChasseBundle\Repository\UserRepository
     id:
         id:
             type: integer

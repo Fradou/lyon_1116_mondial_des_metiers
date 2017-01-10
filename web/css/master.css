@@ -58,6 +58,21 @@ height: 2.5vh;
     border-bottom: solid 1px grey;
 }
 
+h1 {
+    font-size:2em;
+    text-align:center;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+/* PAGE CHOIX MOTS-CLES */
+
+.jevote {
+    margin-left: 80px;
+}
+
 /* SATISFACTION FORM */
 
 .satis_form h1 {

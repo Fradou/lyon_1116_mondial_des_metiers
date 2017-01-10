@@ -3,13 +3,11 @@
 {% block body %}
     <div class="container">
 
-       {# <h1><small><small><small>Interview creation</small></small></small></h1>
-        <h2><small><small><small>Choisissez vos mots-clés :</small></small></small></h2>#}
+        <h1>Vos réponses</h1>
 
-        <p>Interview creation<br>
-        Choisissez vos mots clés</p>
+        <h2>Choisissez vos mots-clés :</h2>
+        <div class="ui-widget">
 
-   {#    <div class="ui-widget">
             <label for="tags">Mots-clés:</label>
             <input id="tags">
         </div>
@@ -40,7 +38,7 @@
             {{ form_widget(form) }}
         </div>
 
-        <input type="submit" value="Valider vote">
+        <input class="btn jevote" type="submit" value="Je vote!">
 
         {{ form_end(form) }}
     </div>
