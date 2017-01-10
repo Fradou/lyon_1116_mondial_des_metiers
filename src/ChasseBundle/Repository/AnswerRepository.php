@@ -13,7 +13,7 @@ use Doctrine\ORM\EntityRepository;
 class AnswerRepository extends EntityRepository
 {
     public function searchWords($word){
-        $word = "%".$word."%";
+        $word = $word."%";
         $qb= $this->createQueryBuilder('a')
             ->select('a.word, a.id')
             ->where('a.word LIKE :word')
@@ -23,10 +23,11 @@ class AnswerRepository extends EntityRepository
 
     }
 
-    public function searchRecommend(){
+    public function searchRecommend($domain){
         $qb= $this->createQueryBuilder('a')
             ->select('a.word, a.id')
-            ->setMaxResults(2)
+            ->where('a.domain LIKE :domain')
+            ->setParameter('domain', $domain)
             ->getQuery();
         return $qb->getResult();
 

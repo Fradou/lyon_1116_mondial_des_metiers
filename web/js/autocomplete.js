@@ -33,7 +33,7 @@ $( document ).ready(function() {
     // Ajax function for autocomplete
     $("#inputword").keyup(function(){
         var wordp = $(this).val();
-        if ( wordp.length >= 1 ) {
+        if ( wordp.length >= 2 ) {
             $.ajax({
                 type: "POST",
                 url: "/interview/search/" + wordp,
@@ -53,7 +53,7 @@ $( document ).ready(function() {
     $("#noidea").click(function(){
         $.ajax({
             type: "POST",
-            url: "/interview/searchhelp",
+            url: "/interview/searchhelp/"+ "Art mural",
             dataType: 'json',
             timeout: 3000,
             success: function(response){

@@ -51,14 +51,14 @@ class InterviewController extends Controller
         }
     }
 
-    public function searchhelpAction(Request $request)
+    public function searchhelpAction(Request $request, $domain)
     {
         if ($request->isXmlHttpRequest()){
             /**
              * @var $repository AnswerRepository
              */
             $repository = $this->getDoctrine()->getRepository('ChasseBundle:Answer');
-            $data = $repository->searchRecommend();
+            $data = $repository->searchRecommend($domain);
             return new JsonResponse(array("data" => json_encode($data)));
         } else {
             throw new HttpException('500', 'Invalid call');

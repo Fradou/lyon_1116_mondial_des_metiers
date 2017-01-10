@@ -39,6 +39,6 @@ job_search:
     methods:  POST
 
 job_searchhelp:
-    path:     /searchhelp
+    path:     /searchhelp/{domain}
     defaults: { _controller: "ChasseBundle:Interview:searchhelp" }
     methods:  POST
