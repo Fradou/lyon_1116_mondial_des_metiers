@@ -3,11 +3,9 @@
 {% block body %}
     <div class="container">
 
-       {# <h1><small><small><small>Interview creation</small></small></small></h1>
-        <h2><small><small><small>Choisissez vos mots-clés :</small></small></small></h2>#}
+        <h1>Vos réponses</h1>
 
-        <p>Interview creation<br>
-        Choisissez vos mots clés</p>
+        <h2>Choisissez vos mots-clés :</h2>
 
         <div id="chipchosen"></div>
         <input type="text" id="inputword"><br>
@@ -35,7 +33,7 @@
             {{ form_widget(form) }}
         </div>
 
-        <input type="submit" value="Valider vote">
+        <input class="btn jevote" type="submit" value="Je vote!">
 
         {{ form_end(form) }}
     </div>
@@ -48,8 +46,8 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
     <!-- Main script -->
-    <script type="text/javascript" src="{{ asset('/js/main.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/autocomplete.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/autocomplete.js') }}"></script>
 
     <!-- Materialize -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>

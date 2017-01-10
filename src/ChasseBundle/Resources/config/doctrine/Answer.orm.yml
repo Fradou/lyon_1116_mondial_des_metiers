@@ -12,6 +12,9 @@ ChasseBundle\Entity\Answer:
         word:
             type: string
             length: 255
+        domain:
+            type: string
+            length: 255
 
     manyToMany:
         interviews:

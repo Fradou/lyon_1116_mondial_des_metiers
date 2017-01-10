@@ -1,0 +1,40 @@
+liste des inscrits à la newsletter:
+<table>
+{% for subscriber in subscribers %}
+    <tr><td>{{ subscriber.email }}</td></tr>
+{% endfor %}
+</table>
+<br>
+Nombre d'hommes et de femmes
+<table>
+{% for gender in genders %}
+<tr>
+    <td>{{ gender.gender }}</td>
+    <td>{{ gender.nb }}</td>
+
+</tr>
+{% endfor %}
+</table>
+
+<br>
+
+Liste des statuts les plus enregistrés
+<table>
+    {% for status in statuses %}
+        <tr>
+            <td>{{ status.status }}</td>
+            <td>{{ status.nb }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<br>
+
+Liste des catégories d'âge
+<table>
+{% for age in agecategory %}
+    <tr>
+        <td>{{ age[1] }}</td><td>{{ age[0] }}</td>
+    </tr>
+{% endfor %}
+</table>
