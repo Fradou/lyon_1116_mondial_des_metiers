@@ -27,3 +27,14 @@ Liste des statuts les plus enregistrés
         </tr>
     {% endfor %}
 </table>
+
+<br>
+
+Liste des catégories d'âge
+<table>
+{% for age in agecategory %}
+    <tr>
+        <td>{{ age[1] }}</td><td>{{ age[0] }}</td>
+    </tr>
+{% endfor %}
+</table>

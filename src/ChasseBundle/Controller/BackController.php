@@ -36,7 +36,6 @@ class BackController extends Controller
             "nbdomains" => $nbDomains,
             "mostAnsweredJobs" => $mostAnsweredJobs,
             "mostAnsweredDomains" => $mostAnsweredDomains,
-
         ));
     }
 
@@ -50,13 +49,18 @@ class BackController extends Controller
         $statuses = $this->getDoctrine()->getRepository('ChasseBundle:User')->getMostRegStatus();
 
         //classment by age category
+        $agecategory = [];
+        $agecategory[] = ["-15 ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(0,15)];
+        $agecategory[] = ["16-25 ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(16,25)];
+        $agecategory[] = ["26-35 ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(26,35)];
+        $agecategory[] = ["36-45 ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(36,45)];
+        $agecategory[] = ["46+ ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(46,100)];
 
         return $this->render('Back/userstats.html.twig', array(
             "subscribers" => $subscribers,
             "genders" => $genders,
             "statuses" => $statuses,
-
-
+            "agecategory" => $agecategory,
         ));
     }
 }

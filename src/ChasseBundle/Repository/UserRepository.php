@@ -43,4 +43,17 @@ class UserRepository extends EntityRepository
     }
 
     //classment by age category
+    public function getAgeCategories($ageMin, $ageMax) {
+        $qb = $this->createQueryBuilder('u')
+            ->select('count(u.age)')
+            ->where('u.age >= :ageMin')
+            ->andWhere('u.age <= :ageMax')
+            ->setParameter('ageMin', $ageMin)
+            ->setParameter('ageMax', $ageMax)
+            ->getQuery();
+
+        return $qb->getSingleScalarResult();
+    }
+}
+    {
 }
