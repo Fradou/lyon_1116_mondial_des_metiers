@@ -15,7 +15,7 @@ class JobRepository extends EntityRepository
     public function getJobsName($domain)
     {
         $qb= $this->createQueryBuilder('j')
-            -> select(array('j.name', 'j.id'))
+            ->select(array('j.name', 'j.id'))
             ->where('j.domain = :domain')
             ->setParameter('domain', $domain)
             ->getQuery();

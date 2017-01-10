@@ -32,3 +32,13 @@ job_select:
     path:     /select
     defaults: { _controller: "ChasseBundle:Interview:jobselect" }
     methods:  [GET, POST]
+
+job_search:
+    path:     /search/{word}
+    defaults: { _controller: "ChasseBundle:Interview:jobsearch" }
+    methods:  POST
+
+job_searchhelp:
+    path:     /searchhelp
+    defaults: { _controller: "ChasseBundle:Interview:searchhelp" }
+    methods:  POST
