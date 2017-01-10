@@ -57,3 +57,36 @@ height: 2.5vh;
     width: 100%;
     border-bottom: solid 1px grey;
 }
+
+.satis_form h1 {
+    font-size: 1.2em;
+}
+
+#chassebundle_user {
+    margin: auto;
+}
+
+#chassebundle_user img {
+    width: 30px;
+    margin: 0 5% 0 5%;
+}
+
+label[for="chassebundle_user_satisfaction_0"] {
+    margin: 0 1% 0 2%;
+}
+
+label[for="chassebundle_user_satisfaction_1"] {
+    margin: 0 1% 0 7%;
+}
+
+label[for="chassebundle_user_satisfaction_2"] {
+    margin: 0 3% 0 7%;
+}
+
+label[for="chassebundle_user_satisfaction_3"] {
+    margin: 0 -3% 0 5%;
+}
+
+#chassebundle_user_satisfaction {
+    padding-bottom: 3vh;
+}

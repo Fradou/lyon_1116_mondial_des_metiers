@@ -19,10 +19,11 @@ class UserType extends AbstractType
         $builder->add('satisfaction', ChoiceType::class, array(
         'choice_list' => new ChoiceList(
             array(1, 2, 3, 4),
-            array('Nul', 'Bof', 'Bien', 'Top')
+            array(' ', ' ', ' ', ' ')
         ),
         'multiple' => false,
-        'expanded' => true
+        'expanded' => true,
+        'label' => false
         ));
     }
     
