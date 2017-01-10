@@ -111,5 +111,6 @@ label[for="chassebundle_user_satisfaction_2"] {
 }
 
 label[for="chassebundle_user_comment"] {
+    font-size: 1rem;
     color: black;
 }

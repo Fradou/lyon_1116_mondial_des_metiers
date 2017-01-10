@@ -25,9 +25,9 @@ class UserType extends AbstractType
                 'expanded' => true,
                 'label' => false
                 ))
-                ->add('comment') ;
+                ->add('comment');
     }
-    
+
     /**
      * {@inheritdoc}
      */
