@@ -1,19 +1,20 @@
 <?php
 
-
 namespace ChasseBundle\Form;
 
-
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
+
 
 class RegistrationType extends AbstractType
 {
-    public function buildform(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('gender')
-                ->add('department')
-                ->add('newsletter');
+        $builder->add('gender')->add('status')->add('age')->add('department')
+            ->add('newsletter', CheckboxType::class, array(
+                'label'=> 'Recevoir la newsletter ?',
+                'required' => false));
     }
 
     public function getParent()
@@ -26,7 +27,7 @@ class RegistrationType extends AbstractType
         return 'app_user_registration';
     }
 
-    public function getName()
+    public function getGender()
     {
         return $this->getBlockPrefix();
     }
