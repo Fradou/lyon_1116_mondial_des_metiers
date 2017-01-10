@@ -4,6 +4,7 @@ namespace ChasseBundle\Controller;
 
 use ChasseBundle\Entity\Interview;
 use ChasseBundle\Repository\JobRepository;
+use ChasseBundle\Repository\AnswerRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,6 +30,34 @@ class InterviewController extends Controller
              */
             $repository = $this->getDoctrine()->getRepository('ChasseBundle:Job');
             $data = $repository->getJobsName($domain);
+            return new JsonResponse(array("data" => json_encode($data)));
+        } else {
+            throw new HttpException('500', 'Invalid call');
+        }
+    }
+
+    public function jobsearchAction(Request $request, $word)
+    {
+        if ($request->isXmlHttpRequest()){
+            /**
+             * @var $repository AnswerRepository
+             */
+            $repository = $this->getDoctrine()->getRepository('ChasseBundle:Answer');
+            $data = $repository->searchWords($word);
+            return new JsonResponse(array("data" => json_encode($data)));
+        } else {
+            throw new HttpException('500', 'Invalid call');
+        }
+    }
+
+    public function searchhelpAction(Request $request)
+    {
+        if ($request->isXmlHttpRequest()){
+            /**
+             * @var $repository AnswerRepository
+             */
+            $repository = $this->getDoctrine()->getRepository('ChasseBundle:Answer');
+            $data = $repository->searchRecommend();
             return new JsonResponse(array("data" => json_encode($data)));
         } else {
             throw new HttpException('500', 'Invalid call');
@@ -71,18 +100,6 @@ class InterviewController extends Controller
      */
     public function newAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        $query = $em-> createQuery(
-            'SELECT a 
-            FROM ChasseBundle:Answer a');
-
-        $products = $query->getResult();
-
-        $answers=[];
-        foreach ($products as $product) {
-            array_push($answers, $product->getWord());
-        }
-
         $interview = new Interview();
         $form = $this->createForm('ChasseBundle\Form\InterviewType', $interview);
         $form->handleRequest($request);
@@ -92,12 +109,11 @@ class InterviewController extends Controller
             $em->persist($interview);
             $em->flush($interview);
 
-            return $this->redirectToRoute('interview_show', array('id' => $interview->getId()));
+            return $this->redirectToRoute('votevalid', array('id' => $interview->getId()));
         }
 
         return $this->render('interview/new.html.twig', array(
             'interview' => $interview,
-            'answers' => $answers,
             'form' => $form->createView(),
         ));
     }

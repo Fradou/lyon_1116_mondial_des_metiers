@@ -38,6 +38,7 @@ class InterviewRepository extends EntityRepository
 
         return $qb->getSingleScalarResult();
     }
+
     public function get20jobs() { // function that returns the 20 most asnwered jobs
         $qb = $this->createQueryBuilder('i')
             ->select('i', 'j.name as name', 'count(i.id) as total')

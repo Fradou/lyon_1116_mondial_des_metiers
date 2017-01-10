@@ -12,4 +12,24 @@ use Doctrine\ORM\EntityRepository;
  */
 class AnswerRepository extends EntityRepository
 {
+    public function searchWords($word){
+        $word = "%".$word."%";
+        $qb= $this->createQueryBuilder('a')
+            ->select('a.word, a.id')
+            ->where('a.word LIKE :word')
+            ->setParameter('word', $word)
+            ->getQuery();
+        return $qb->getResult();
+
+    }
+
+    public function searchRecommend(){
+        $qb= $this->createQueryBuilder('a')
+            ->select('a.word, a.id')
+            ->setMaxResults(2)
+            ->getQuery();
+        return $qb->getResult();
+
+    }
 }
+
