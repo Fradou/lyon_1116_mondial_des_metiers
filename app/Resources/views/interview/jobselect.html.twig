@@ -1,23 +1,29 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<div class="container">
+
+    <h1>Domaine / Métiers</h1>
+
+    <h2>Choisissez votre domaine et votre métier :</h2>
 
     <div class="input-field col s12">
         <select id="chassebundle_job_domain">
-            <option value="" disabled selected>Choose your option</option>
+            <option value="" disabled selected>Domaine</option>
             {% for job in jobs %}
                 <option value="{{ job.domain }}">{{ job.domain }}</option>
             {% endfor %}
         </select>
-        <label>Materialize Select</label>
+        <label>Domaine</label>
     </div>
 
     <div class="input-field col s12">
         <select id="job_choices">
-            <option value="" disabled selected>Choose your option</option>
+            <option value="" disabled selected>Métier</option>
         </select>
         <label>Métier :</label>
     </div>
+</div>
 
    {# <a href="{{ path('interview_new', { 'id': interview.id }) }}" class="waves-effect waves-light btn">Choisir le métier</a> #}
 
