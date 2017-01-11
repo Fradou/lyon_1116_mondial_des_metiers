@@ -70,8 +70,22 @@ class FrontController extends Controller
 
     public function voteValidAction()
     {
-        return $this->render('Front/votevalid.html.twig', array(
-            // ...
-        ));
+        $user = $this->getUser()->getId();
+
+        $repository = $this->getDoctrine()->getRepository('ChasseBundle:Interview');
+        $vote = $repository->checkVote(9);
+
+        $repository = $this->getDoctrine()->getRepository('ChasseBundle:User');
+        $satisf = $repository->checkSatisf(9);
+
+
+        if ($satisf == 0){
+            return $this->render('Front/votevalid.html.twig', array(
+                'vote' => $vote));
+        }
+        else {
+            return $this->render('Front/votevalid.html.twig', array(
+                'vote' => $vote));
+        }
     }
 }

@@ -10,6 +10,10 @@
                             <p>Votre vote a bien été enregistré !</p>
                             <p>Il vous reste encore <span>1</span> métier à renseigner avant de pouvoir participer au tirage au sort !</p>
 
+                {% if vote < 3 %}
+                    Il te reste {{ 3 - vote }} votes car tu as vote {{ vote }} fois
+
+                    {% endif %}
 
                 <p> Qu'avez vous pensé du salon ?</p>
                 <img src="{{ asset('/img/satisfatest.png') }}" style="height:100%; width:100%;">

@@ -55,5 +55,3 @@ class UserRepository extends EntityRepository
         return $qb->getSingleScalarResult();
     }
 }
-    {
-}

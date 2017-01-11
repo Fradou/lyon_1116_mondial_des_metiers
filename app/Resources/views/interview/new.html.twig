@@ -2,30 +2,39 @@
 
 {% block body %}
     <div class="container">
+        <div class="row">
+            <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6">
+                <h1>Vos réponses</h1>
+            </div>
+        </div>
+        <div class="row">
 
-        <h1>Vos réponses</h1>
+            <div class="col s12 offset-m2 m8 offset-l3 l6" id="chipchosen"></div>
 
-        <h2>Choisissez vos mots-clés :</h2>
+            <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6">
+                <label for="inputword" >Choisissez vos mots-clés:</label>
+                <input type="text" name="" id="inputword" maxlength="255">
+                <button id="noidea">Pas d'idée ?</button>
+            </div>
+        </div>
 
-        <div id="chipchosen"></div>
-        <input type="text" id="inputword"><br>
-        <button id="noidea">Pas d'idée ?</button>
+        <div class="row">
+            <div class="col s12 offset-m2 m8 offset-l3 l6" id="wordautocomp"></div>
+        </div>
 
-        <div id="wordautocomp"></div>
+        <div class="row">
+            <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6" id="nbresponse"></div>
+        </div>
 
-        <div id="tagsname"></div>
-
-        <div id="nbresponse"></div>
-
-        <div id="tagdisplay"></div>
 
 
         <div class="bloc_sp_xs"></div>
 
-
         {{ form_start(form) }}
-        <div>
-            {{ form_row(form.bonusWord, {label:'Mot libre :'})}}
+        <div class="row">
+            <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6">
+                {{ form_row(form.bonusWord, {label:'Ecrivez votre mot libre :'})}}
+            </div>
         </div>
 
         <div id="checkboxfield">

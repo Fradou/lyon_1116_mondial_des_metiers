@@ -66,4 +66,15 @@ class InterviewRepository extends EntityRepository
 
     }
 
+    public function checkVote($id){
+        $qb = $this->createQueryBuilder('i')
+            ->select('count(i)')
+            ->innerJoin('i.user', 'u')
+            ->where('u.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery();
+
+        return $qb->getSingleScalarResult();
+
+    }
 }
