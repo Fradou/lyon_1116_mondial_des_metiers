@@ -21,6 +21,10 @@ ChasseBundle\Entity\User:
             type: smallint
         newsletter:
             type: boolean
+        satisfaction:
+            type: smallint
+        comment:
+            type: text
 
 
     oneToMany:
