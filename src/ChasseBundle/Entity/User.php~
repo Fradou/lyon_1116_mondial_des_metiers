@@ -198,7 +198,7 @@ class User extends BaseUser
         return $this->age;
     }
     /**
-     * @var tinyint
+     * @var integer
      */
     private $satisfaction;
 
@@ -206,11 +206,11 @@ class User extends BaseUser
     /**
      * Set satisfaction
      *
-     * @param \tinyint $satisfaction
+     * @param integer $satisfaction
      *
      * @return User
      */
-    public function setSatisfaction(\tinyint $satisfaction)
+    public function setSatisfaction($satisfaction)
     {
         $this->satisfaction = $satisfaction;
 
@@ -220,7 +220,7 @@ class User extends BaseUser
     /**
      * Get satisfaction
      *
-     * @return \tinyint
+     * @return integer
      */
     public function getSatisfaction()
     {

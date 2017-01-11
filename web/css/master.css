@@ -8,7 +8,7 @@ body {
 }
 
 header {
-    background-color: #f7952a;
+    background-color: #808180;
     padding: 20px 0px;
 }
 
@@ -64,11 +64,53 @@ h1 {
 }
 
 h2 {
-   font-size: 1.5em;
+    font-size: 1.5em;
 }
 
 /* PAGE CHOIX MOTS-CLES */
 
 .jevote {
-    margin-left:80px;
+    margin-left: 80px;
+}
+
+/* SATISFACTION FORM */
+
+.satis_form h1 {
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem !important;
+}
+
+.satis_form p {
+    padding-bottom: 3rem;
+}
+
+.satis_form button {
+    margin-top: 1rem;
+}
+
+#chassebundle_user_satisfaction {
+    padding-bottom: 1rem;
+}
+
+#chassebundle_user_satisfaction img {
+    position: absolute;
+    width: 30px;
+    margin: -30px 0 0 -3px;
+}
+
+label[for="chassebundle_user_satisfaction_0"] {
+    margin-right: 10%;
+}
+
+label[for="chassebundle_user_satisfaction_1"] {
+    margin-right: 10%;
+}
+
+label[for="chassebundle_user_satisfaction_2"] {
+    margin-right: 10%;
+}
+
+label[for="chassebundle_user_comment"] {
+    font-size: 1rem;
+    color: black;
 }
