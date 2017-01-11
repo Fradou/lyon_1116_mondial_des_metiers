@@ -54,4 +54,13 @@ class UserRepository extends EntityRepository
 
         return $qb->getSingleScalarResult();
     }
+
+    public function checkSatisf($user){
+        $qb = $this->createQueryBuilder('u')
+            ->select('u.satisfaction')
+            ->where('u.id = :user')
+            ->setParameter('user', $user)
+            ->getQuery();
+        return $qb->getSingleScalarResult();
+    }
 }

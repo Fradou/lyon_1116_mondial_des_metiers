@@ -72,20 +72,21 @@ class FrontController extends Controller
     {
         $user = $this->getUser()->getId();
 
-        $repository = $this->getDoctrine()->getRepository('ChasseBundle:Interview');
-        $vote = $repository->checkVote(9);
-
         $repository = $this->getDoctrine()->getRepository('ChasseBundle:User');
-        $satisf = $repository->checkSatisf(9);
+        $satisf = $repository->checkSatisf($user);
 
 
-        if ($satisf == 0){
+        if ($satisf != 0){
+
+            $repository = $this->getDoctrine()->getRepository('ChasseBundle:Interview');
+            $vote = $repository->checkVote($user);
+
             return $this->render('Front/votevalid.html.twig', array(
                 'vote' => $vote));
         }
         else {
-            return $this->render('Front/votevalid.html.twig', array(
-                'vote' => $vote));
+            return $this->redirectToRoute('user_edit', array(
+                'id' => $user));
         }
     }
 }

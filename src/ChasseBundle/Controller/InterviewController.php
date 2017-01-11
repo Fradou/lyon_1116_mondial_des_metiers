@@ -127,7 +127,7 @@ class InterviewController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($interview);
-            $em->flush($interview);
+            $em->flush();
 
             return $this->redirectToRoute('votevalid', array('id' => $interview->getId()));
         }
@@ -187,7 +187,7 @@ class InterviewController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($interview);
-            $em->flush($interview);
+            $em->flush();
         }
 
         return $this->redirectToRoute('interview_index');

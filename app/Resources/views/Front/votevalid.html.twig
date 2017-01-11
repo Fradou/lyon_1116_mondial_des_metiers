@@ -7,27 +7,19 @@
         <div class="row">
             <div class="col offset-s1 s10">
                 <h4>Merci d'avoir voté !</h4>
-                            <p>Votre vote a bien été enregistré !</p>
-                            <p>Il vous reste encore <span>1</span> métier à renseigner avant de pouvoir participer au tirage au sort !</p>
-
+                <p>Votre vote a bien été enregistré !</p>
                 {% if vote < 3 %}
-                    Il te reste {{ 3 - vote }} votes car tu as vote {{ vote }} fois
+                    <p>Il vous reste encore <span>{{ 3 - vote }}</span> métier à renseigner avant de pouvoir participer au tirage au sort !</p>
+                {% endif %}
 
-                    {% endif %}
 
-                <p> Qu'avez vous pensé du salon ?</p>
-                <img src="{{ asset('/img/satisfatest.png') }}" style="height:100%; width:100%;">
 
-                <p>Un commentaire ? Une remarque ?</p>
-                <textarea name='comment' id='comment'></textarea><br />
-                <div class="bloc_sp_s"></div>
-
-                            <button href="{{ path('fos_user_profile_show') }}" type="button" class="btn">
-                                <i class="fa fa-arrow-circle-o-right"></i> Retour à l'accueil
-                            </button>
-                            <button href="{{ path('fos_user_security_logout') }}" type="button" class="btn">
-                                <i class="fa fa-arrow-circle-o-right"></i> Se déconnecter
-                            </button>
+                <button href="{{ path('legalmention') }}" type="button" class="btn">
+                    <i class="fa fa-arrow-circle-o-right"></i> Retour à l'accueil
+                </button>
+                <button href="{{ path('fos_user_security_logout') }}" type="button" class="btn">
+                    <i class="fa fa-arrow-circle-o-right"></i> Se déconnecter
+                </button>
 
 
             </div>

@@ -28,7 +28,7 @@ class JobRepository extends EntityRepository
             -> select('j.domain')
             ->distinct('true')
             ->getQuery();
-        return $qb->getArrayResult();
+        return $qb->getResult();
 
     }
 }
