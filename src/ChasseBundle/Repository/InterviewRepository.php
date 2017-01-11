@@ -66,4 +66,15 @@ class InterviewRepository extends EntityRepository
 
     }
 
+    public function getSelectedUsers() {
+        $qb = $this->createQueryBuilder('i')
+            ->select('u.username')
+            ->innerJoin('i.user', 'u')
+            ->groupBy('u.username')
+            ->having('count(u.username) >= 3')
+            ->getQuery();
+
+        return $qb->getScalarResult();
+    }
+
 }

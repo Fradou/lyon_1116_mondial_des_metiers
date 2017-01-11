@@ -53,3 +53,21 @@
 
     </table>
 </div>
+
+<div>
+
+    Personnes pouvant participer au tirage au sort:
+
+    <table>
+        {% for person in selectedPersons %}
+
+            <tr>
+                <td>{{ person.username }}</td>
+
+            </tr>
+
+
+        {% endfor %}
+
+    </table>
+</div>

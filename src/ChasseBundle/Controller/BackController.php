@@ -28,14 +28,17 @@ class BackController extends Controller
         // 20 most answered domains
         $mostAnsweredDomains = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->get20domains();
 
+        // selected persons
+        $selectedPersons = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getSelectedUsers();
 
         return $this->render('Back/stats.html.twig', array(
-            "totalusers" => $users,
-            "activeusers" => $activeUsers,
-            "nbjobs"    => $nbjobs,
-            "nbdomains" => $nbDomains,
-            "mostAnsweredJobs" => $mostAnsweredJobs,
+            "totalusers"    =>      $users,
+            "activeusers"   =>      $activeUsers,
+            "nbjobs"        =>      $nbjobs,
+            "nbdomains"     =>      $nbDomains,
+            "mostAnsweredJobs" =>   $mostAnsweredJobs,
             "mostAnsweredDomains" => $mostAnsweredDomains,
+            "selectedPersons" =>    $selectedPersons,
         ));
     }
 
