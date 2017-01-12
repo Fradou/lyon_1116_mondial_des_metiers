@@ -64,11 +64,15 @@ class BackController extends Controller
         $agecategory[] = ["36-45 ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(36,45)];
         $agecategory[] = ["46+ ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(46,100)];
 
+        //classment of most registered departments
+        $departments = $this->getDoctrine()->getRepository('ChasseBundle:User')->getMostRegDepartment();
+
         return $this->render('Back/userstats.html.twig', array(
-            "subscribers" => $subscribers,
             "genders" => $genders,
             "statuses" => $statuses,
             "agecategory" => $agecategory,
+            "departments" => $departments,
+            "subscribers" => $subscribers,
         ));
     }
 }

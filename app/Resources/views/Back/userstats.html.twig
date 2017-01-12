@@ -38,6 +38,22 @@
 
         <br>
 
+        <h2> Liste des départements les plus enregistrés </h2>
+        <table class="table bordered striped table-bordered">
+            <thead>
+            <th>Département</th>
+            <th>Nombre</th>
+            </thead>
+            {% for department in departments %}
+                <tr>
+                    <td>{{ department.department }}</td>
+                    <td>{{ department.nb }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        <br>
+
         <h2> Liste des catégories d'âge </h2>
         <table class="table bordered striped table-bordered">
             <thead>
