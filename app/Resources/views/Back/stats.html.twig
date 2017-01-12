@@ -1,73 +1,83 @@
-
-<div>
-    il y a actuellement {{ totalusers }} utilisateurs enregistrés.
-</div>
+{% extends "::base.html.twig" %}
 
 
-<div>
-    il y a actuellement {{ activeusers }} utilisateurs actifs.
-</div>
+{% block body %}
+    <div class="container">
+        <h1>Statistiques d'utilisation de l'application</h1>
 
-<div>
-    {{ nbjobs }} métiers ont reçus des réponses
-
-</div>
-
-<div>
-    {{ nbdomains }} domaines ont reçus des réponses
-
-</div>
-
-<div>
-
-    Classement des jobs les plus répondus:
-
-    <table>
-{% for job in mostAnsweredJobs %}
-
-       <tr>
-           <td>{{ job.name }}</td>
-
-       </tr>
+        <div>
+            Nombre d'utilisateurs enregistrés : <b> {{ totalusers }} </b>
+        </div>
 
 
-{% endfor %}
+        <div>
+            Nombre d' utilisateurs actifs : <b>{{ activeusers }} </b>
+        </div>
 
-    </table>
-</div>
+        <div>
+            Nombre de métiers ayant reçus des réponses : <b>{{ nbjobs }} </b>
+        </div>
 
-<div>
+        <div>
+            Nombre de domaines ayant reçus des réponses : <b>{{ nbdomains }} </b>
+        </div>
 
-    Classement des domaines les plus répondus:
+        <br>
 
-    <table>
-        {% for domain in mostAnsweredDomains %}
+        <div>
+            <h2>Classement des 20 métiers les plus répondus</h2>
+            <table class="table bordered striped table-bordered">
+                <thead>
+                <tr>
+                    <th>Métier</th>
+                    <th>Nombre de réponses</th>
+                </tr>
+                </thead>
+                {% for job in mostAnsweredJobs %}
+                    <tr>
+                        <td>{{ job.name }}</td>
+                        <td>{{ job.total }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
 
-            <tr>
-                <td>{{ domain.domain }}</td>
+        <br>
 
-            </tr>
+        <div>
+            <h2> Classement des 20 domaines les plus répondus</h2>
+            <table class="table bordered striped table-bordered">
+                <thead>
+                <tr>
+                    <th>Domaine</th>
+                    <th>Nombre de réponses</th>
+                </tr>
+                </thead>
+                {% for domain in mostAnsweredDomains %}
+                    <tr>
+                        <td>{{ domain.domain }}</td>
+                        <td>{{ domain.total }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
 
+        <br>
 
-        {% endfor %}
+        <div>
+            <h2>Personnes pouvant participer au tirage au sort: </h2>
+            <table>
+                {% for person in selectedPersons %}
+                    <tr>
+                        <td>{{ person.username }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
 
-    </table>
-</div>
+<h2>Nom du gagnant</h2>
+        généré aléatoirement parmis les personnes ayant répondus à 3 métiers ou plus
+        <h2>{{ winner.username }}</h2>
 
-<div>
-
-    Personnes pouvant participer au tirage au sort:
-
-    <table>
-        {% for person in selectedPersons %}
-
-            <tr>
-                <td>{{ person.username }}</td>
-
-            </tr>
-
-
-        {% endfor %}
-
-    </table>
-</div>
+    </div>
+{% endblock %}

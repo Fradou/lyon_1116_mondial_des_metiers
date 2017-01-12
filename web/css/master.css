@@ -1,11 +1,11 @@
-body {
+/* body {
     margin: 0;
     padding: 0;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
     align-items: center;
-}
+} */
 
 header {
     background-color: #808180;
@@ -114,3 +114,6 @@ label[for="chassebundle_user_comment"] {
     font-size: 1rem;
     color: black;
 }
+
+/** PAGE STATS **/
+

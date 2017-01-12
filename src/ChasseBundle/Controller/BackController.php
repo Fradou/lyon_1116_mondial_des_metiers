@@ -31,6 +31,10 @@ class BackController extends Controller
         // selected persons
         $selectedPersons = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getSelectedUsers();
 
+        //get the winner
+        $randArrayInt = random_int(0, count($selectedPersons)-1);
+        $winner = $selectedPersons[$randArrayInt];
+
         return $this->render('Back/stats.html.twig', array(
             "totalusers"    =>      $users,
             "activeusers"   =>      $activeUsers,
@@ -39,6 +43,7 @@ class BackController extends Controller
             "mostAnsweredJobs" =>   $mostAnsweredJobs,
             "mostAnsweredDomains" => $mostAnsweredDomains,
             "selectedPersons" =>    $selectedPersons,
+            "winner"          =>    $winner,
         ));
     }
 

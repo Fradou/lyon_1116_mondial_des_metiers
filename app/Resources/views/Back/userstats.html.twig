@@ -1,40 +1,66 @@
-liste des inscrits à la newsletter:
-<table>
-{% for subscriber in subscribers %}
-    <tr><td>{{ subscriber.email }}</td></tr>
-{% endfor %}
-</table>
-<br>
-Nombre d'hommes et de femmes
-<table>
-{% for gender in genders %}
-<tr>
-    <td>{{ gender.gender }}</td>
-    <td>{{ gender.nb }}</td>
+{% extends "::base.html.twig" %}
 
-</tr>
-{% endfor %}
-</table>
 
-<br>
+{% block body %}
+    <div class="container">
 
-Liste des statuts les plus enregistrés
-<table>
-    {% for status in statuses %}
-        <tr>
-            <td>{{ status.status }}</td>
-            <td>{{ status.nb }}</td>
-        </tr>
-    {% endfor %}
-</table>
+        <br>
+        <h2> Nombre d'hommes et de femmes </h2>
+        <table class="table bordered striped table-bordered">
+            <thead>
+                <th>Genre</th>
+                <th>Nombre</th>
+            </thead>
+            {% for gender in genders %}
+                <tr>
+                    <td>{{ gender.gender }}</td>
+                    <td>{{ gender.nb }}</td>
 
-<br>
+                </tr>
+            {% endfor %}
+        </table>
 
-Liste des catégories d'âge
-<table>
-{% for age in agecategory %}
-    <tr>
-        <td>{{ age[1] }}</td><td>{{ age[0] }}</td>
-    </tr>
-{% endfor %}
-</table>
+        <br>
+
+        <h2> Liste des statuts les plus enregistrés </h2>
+        <table class="table bordered striped table-bordered">
+            <thead>
+                <th>Statut</th>
+                <th>Nombre</th>
+            </thead>
+            {% for status in statuses %}
+                <tr>
+                    <td>{{ status.status }}</td>
+                    <td>{{ status.nb }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        <br>
+
+        <h2> Liste des catégories d'âge </h2>
+        <table class="table bordered striped table-bordered">
+            <thead>
+                <th>Catégorie d'âge</th>
+                <th>Nombre</th>
+            </thead>
+            {% for age in agecategory %}
+                <tr>
+                    <td>{{ age[0] }}</td>
+                    <td>{{ age[1] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        <br>
+
+        <h2> liste des inscrits à la newsletter </h2>
+        <table class="table bordered striped table-bordered">
+            <thead><th>Email</th></thead>
+            {% for subscriber in subscribers %}
+                <tr><td>{{ subscriber.email }}</td></tr>
+            {% endfor %}
+        </table>
+
+    </div>
+{% endblock %}
