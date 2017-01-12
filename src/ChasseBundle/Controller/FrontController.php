@@ -33,7 +33,7 @@ class FrontController extends Controller
     {
         $render = $this->render('Front/index.html.twig', array(// ...
         ));
-        return $this->countDown($render);
+        return /*$this->countDown($render)*/$this->render('Front/index.html.twig');
     }
 
     public function howtoAction()

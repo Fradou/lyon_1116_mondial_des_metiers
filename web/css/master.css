@@ -121,8 +121,8 @@ label[for="chassebundle_user_comment"] {
 
 /* LEGAL MENTIONS */
 
-.legal_title {
-    font-size: 1.2rem;
+.content_title {
+    font-size: 1.1rem;
     font-weight: bold;
     text-align: left;
 }
@@ -133,4 +133,33 @@ label[for="chassebundle_user_comment"] {
 
 #legal_mentions {
     text-align: justify;
+}
+
+/* INDEX */
+
+#index {
+    text-align: justify;
+}
+
+#index span {
+    font-weight: bold;
+}
+
+#index_wcs {
+    font-style: italic;
+}
+
+#index_hack img {
+    float: left;
+    height: 15vh;
+}
+
+#index_arom img {
+    float: right;
+    height: 15vh;
+}
+
+#wcs_logo img {
+    float: left;
+    height: 15vh;
 }
