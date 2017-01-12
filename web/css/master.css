@@ -163,3 +163,7 @@ label[for="chassebundle_user_comment"] {
     float: left;
     height: 15vh;
 }
+
+.index_howto {
+    margin: 0.5rem 0 0.5rem 0;
+}
