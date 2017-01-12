@@ -47,7 +47,7 @@ class FrontController extends Controller
     {
         $render = $this->render('Front/legalmention.html.twig', array(// ...
         ));
-        return $this->countDown($render);
+        return /*$this->countDown($render)*/ $this->render('Front/legalmention.html.twig');
     }
 
     public function inscriptAction()

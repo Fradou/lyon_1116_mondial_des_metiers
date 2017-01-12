@@ -67,6 +67,10 @@ h2 {
     font-size: 1.5em;
 }
 
+h3 {
+    font-size: 1.2em;
+}
+
 /* PAGE CHOIX MOTS-CLES */
 
 .jevote {
@@ -113,4 +117,20 @@ label[for="chassebundle_user_satisfaction_2"] {
 label[for="chassebundle_user_comment"] {
     font-size: 1rem;
     color: black;
+}
+
+/* LEGAL MENTIONS */
+
+.legal_title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: left;
+}
+
+#legal_mentions span {
+    font-weight: bold;
+}
+
+#legal_mentions {
+    text-align: justify;
 }
