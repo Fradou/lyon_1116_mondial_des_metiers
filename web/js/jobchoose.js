@@ -11,16 +11,16 @@ $( document ).ready(function() {
                     var jobs = JSON.parse(response.data);
                     html = "<option value='' disabled selected>Choisis le métier</option>";
                     for (i = 0; i < jobs.length; i++) {
-                        html += "<option value=" + jobs[i].id + ">" + jobs[i].name + "</option>";
+                        html += "<option value='" + jobs[i].id + "'>" + jobs[i].name + "</option>";
                     }
-                    $('#chassebundle_job_name').html(html).material_select();
+                    $('#job_choices').html(html).material_select();
                 },
                 error: function () {
-                    $('#chassebundle_job_name').text('Ajax call error');
+                    $('#job_choices').text('Ajax call error');
                 }
             });
     });
-    $(document).on('change','#chassebundle_job_name', function (){
-        console.log($(this).val());
-    } )
+    $(document).on('change','#job_choices', function (){
+        $('#chassebundle_job_name').val($(this).val());
+    })
 });

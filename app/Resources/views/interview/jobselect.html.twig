@@ -6,34 +6,16 @@
     <h1>Domaine / Métiers</h1>
 
     <h2>Choisissez votre domaine et votre métier :</h2>
-
- {#   <div class="input-field col s12">
-        <select id="chassebundle_job_domain">
-            <option value="" disabled selected>Domaine</option>
-            {% for job in jobs %}
-                <option value="{{ job.domain }}">{{ job.domain }}</option>
-            {% endfor %}
-        </select>
-        <label>Domaine</label>
-    </div>
-
-    <div class="input-field col s12">
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <label class="required" for="job_choices" >Choisissez vos mots-clés:</label>
         <select id="job_choices">
             <option value="" disabled selected>Métier</option>
         </select>
-        <label>Métier :</label>
-    </div>
-</div>
-
-   <a href="{{ path('interview_new', { 'id': interview.id }) }}" class="waves-effect waves-light btn">Choisir le métier</a> #}
-
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-
     <input type="submit" value="Selectionner métier">
 
     {{ form_end(form) }}
-
+</div>
 
 {% endblock %}
 

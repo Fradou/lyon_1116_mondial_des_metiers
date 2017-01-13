@@ -14,12 +14,14 @@ class InterviewType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('bonusWord')->add('user')->add('job')
-            ->add('answers', EntityType::class, array(
-            'class' => 'ChasseBundle:Answer',
-            'choice_label' => 'word',
-            'multiple' => true,
-            'expanded' => true));
+        $builder->add('bonusWord')
+                ->add('user')
+                ->add('job')
+                ->add('answers', EntityType::class, array(
+                'class' => 'ChasseBundle:Answer',
+                'choice_label' => 'word',
+                'multiple' => true,
+                'expanded' => true));
     }
 
     /**

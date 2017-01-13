@@ -108,15 +108,13 @@ class InterviewController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($job);
-            $em->flush();
+            $jobchos = $job->getName();
+            $jobchosen = $this->getDoctrine()
+                ->getRepository('ChasseBundle:Job')->find($jobchos);
 
+          /*  return $this->redirectToRoute('index', array()); */
+            return $this->redirectToRoute('interview_new', array('job' => $jobchosen));
 
-            $jobchosen = $job->getName();
-            $jobchosen2 = 0;
-
-            return $this->redirectToRoute('index', array());
         }
 
         return $this->render('interview/jobselect.html.twig', array(
@@ -144,14 +142,15 @@ class InterviewController extends Controller
      * Creates a new interview entity.
      *
      */
-    public function newAction(Request $request, $job2)
+    public function newAction(Request $request, $job)
     {
         $interview = new Interview();
         $user = $this->getUser();
+    /*    $jobchosen = intval($job); */
 
         $form = $this->createForm('ChasseBundle\Form\InterviewType', $interview);
         $form->get('user')->setData($user);
-        $form->get('job')->setData($job2);
+        $form->get('job')->setData($job);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -33,7 +33,7 @@ $( document ).ready(function() {
     // Ajax function for autocomplete
     $("#inputword").keyup(function(){
         var wordp = $(this).val();
-        if ( wordp.length >= 2 ) {
+        if ( wordp.length >= 3 ) {
             $.ajax({
                 type: "POST",
                 url: "/interview/search/" + wordp,

@@ -9,7 +9,7 @@ interview_show:
     methods:  GET
 
 interview_new:
-    path:     /new/{job2}
+    path:     /new/{job}
     defaults: { _controller: "ChasseBundle:Interview:new" }
     methods:  [GET, POST]
 
