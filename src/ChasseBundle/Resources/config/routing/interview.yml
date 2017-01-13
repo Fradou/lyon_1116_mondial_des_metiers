@@ -9,7 +9,7 @@ interview_show:
     methods:  GET
 
 interview_new:
-    path:     /new
+    path:     /new/{job2}
     defaults: { _controller: "ChasseBundle:Interview:new" }
     methods:  [GET, POST]
 
@@ -26,7 +26,7 @@ interview_delete:
 job_choose:
     path:     /choose/{domain}
     defaults: { _controller: "ChasseBundle:Interview:jobchoose" }
-    methods:  POST
+    methods:  [GET, POST]
 
 job_select:
     path:     /select

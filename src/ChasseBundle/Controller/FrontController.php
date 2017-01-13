@@ -75,7 +75,6 @@ class FrontController extends Controller
         $repository = $this->getDoctrine()->getRepository('ChasseBundle:User');
         $satisf = $repository->checkSatisf($user);
 
-
         if ($satisf != 0){
 
             $repository = $this->getDoctrine()->getRepository('ChasseBundle:Interview');

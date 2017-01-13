@@ -77,4 +77,17 @@ class InterviewRepository extends EntityRepository
         return $qb->getSingleScalarResult();
 
     }
+
+    public function getJobsDone($user)
+    {
+        $qb= $this->createQueryBuilder('i')
+            ->select('j.id', 'j.name')
+            ->where('u.id = :user')
+            ->innerJoin('i.user', 'u')
+            ->innerJoin('i.job', 'j')
+            ->setParameter('user', $user)
+            ->getQuery();
+        return $qb->getResult();
+    }
+
 }

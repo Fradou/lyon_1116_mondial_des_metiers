@@ -18,14 +18,10 @@ class JobType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('domain', EntityType::class, array(
-            'class' => 'ChasseBundle:Job',
-            'query_builder' => function (EntityRepository $er) {
-                return $er->createQueryBuilder('j')
-                    ->select('j.domain')
-                    ->distinct('true');
-            },
-        ));
+        $builder->add('domain', ChoiceType::class, array(
+            'choices' => $options['domains']))
+                ->add('name', ChoiceType::class, array(
+                ));
     }
 
     /**

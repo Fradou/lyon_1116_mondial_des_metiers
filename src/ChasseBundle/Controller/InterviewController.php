@@ -6,6 +6,7 @@ use ChasseBundle\Entity\Interview;
 use ChasseBundle\Entity\Job;
 use ChasseBundle\Repository\JobRepository;
 use ChasseBundle\Repository\AnswerRepository;
+use ChasseBundle\Repository\InterviewRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,12 +27,36 @@ class InterviewController extends Controller
     public function jobchooseAction(Request $request, $domain)
     {
         if ($request->isXmlHttpRequest()){
+
             /**
              * @var $repository JobRepository
              */
             $repository = $this->getDoctrine()->getRepository('ChasseBundle:Job');
-            $data = $repository->getJobsName($domain);
-            return new JsonResponse(array("data" => json_encode($data)));
+            $datas = $repository->getJobsName($domain);
+            $datas2=[];
+            foreach($datas as $value){
+                $datas2[$value['id']]=$value['name'];
+            }
+
+            /**
+             * @var $repository2 InterviewRepository
+             */
+            $user = $this->getUser();
+            $repository2 = $this->getDoctrine()->getRepository('ChasseBundle:Interview');
+            $data = $repository2->getJobsDone($user);
+            $data2 = [];
+            foreach($data as $value){
+                $data2[$value['id']]=$value['name'];
+            }
+
+            $treated = array_diff($datas2, $data2);
+
+            $treated2 = [];
+            foreach($treated as $key=>$value){
+                $treated2[] = ['id'=>$key, 'name'=>$value];
+            }
+
+            return new JsonResponse(array("data" => json_encode($treated2)));
         } else {
             throw new HttpException('500', 'Invalid call');
         }
@@ -72,31 +97,32 @@ class InterviewController extends Controller
     public function jobselectAction(Request $request){
         $em = $this->getDoctrine()->getManager();
         $domains = $em->getRepository('ChasseBundle:Job')->getDomains();
+        $dom = [];
 
+        foreach($domains as $value){
+            $dom[$value['domain']]=$value['domain'];
+        }
         $job = new Job();
-        $form = $this->createForm('ChasseBundle\Form\JobType', $job, array('domains' => $domains));
+
+        $form = $this->createForm('ChasseBundle\Form\JobType', $job, array('domains' => $dom));
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-         /*   $em = $this->getDoctrine()->getManager();
-            $em->persist($interview);
-            $em->flush($interview); */
+        if ($form->isSubmitted()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($job);
+            $em->flush();
 
-            return $this->redirectToRoute('votevalid', array('id' => $interview->getId()));
+
+            $jobchosen = $job->getName();
+            $jobchosen2 = 0;
+
+            return $this->redirectToRoute('index', array());
         }
 
         return $this->render('interview/jobselect.html.twig', array(
             'job' => $job,
             'form' => $form->createView(),
-            'domains' => $domains
         ));
-
-
-    /*    return $this->render('interview/jobselect.html.twig', array(
-            'jobs' => $jobs,
-        )); */
-
-
     }
 
     /**
@@ -118,10 +144,14 @@ class InterviewController extends Controller
      * Creates a new interview entity.
      *
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, $job2)
     {
         $interview = new Interview();
+        $user = $this->getUser();
+
         $form = $this->createForm('ChasseBundle\Form\InterviewType', $interview);
+        $form->get('user')->setData($user);
+        $form->get('job')->setData($job2);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -129,7 +159,7 @@ class InterviewController extends Controller
             $em->persist($interview);
             $em->flush();
 
-            return $this->redirectToRoute('votevalid', array('id' => $interview->getId()));
+            return $this->redirectToRoute('votevalid');
         }
 
         return $this->render('interview/new.html.twig', array(

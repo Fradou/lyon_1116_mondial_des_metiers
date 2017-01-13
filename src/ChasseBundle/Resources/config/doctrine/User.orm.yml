@@ -23,8 +23,10 @@ ChasseBundle\Entity\User:
             type: boolean
         satisfaction:
             type: smallint
+            nullable: true
         comment:
             type: text
+            nullable: true
 
 
     oneToMany:

@@ -21,7 +21,7 @@ class InterviewType extends AbstractType
             'multiple' => true,
             'expanded' => true));
     }
-    
+
     /**
      * {@inheritdoc}
      */
