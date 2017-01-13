@@ -1,7 +1,11 @@
 stats:
-    path:     /stats
+    path:     /statistiques-application
     defaults: { _controller: ChasseBundle:Back:stats }
 
 userstats:
-    path:     /userstats
+    path:     /statistiques-utilisateurs
     defaults: { _controller: ChasseBundle:Back:userStats }
+
+winner:
+    path:     /gagnant
+    defaults: {_controller: ChasseBundle:Back:winner}

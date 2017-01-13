@@ -115,5 +115,12 @@ label[for="chassebundle_user_comment"] {
     color: black;
 }
 
-/** PAGE STATS **/
+/** PAGE WINNER **/
 
+.winner {
+    text-align: center;
+}
+
+.winner h2 {
+    font-size: 4em;
+}
