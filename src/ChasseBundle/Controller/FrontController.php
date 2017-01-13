@@ -57,6 +57,13 @@ class FrontController extends Controller
         return $this->countDown($render);
     }
 
+    public function learnmoreAction()
+    {
+        $render = $this->render('Front/learnmore.html.twig', array(// ...
+        ));
+        return /*$this->countDown($render)*/ $this->render('Front/learnmore.html.twig');
+    }
+
     public function countdownAction()
     {
         if ($this->openDate < $this->currentDate) {
