@@ -40,7 +40,7 @@ class FrontController extends Controller
     {
         $render = $this->render('Front/howto.html.twig', array(// ...
         ));
-        return $this->countDown($render);
+        return /*$this->countDown($render)*/$this->render('Front/howto.html.twig');
     }
 
     public function legalmentionAction()
