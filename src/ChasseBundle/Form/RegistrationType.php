@@ -12,7 +12,10 @@ class RegistrationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('gender')
+        $builder->add('gender', ChoiceType::class, array (
+            'choices' => array('H'=>"un homme", "F"=>"une femme"),
+            'multiple' => false,
+            'expanded' => true))
                 ->add('status', ChoiceType::class, array(
                     'choices' => array('Collégien' => 'Collégien', 'Lycéen' => 'Lycéen', 'Parent' => 'Parent', 'Demandeur d\'emploi' => 'Demandeur d\'emploi', 'Adulte en réorientation' => 'Adulte en réorientation', 'Professionnel de l\'orientation et de la formation' => 'Professionnel de l\'orientation et de la formation', 'Salarié' => 'Salarié', 'Autre' => 'Autre'),
                     'placeholder' => 'Choisissez votre statut'))
@@ -24,9 +27,10 @@ class RegistrationType extends AbstractType
                     'choices_as_values' => true,
                     'placeholder' => 'Choisissez votre département',
                     'preferred_choices' => array('69 - Rhône' => '69 - Rhône', '01 - Ain' => '01 - Ain', '07 - Ardèche' => '07 - Ardèche', '26 - Drôme' => '26 - Drôme', '38 - Isère' => '38 - Isère', '42 - Loire' => '42 - Loire', '73 - Savoie' => '73 - Savoie', '74 - Haute Savoie' => '74 - Haute Savoie')))
-                ->add('newsletter', CheckboxType::class, array(
-                    'label'=> 'Recevoir la newsletter ?',
-                    'required' => false));
+                ->add('newsletter', ChoiceType::class, array (
+                    'choices' => array(true=>"Oui", false=>"Non"),
+                    'multiple' => false,
+                    'expanded' => true));
     }
 
     public function getParent()
