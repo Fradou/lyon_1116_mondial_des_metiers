@@ -17,6 +17,7 @@ class AnswerRepository extends EntityRepository
         $qb= $this->createQueryBuilder('a')
             ->select('a.word, a.id')
             ->where('a.word LIKE :word')
+            ->groupBy('a.word')
             ->setParameter('word', $word)
             ->getQuery();
         return $qb->getResult();
