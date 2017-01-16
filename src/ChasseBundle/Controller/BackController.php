@@ -28,14 +28,22 @@ class BackController extends Controller
         // 20 most answered domains
         $mostAnsweredDomains = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->get20domains();
 
+        // selected persons
+        $selectedPersons = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getSelectedUsers();
+
+        //get the winner
+        $randArrayInt = random_int(0, count($selectedPersons)-1);
+        $winner = $selectedPersons[$randArrayInt];
 
         return $this->render('Back/stats.html.twig', array(
-            "totalusers" => $users,
-            "activeusers" => $activeUsers,
-            "nbjobs"    => $nbjobs,
-            "nbdomains" => $nbDomains,
-            "mostAnsweredJobs" => $mostAnsweredJobs,
+            "totalusers"    =>      $users,
+            "activeusers"   =>      $activeUsers,
+            "nbjobs"        =>      $nbjobs,
+            "nbdomains"     =>      $nbDomains,
+            "mostAnsweredJobs" =>   $mostAnsweredJobs,
             "mostAnsweredDomains" => $mostAnsweredDomains,
+            "selectedPersons" =>    $selectedPersons,
+            "winner"          =>    $winner,
         ));
     }
 
@@ -56,11 +64,30 @@ class BackController extends Controller
         $agecategory[] = ["36-45 ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(36,45)];
         $agecategory[] = ["46+ ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(46,100)];
 
+        //classment of most registered departments
+        $departments = $this->getDoctrine()->getRepository('ChasseBundle:User')->getMostRegDepartment();
+
         return $this->render('Back/userstats.html.twig', array(
-            "subscribers" => $subscribers,
             "genders" => $genders,
             "statuses" => $statuses,
             "agecategory" => $agecategory,
+            "departments" => $departments,
+            "subscribers" => $subscribers,
+        ));
+    }
+
+    public function winnerAction() {
+
+        // selected persons
+        $selectedPersons = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getSelectedUsers();
+
+        //get the winner
+        $randArrayInt = random_int(0, count($selectedPersons)-1);
+        $winner = $selectedPersons[$randArrayInt];
+
+
+        return $this->render('Back/winner.html.twig', array(
+            "winner"          =>    $winner,
         ));
     }
 }

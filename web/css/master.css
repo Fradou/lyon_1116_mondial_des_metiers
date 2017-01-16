@@ -1,11 +1,11 @@
-body {
+/*body {
     margin: 0;
     padding: 0;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
     align-items: center;
-}
+}*/
 
 header {
     background-color: #808180;
@@ -170,4 +170,14 @@ label[for="chassebundle_user_comment"] {
 
 .index_howto {
     margin: 0.5rem 0 0.5rem 0;
+}
+
+/** PAGE WINNER **/
+
+.winner {
+    text-align: center;
+}
+
+.winner h2 {
+    font-size: 4em;
 }
