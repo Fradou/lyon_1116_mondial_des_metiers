@@ -1,11 +1,11 @@
-body {
+/* body {
     margin: 0;
     padding: 0;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
     align-items: center;
-}
+} */
 
 header {
     background-color: #808180;
@@ -113,4 +113,14 @@ label[for="chassebundle_user_satisfaction_2"] {
 label[for="chassebundle_user_comment"] {
     font-size: 1rem;
     color: black;
+}
+
+/** PAGE WINNER **/
+
+.winner {
+    text-align: center;
+}
+
+.winner h2 {
+    font-size: 4em;
 }
