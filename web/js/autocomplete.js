@@ -51,6 +51,7 @@ $( document ).ready(function() {
 
     // Ajax function for help button
     $("#noidea").click(function(){
+        var jobid = $('#chassebundle_interview_job').val();
         $.ajax({
             type: "POST",
             url: "/interview/searchhelp/"+ "Art mural",

@@ -147,10 +147,11 @@ class InterviewController extends Controller
         $interview = new Interview();
         $user = $this->getUser();
     /*    $jobchosen = intval($job); */
+        $jobchosen = $this->getDoctrine()->getRepository('ChasseBundle:Job')->find($job);
 
         $form = $this->createForm('ChasseBundle\Form\InterviewType', $interview);
         $form->get('user')->setData($user);
-        $form->get('job')->setData($job);
+        $form->get('job')->setData($jobchosen);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
