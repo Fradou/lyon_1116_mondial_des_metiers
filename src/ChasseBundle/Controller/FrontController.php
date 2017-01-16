@@ -50,13 +50,6 @@ class FrontController extends Controller
         return $this->countDown($render);
     }
 
-    public function inscriptAction()
-    {
-        $render = $this->render('Front/inscript.html.twig', array(// ...
-        ));
-        return $this->countDown($render);
-    }
-
     public function countdownAction()
     {
         if ($this->openDate < $this->currentDate) {
