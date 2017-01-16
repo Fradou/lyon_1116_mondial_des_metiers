@@ -33,21 +33,21 @@ class FrontController extends Controller
     {
         $render = $this->render('Front/index.html.twig', array(// ...
         ));
-        return $this->countDown($render);
+        return /*$this->countDown($render)*/$this->render('Front/index.html.twig');
     }
 
     public function howtoAction()
     {
         $render = $this->render('Front/howto.html.twig', array(// ...
         ));
-        return $this->countDown($render);
+        return /*$this->countDown($render)*/$this->render('Front/howto.html.twig');
     }
 
     public function legalmentionAction()
     {
         $render = $this->render('Front/legalmention.html.twig', array(// ...
         ));
-        return $this->countDown($render);
+        return /*$this->countDown($render)*/ $this->render('Front/legalmention.html.twig');
     }
 
     public function inscriptAction()
@@ -55,6 +55,13 @@ class FrontController extends Controller
         $render = $this->render('Front/inscript.html.twig', array(// ...
         ));
         return $this->countDown($render);
+    }
+
+    public function learnmoreAction()
+    {
+        $render = $this->render('Front/learnmore.html.twig', array(// ...
+        ));
+        return /*$this->countDown($render)*/ $this->render('Front/learnmore.html.twig');
     }
 
     public function countdownAction()
