@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Tag tes mots - Tag ton métier{% endblock %}
+
 {% block body %}
     <div class="container">
         <div class="row">
             <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6">
-                <h1>Vos réponses</h1>
+                <h1>Tes réponses</h1>
             </div>
         </div>
         <div class="row">
@@ -12,7 +14,7 @@
             <div class="col s12 offset-m2 m8 offset-l3 l6" id="chipchosen"></div>
 
             <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6">
-                <label for="inputword" >Choisissez vos mots-clés:</label>
+                <label for="inputword" >Choisis tes mots-clés:</label>
                 <input type="text" name="" id="inputword" maxlength="255">
                 <button id="noidea">Pas d'idée ?</button>
             </div>

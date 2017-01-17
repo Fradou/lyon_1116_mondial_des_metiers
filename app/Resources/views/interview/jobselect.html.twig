@@ -1,14 +1,17 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Sélection du métier - Tag ton métier{% endblock %}
+
 {% block body %}
 <div class="container">
 
-    <h1>Domaine / Métiers</h1>
+    <h1>Choix du métier</h1>
 
-    <h2>Choisissez votre domaine et votre métier :</h2>
+    <h2>Choisis ton domaine puis ton métier :</h2>
     {{ form_start(form) }}
+    {{ form_row(form.domain, {label:'Choisis ton domaine'})}}
     {{ form_widget(form) }}
-    <label class="required" for="job_choices" >Choisissez vos mots-clés:</label>
+    <label class="required" for="job_choices" >Choisis ton métier :</label>
         <select id="job_choices">
             <option value="" disabled selected>Métier</option>
         </select>

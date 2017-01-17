@@ -1,15 +1,15 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}Merci d'avoir voté !{% endblock %}
+{% block title %}Vote validé - Tag ton métier{% endblock %}
 
 {% block body %}
     <div class="container">
         <div class="row">
             <div class="col offset-s1 s10">
                 <h4>Merci d'avoir voté !</h4>
-                <p>Votre vote a bien été enregistré !</p>
+                <p>Ton vote a bien été enregistré !</p>
                 {% if vote < 3 %}
-                    <p>Il vous reste encore <span>{{ 3 - vote }}</span> métier à renseigner avant de pouvoir participer au tirage au sort !</p>
+                    <p>Il te reste encore <span>{{ 3 - vote }}</span> métiers à renseigner avant de pouvoir participer au tirage au sort !</p>
                 {% endif %}
 
 
