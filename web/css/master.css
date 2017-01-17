@@ -182,3 +182,10 @@ label[for="chassebundle_user_comment"] {
 .winner h2 {
     font-size: 4em;
 }
+
+/* END PAGE */
+
+#end_content h1 {
+    font-size: 1.2rem;
+    color: #2092CE;
+}

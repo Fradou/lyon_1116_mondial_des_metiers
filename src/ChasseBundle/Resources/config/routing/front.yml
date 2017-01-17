@@ -26,3 +26,7 @@ votevalid:
 learnmore:
     path:     /en-savoir-plus
     defaults: { _controller: ChasseBundle:Front:learnmore }
+
+endpage:
+    path:     /fin-du-jeu
+    defaults: { _controller: ChasseBundle:Front:endpage }
