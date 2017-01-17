@@ -130,21 +130,6 @@ class InterviewController extends Controller
     }
 
     /**
-     * Lists all interview entities.
-     *
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $interviews = $em->getRepository('ChasseBundle:Interview')->findAll();
-
-        return $this->render('interview/index.html.twig', array(
-            'interviews' => $interviews,
-        ));
-    }
-
-    /**
      * Creates a new interview entity.
      *
      */
@@ -172,43 +157,6 @@ class InterviewController extends Controller
         return $this->render('interview/new.html.twig', array(
             'interview' => $interview,
             'form' => $form->createView(),
-        ));
-    }
-
-    /**
-     * Finds and displays a interview entity.
-     *
-     */
-    public function showAction(Interview $interview)
-    {
-        $deleteForm = $this->createDeleteForm($interview);
-
-        return $this->render('interview/show.html.twig', array(
-            'interview' => $interview,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
-     * Displays a form to edit an existing interview entity.
-     *
-     */
-    public function editAction(Request $request, Interview $interview)
-    {
-        $deleteForm = $this->createDeleteForm($interview);
-        $editForm = $this->createForm('ChasseBundle\Form\InterviewType', $interview);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('interview_edit', array('id' => $interview->getId()));
-        }
-
-        return $this->render('interview/edit.html.twig', array(
-            'interview' => $interview,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
