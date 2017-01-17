@@ -62,28 +62,34 @@ class InterviewController extends Controller
         }
     }
 
+    /**
+     * Handling autocomplete request
+     * @param Request $request
+     * @param $word
+     * @return JsonResponse
+     */
     public function jobsearchAction(Request $request, $word)
     {
         if ($request->isXmlHttpRequest()){
-            /**
-             * @var $repository AnswerRepository
-             */
-            $repository = $this->getDoctrine()->getRepository('ChasseBundle:Answer');
-            $data = $repository->searchWords($word);
+            $data = $this->getDoctrine()->getRepository('ChasseBundle:Answer')->searchWords($word);
             return new JsonResponse(array("data" => json_encode($data)));
         } else {
             throw new HttpException('500', 'Invalid call');
         }
     }
 
-    public function searchhelpAction(Request $request, $domain)
+    /**
+     * Handling noidea button
+     * @param Request $request
+     * @param $jobid
+     * @return JsonResponse
+     */
+    public function searchhelpAction(Request $request, $jobid)
     {
         if ($request->isXmlHttpRequest()){
-            /**
-             * @var $repository AnswerRepository
-             */
-            $repository = $this->getDoctrine()->getRepository('ChasseBundle:Answer');
-            $data = $repository->searchRecommend($domain);
+            /* Get job domain then query for list of suggested word for that domain */
+            $domain =  $this->getDoctrine()->getRepository('ChasseBundle:Job')->find($jobid)->getDomain();
+            $data = $this->getDoctrine()->getRepository('ChasseBundle:Answer')->searchRecommend($domain);
             return new JsonResponse(array("data" => json_encode($data)));
         } else {
             throw new HttpException('500', 'Invalid call');
@@ -145,10 +151,11 @@ class InterviewController extends Controller
     public function newAction(Request $request, $job)
     {
         $interview = new Interview();
+        /* Get user logged and job chosen before */
         $user = $this->getUser();
-    /*    $jobchosen = intval($job); */
         $jobchosen = $this->getDoctrine()->getRepository('ChasseBundle:Job')->find($job);
 
+        /* Generate form and set data for user and job */
         $form = $this->createForm('ChasseBundle\Form\InterviewType', $interview);
         $form->get('user')->setData($user);
         $form->get('job')->setData($jobchosen);

@@ -13,15 +13,17 @@
                 {% endif %}
 
 
-
-                <button href="{{ path('legalmention') }}" type="button" class="btn">
-                    <i class="fa fa-arrow-circle-o-right"></i> Retour à l'accueil
-                </button>
-                <button href="{{ path('fos_user_security_logout') }}" type="button" class="btn">
-                    <i class="fa fa-arrow-circle-o-right"></i> Se déconnecter
-                </button>
-
-
+            </div>
+            <div class="col offset-s1 s10 buttons_panel">
+                <a href="{{ path('job_select') }}" class="btn">
+                    Tagger un autre métier
+                </a>
+                <a href="{{ path('index') }}" class="btn">
+                    Retour à l'accueil
+                </a>
+                <a href="{{ path('fos_user_security_logout') }}" class="btn">
+                    Se déconnecter
+                </a>
             </div>
         </div>
     </div>

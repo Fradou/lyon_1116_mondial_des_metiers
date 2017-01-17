@@ -54,7 +54,7 @@ $( document ).ready(function() {
         var jobid = $('#chassebundle_interview_job').val();
         $.ajax({
             type: "POST",
-            url: "/interview/searchhelp/"+ "Art mural",
+            url: "/interview/searchhelp/"+ jobid,
             dataType: 'json',
             timeout: 3000,
             success: function(response){

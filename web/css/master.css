@@ -78,7 +78,7 @@ h3 {
 /* PAGE CHOIX MOTS-CLES */
 
 .jevote {
-    margin-left: 80px;
+    text-align: center;
 }
 
 /* SATISFACTION FORM */
@@ -180,4 +180,8 @@ label[for="chassebundle_user_comment"] {
 
 .winner h2 {
     font-size: 4em;
+}
+
+.buttons_panel > a {
+    margin: auto;
 }
