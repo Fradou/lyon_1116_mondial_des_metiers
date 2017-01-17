@@ -12,7 +12,9 @@ class RegistrationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('gender')
+        $builder->add('firstname')
+                ->add('lastname')
+                ->add('gender')
                 ->add('status', ChoiceType::class, array(
                     'choices' => array('Collégien' => 'Collégien', 'Lycéen' => 'Lycéen', 'Parent' => 'Parent', 'Demandeur d\'emploi' => 'Demandeur d\'emploi', 'Adulte en réorientation' => 'Adulte en réorientation', 'Professionnel de l\'orientation et de la formation' => 'Professionnel de l\'orientation et de la formation', 'Salarié' => 'Salarié', 'Autre' => 'Autre'),
                     'placeholder' => 'Choisissez votre statut'))

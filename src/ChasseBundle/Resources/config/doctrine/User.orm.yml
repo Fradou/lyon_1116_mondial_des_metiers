@@ -9,6 +9,12 @@ ChasseBundle\Entity\User:
                 strategy: AUTO
 
     fields:
+        firstname:
+            type: string
+            length: 35
+        lastname:
+            type: string
+            length: 35
         gender:
             type: string
             length: 10
