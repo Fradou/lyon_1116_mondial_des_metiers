@@ -92,5 +92,27 @@
             {% endfor %}
         </table>
 
+
+            <ul class="pagination">
+                <li {% if page == 1 %} class="disabled" {% endif %}>
+                    <a href="{{ path('userstats', {'page': page-1}) }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                {% for i in 1 .. maxPage %}
+                    <li {% if page == i %} class="disabled" {% endif %}>
+                        <a href="{{ path('userstats', {'page': i}) }}">
+                            {{ i }}
+                        </a>
+                    </li>
+                {% endfor %}
+                <li {% if page == maxPage %} class="disabled" {% endif %}>
+                    <a href="{{ path('userstats', {'page': page+1}) }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+
+
     </div>
 {% endblock %}

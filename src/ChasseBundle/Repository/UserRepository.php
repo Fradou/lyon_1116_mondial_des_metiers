@@ -67,9 +67,9 @@ class UserRepository extends EntityRepository
 
     public function getSubscribers($first_result, $max_results = SELF::MAX_RESULT)
     {
-        $qb = $this->createQueryBuilder('u')
-            ->select('u.email')
-            ->where('u.newsletter=true')
+        $qb = $this->createQueryBuilder('user')
+            ->select('user')
+            ->where('user.newsletter=true')
             ->setFirstResult($first_result)
             ->setMaxResults($max_results);
 
