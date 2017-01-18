@@ -10,11 +10,6 @@ legalmention:
     path:     /mentions-legales
     defaults: { _controller: ChasseBundle:Front:legalmention }
 
-inscript:
-    path:     /inscription
-    defaults: { _controller: ChasseBundle:Front:inscript }
-
-
 countdown:
     path:     /countdown
     defaults: { _controller: ChasseBundle:Front:countDown }
@@ -22,3 +17,7 @@ countdown:
 votevalid:
     path:     /votevalid
     defaults: { _controller: ChasseBundle:Front:voteValid }
+
+learnmore:
+    path:     /en-savoir-plus
+    defaults: { _controller: ChasseBundle:Front:learnmore }

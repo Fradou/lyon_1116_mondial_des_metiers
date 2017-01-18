@@ -1,31 +1,24 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Sélection du métier - Tag ton métier{% endblock %}
+
 {% block body %}
 <div class="container">
 
-    <h1>Domaine / Métiers</h1>
+    <h1>Choix du métier</h1>
 
-    <h2>Choisissez votre domaine et votre métier :</h2>
-
-    <div class="input-field col s12">
-        <select id="chassebundle_job_domain">
-            <option value="" disabled selected>Domaine</option>
-            {% for job in jobs %}
-                <option value="{{ job.domain }}">{{ job.domain }}</option>
-            {% endfor %}
-        </select>
-        <label>Domaine</label>
-    </div>
-
-    <div class="input-field col s12">
+    <h2>Choisis ton domaine puis ton métier :</h2>
+    {{ form_start(form) }}
+    {{ form_row(form.domain, {label:'Choisis ton domaine'})}}
+    {{ form_widget(form) }}
+    <label class="required" for="job_choices" >Choisis ton métier :</label>
         <select id="job_choices">
             <option value="" disabled selected>Métier</option>
         </select>
-        <label>Métier :</label>
-    </div>
-</div>
+    <input type="submit" value="Selectionner métier">
 
-   {# <a href="{{ path('interview_new', { 'id': interview.id }) }}" class="waves-effect waves-light btn">Choisir le métier</a> #}
+    {{ form_end(form) }}
+</div>
 
 {% endblock %}
 
@@ -34,12 +27,9 @@
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-    <!-- jQuery UI -->
-    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
     <!-- Main script -->
-    <script type="text/javascript" src="{{ asset('/js/main.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/jobchoose.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jobchoose.js') }}"></script>
 
     <!-- Materialize -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>

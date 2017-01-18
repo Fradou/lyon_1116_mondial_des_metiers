@@ -2,26 +2,26 @@
 
 namespace ChasseBundle\Form;
 
+use ChasseBundle\ChasseBundle;
+use ChasseBundle\Entity\Job;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class InterviewType extends AbstractType
+class JobType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('bonusWord')
-                ->add('user')
-                ->add('job')
-                ->add('answers', EntityType::class, array(
-                'class' => 'ChasseBundle:Answer',
-                'choice_label' => 'word',
-                'multiple' => true,
-                'expanded' => true));
+        $builder->add('domain', ChoiceType::class, array(
+            'choices' => $options['domains']))
+                ->add('name', HiddenType::class);
     }
 
     /**
@@ -30,7 +30,8 @@ class InterviewType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ChasseBundle\Entity\Interview'
+            'data_class' => 'ChasseBundle\Entity\Job',
+            'domains' => null
         ));
     }
 
@@ -39,7 +40,7 @@ class InterviewType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'chassebundle_interview';
+        return 'chassebundle_job';
     }
 
 

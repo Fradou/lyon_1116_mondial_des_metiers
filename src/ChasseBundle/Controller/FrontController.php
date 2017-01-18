@@ -13,8 +13,7 @@ class FrontController extends Controller
 
     public function __construct()
     {
-        $this->openDate = new DateTime('2017-2-2 10:00:00');
-
+        $this->openDate = new DateTime('2017-01-2 10:00:00');
         $this->currentDate = new DateTime();
     }
 
@@ -33,28 +32,28 @@ class FrontController extends Controller
     {
         $render = $this->render('Front/index.html.twig', array(// ...
         ));
-        return $this->countDown($render);
+        return /*$this->countDown($render)*/$this->render('Front/index.html.twig');
     }
 
     public function howtoAction()
     {
         $render = $this->render('Front/howto.html.twig', array(// ...
         ));
-        return $this->countDown($render);
+        return /*$this->countDown($render)*/$this->render('Front/howto.html.twig');
     }
 
     public function legalmentionAction()
     {
         $render = $this->render('Front/legalmention.html.twig', array(// ...
         ));
-        return $this->countDown($render);
+        return /*$this->countDown($render)*/ $this->render('Front/legalmention.html.twig');
     }
 
-    public function inscriptAction()
+    public function learnmoreAction()
     {
-        $render = $this->render('Front/inscript.html.twig', array(// ...
+        $render = $this->render('Front/learnmore.html.twig', array(// ...
         ));
-        return $this->countDown($render);
+        return /*$this->countDown($render)*/ $this->render('Front/learnmore.html.twig');
     }
 
     public function countdownAction()
@@ -70,8 +69,22 @@ class FrontController extends Controller
 
     public function voteValidAction()
     {
-        return $this->render('Front/votevalid.html.twig', array(
-            // ...
-        ));
+        $user = $this->getUser()->getId();
+
+        $repository = $this->getDoctrine()->getRepository('ChasseBundle:User');
+        $satisf = $repository->checkSatisf($user);
+
+        if ($satisf != 0){
+
+            $repository = $this->getDoctrine()->getRepository('ChasseBundle:Interview');
+            $vote = $repository->checkVote($user);
+
+            return $this->render('Front/votevalid.html.twig', array(
+                'vote' => $vote));
+        }
+        else {
+            return $this->redirectToRoute('user_edit', array(
+                'id' => $user));
+        }
     }
 }

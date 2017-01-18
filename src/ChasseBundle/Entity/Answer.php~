@@ -102,4 +102,33 @@ class Answer
     {
         return strval($this->id);
     }
+    /**
+     * @var string
+     */
+    private $domain;
+
+
+    /**
+     * Set domain
+     *
+     * @param string $domain
+     *
+     * @return Answer
+     */
+    public function setDomain($domain)
+    {
+        $this->domain = $domain;
+
+        return $this;
+    }
+
+    /**
+     * Get domain
+     *
+     * @return string
+     */
+    public function getDomain()
+    {
+        return $this->domain;
+    }
 }

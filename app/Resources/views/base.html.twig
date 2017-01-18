@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
 
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}Tag ton métier{% endblock %}</title>
 
     <!-- Materialize -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
@@ -13,8 +13,6 @@
     <!--Materialize - Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <!-- jQuery UI -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
     <!-- CSS Project -->
     <link rel="stylesheet" href="{{ asset('css/master.css')}} ">
 
@@ -36,27 +34,43 @@
         </div>
     </div>
 </header>
-
 {% block body %}{% endblock %}
-
 <hr id="lisere"/>
 <footer class="container">
     <div class="row">
         <div class="col s10 offset-s1 m6 offset-m3 l5 offset-l1">
-            <img src="{{ asset('img/region.png') }}">
+            <a href="http://www.auvergnerhonealpes.fr" target="_blank">
+                <img src="{{ asset('img/region.png') }}">
+            </a>
         </div>
         <div class="col s2 m1 offset-s2 offset-m4 offset-l1 l1">
-            <img src="{{ asset('img/16_2014_lyon.png') }}">
+            <a href="http://www.ac-lyon.fr" target="_blank">
+                <img src="{{ asset('img/16_2014_lyon.png') }}">
+            </a>
         </div>
         <div class="col s2 m1 l1">
-            <img src="{{ asset('img/clermont.png') }}">
+            <a href="http://www.ac-clermont.fr" target="_blank">
+                <img src="{{ asset('img/clermont.png') }}">
+            </a>
         </div>
         <div class="col s2 m1 l1">
-            <img src="{{ asset('img/LOGO_AC_Grenoble_2014.png') }}">
+            <a href="http://www.ac-grenoble.fr" target="_blank">
+                <img src="{{ asset('img/LOGO_AC_Grenoble_2014.png') }}">
+            </a>
         </div>
         <div class="col s2 m1 l1">
-            <img src="{{ asset('img/BM_REG-AUVERGNE-RHONE-ALPES.png') }}">
+            <a href="http://auvergne-rhone-alpes.direccte.gouv.fr/" target="_blank">
+                <img src="{{ asset('img/BM_REG-AUVERGNE-RHONE-ALPES.png') }}">
+            </a>
         </div>
+
+        <div class="row center-align">
+            <div class="col s12">
+                <p class="foo_mention"><a href="{{ path('legalmention') }}">Mentions légales</a></p>
+            </div>
+        </div>
+
+
     </div>
 
 </footer>
@@ -66,11 +80,8 @@
 <!-- jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-<!-- jQuery UI -->
-<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 <!-- Main script -->
-<script type="text/javascript" src="{{ asset('/js/main.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 
 <!-- Materialize -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
