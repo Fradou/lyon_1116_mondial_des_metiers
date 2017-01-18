@@ -51,7 +51,7 @@ class BackController extends Controller
         $nbresults = UserRepository::MAX_RESULT;
         $subscribers = $this->getDoctrine()->getRepository('ChasseBundle:User')->getSubscribers($start, $nbresults);
         $total = count($subscribers);
-        $maxPage = (int) $total/UserRepository::MAX_RESULT;
+        $maxPage = intval($total/UserRepository::MAX_RESULT);
 
         //nb of registered users
         $userManager = $this->container->get('fos_user.user_manager');
@@ -84,10 +84,10 @@ class BackController extends Controller
             "agecategory" => $agecategory,
             "departments" => $departments,
             "subscribers" => $subscribers,
-            'page' => $page,
-            'maxPage' => $maxPage,
-            'total' => $total,
-            "totalusers"       => $users,
+            'page'        => $page,
+            'maxPage'     => $maxPage,
+            'total'       => $total,
+            "totalusers"  => $users,
         ));
     }
 
