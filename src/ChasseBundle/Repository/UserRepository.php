@@ -74,7 +74,7 @@ class UserRepository extends EntityRepository
      * @return Paginator
      */
 
-    const MAX_RESULT = 1;
+    const MAX_RESULT = 10;
 
     public function getSubscribers($first_result, $max_results=SELF::MAX_RESULT)
     {
