@@ -6,11 +6,12 @@
     <div class="container">
         <div class="row">
             <div class="col offset-s1 s10">
-                <h4>Merci d'avoir voté !</h4>
-                <p>Ton vote a bien été enregistré !</p>
+                <h2>Merci d'avoir participé !</h2>
+                <p>Tes tags ont bien été enregistrés !<br>
                 {% if vote < 3 %}
-                    <p>Il te reste encore <span>{{ 3 - vote }}</span> métiers à renseigner avant de pouvoir participer au tirage au sort !</p>
+                    Il te reste encore <span>{{ 3 - vote }}</span> métiers à renseigner avant de pouvoir participer au tirage au sort !
                 {% endif %}
+                </p>
 
 
             </div>
