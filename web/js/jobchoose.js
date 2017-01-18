@@ -21,5 +21,7 @@ $( document ).ready(function() {
     });
     $(document).on('change','#job_choices', function (){
         $('#chassebundle_job_name').val($(this).val());
+        $('#btn_jobselect').removeClass('disabled');
+
     })
 });

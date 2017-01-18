@@ -88,27 +88,28 @@ fos_user:
 # Easy Admin
 easy_admin:
     entities:
-        Answer:
-            class: ChasseBundle\Entity\Answer
-            label: 'Mots prédéfinies'
-            list:
-                title: "Liste des mots inclus dans l'autocompletion"
-
-
-        Interview:
-            class: ChasseBundle\Entity\Interview
-            label: 'Bulletins de vote'
-            list:
-                title: "Resultats des formulaires"
-
-        Job:
-            class: ChasseBundle\Entity\Job
-            label: 'Metier'
-            list:
-                title: "Liste des métier"
-
         User:
             class: ChasseBundle\Entity\User
-            label: 'Utilisateur'
+            label: 'Gestion utilisateurs'
             list:
                 title: "Liste des utilisateurs / inscrits"
+        Answer:
+            class: ChasseBundle\Entity\Answer
+            label: 'Base de mots'
+            list:
+                title: "Liste des mots inclus dans l'autocompletion"
+        Job:
+            class: ChasseBundle\Entity\Job
+            label: 'Metiers'
+            list:
+                title: "Liste des métiers"
+    design:
+        menu:
+            - { label: 'Espace AROM'}
+            - { label: 'Statistique applications', route: 'stats' }
+            - { label: 'Statistiques utilisateurs', route: 'userstats' }
+            - { label: 'Loterie', route: 'winner' }
+            - { label: 'Gestion site'}
+            - User
+            - Answer
+            - Job

@@ -1,11 +1,12 @@
-/*body {
-    margin: 0;
-    padding: 0;
+body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    align-items: center;
-}*/
+}
+
+main {
+    flex: 1 0 auto;
+}
 
 header {
     background-color: #808180;
@@ -63,37 +64,38 @@ height: 2.5vh;
 }
 
 h1 {
-    font-size:2em;
+    font-size:1.75em;
     text-align:center;
 }
 
 h2 {
     font-size: 1.5em;
+    text-align:center;
 }
 
 h3 {
-    font-size: 1.2em;
+    font-size: 1.25em;
+    text-align:center;
 }
 
-/* PAGE CHOIX MOTS-CLES */
+/* Keywords choice */
 
 .jevote {
     text-align: center;
 }
 
+.chip {
+    cursor: pointer;
+}
+
+#wordautocomp, #chipchosen {
+    text-align: center;
+}
+
 /* SATISFACTION FORM */
 
-.satis_form h1 {
-    font-size: 1.2rem;
-    margin-bottom: 1.2rem !important;
-}
-
-.satis_form p {
+.satis_form {
     padding-bottom: 3rem;
-}
-
-.satis_form button {
-    margin-top: 1rem;
 }
 
 #chassebundle_user_satisfaction {
@@ -128,7 +130,7 @@ label[for="chassebundle_user_comment"] {
 .content_title {
     font-size: 1.1rem;
     font-weight: bold;
-    text-align: left;
+    text-align: justify;
 }
 
 #legal_mentions span {
@@ -182,6 +184,61 @@ label[for="chassebundle_user_comment"] {
     font-size: 4em;
 }
 
+/* Other */
+
 .buttons_panel > a {
+    text-align:center;
+    margin: 3px;
+}
+
+.buttons_panel {
     margin: auto;
+    text-align:center;
+}
+
+.btn-small {
+    height: 24px;
+    line-height: 24px;
+    padding: 0 0.5rem;
+    text-transform: none;
+    float:right;
+}
+
+#learnmore img{
+    width: 100%;
+    text-align:center;
+    height:auto;
+}
+
+#learnmore {
+    text-align: justify;
+}
+
+#chassebundle_user_comment {
+    margin-bottom: 7px;
+}
+
+/* Countdown page styling */
+
+#countContent {
+    text-align: center;
+    color: #2092CE;
+    margin: 30% 5% 0 5%;
+}
+
+#countdown {
+    font-size: 4.5rem;
+    line-height: 0;
+    font-weight: bold;
+}
+
+#countdown #countDay {
+    font-size: 3rem;
+    line-height: 0;
+}
+
+#countRegistration {
+    line-height: 1;
+    font-size: 1.75rem;
+    padding: 10px 0px 20px 0px;
 }

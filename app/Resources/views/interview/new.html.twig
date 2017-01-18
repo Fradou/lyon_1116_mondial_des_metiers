@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6">
-                <h1>Tes réponses</h1>
+                <h1>Tes mots-clés</h1>
             </div>
         </div>
         <div class="row">
@@ -14,9 +14,8 @@
             <div class="col s12 offset-m2 m8 offset-l3 l6" id="chipchosen"></div>
 
             <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6">
-                <label for="inputword" >Choisis tes mots-clés:</label>
+                <label for="inputword" >Choisis tes mots-clés:</label><button id="noidea" class="btn btn-small">Pas d'idée ?</button>
                 <input type="text" name="" id="inputword" maxlength="255">
-                <button id="noidea">Pas d'idée ?</button>
             </div>
         </div>
 
@@ -28,24 +27,20 @@
             <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6" id="nbresponse"></div>
         </div>
 
-
-
-        <div class="bloc_sp_xs"></div>
-
         {{ form_start(form) }}
         <div class="row">
             <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6">
-                {{ form_row(form.bonusWord, {label:'Ecrivez votre mot libre :'})}}
+                {{ form_row(form.bonusWord, {label:'Saisis ton mot libre :'})}}
             </div>
         </div>
-
+        <div class="bloc_sp_xs"></div>
         <div id="checkboxfield">
             {{ form_row(form.answers, {label:none, 'attr': {'class': 'hidden-row'}})}}
             {{ form_widget(form) }}
         </div>
         <div class="row">
             <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6">
-                <input class="btn jevote" type="submit" value="Je vote!">
+                <input class="btn jevote" type="submit" value="Tag ton métier">
             </div>
         </div>
         {{ form_end(form) }}

@@ -1,15 +1,15 @@
 {% extends "::base.html.twig" %}
 
 {% block title %}Préinscris toi en attendant le démarrage ! - Tag ton métier{% endblock %}
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/countdown.css') }}">
-{% endblock %}
+
 {% block body %}
-    <div id="countContent">
-        <div id="countdown"></div>
-        <div id="countRegistration">
-            <p>Envie de participer au jeu <br> Tag ton métier ?</p>
-            <a id="countRegisterButton" href="{{ path('fos_user_registration_register') }}">Préinscris-toi</a>
+    <div class="container">
+        <div id="countContent">
+            <div id="countdown"></div>
+            <div id="countRegistration">
+                <p>Envie de participer au jeu <br> Tag ton métier ?</p>
+                <a id="countRegisterButton" href="{{ path('fos_user_registration_register') }}">Préinscris-toi</a>
+            </div>
         </div>
     </div>
 
