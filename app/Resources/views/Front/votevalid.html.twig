@@ -5,21 +5,16 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <div class="col offset-s1 s10">
-                <h4>Merci d'avoir voté !</h4>
-                <p>Ton vote a bien été enregistré !</p>
-                {% if vote < 3 %}
-                    <p>Il te reste encore <span>{{ 3 - vote }}</span> métiers à renseigner avant de pouvoir participer au tirage au sort !</p>
-                {% endif %}
-
-
+            <div class="col offset-s1 s10 center-align">
+                <h1>Merci d'avoir participé !</h1>
+                <h2>Tes tags ont bien été enregistrés !</h2>
+                    {% if vote < 3 %}
+                <p>Il te reste encore <span>{{ 3 - vote }}</span> métiers à renseigner avant de pouvoir participer au tirage au sort !</p>
+                    {% endif %}
             </div>
             <div class="col offset-s1 s10 buttons_panel">
                 <a href="{{ path('job_select') }}" class="btn">
                     Tagger un autre métier
-                </a>
-                <a href="{{ path('index') }}" class="btn">
-                    Retour à l'accueil
                 </a>
                 <a href="{{ path('fos_user_security_logout') }}" class="btn">
                     Se déconnecter

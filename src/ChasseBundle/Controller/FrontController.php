@@ -10,20 +10,25 @@ class FrontController extends Controller
 {
     private $openDate;
     private $currentDate;
+    private $closeDate;
 
     public function __construct()
     {
-        $this->openDate = new DateTime('2017-01-2 10:00:00');
+        $this->openDate = new DateTime('2017-01-16 10:00:00');
+        $this->closeDate = new DateTime('2017-01-19 00:01:00');
         $this->currentDate = new DateTime();
     }
 
     private function countDown($render)
     {
         if ($this->openDate > $this->currentDate) {
-            $direct = $this->render('Front/countdown.html.twig');
-
-            return $direct;
-        } else {
+            return $this->redirectToRoute('countdown', array());
+        }
+        else if ($this->closeDate < $this->currentDate)
+        {
+            return $this->redirectToRoute('finished', array());
+        }
+        else {
             return $render;
         }
     }
@@ -46,7 +51,7 @@ class FrontController extends Controller
     {
         $render = $this->render('Front/legalmention.html.twig', array(// ...
         ));
-        return /*$this->countDown($render)*/ $this->render('Front/legalmention.html.twig');
+        return $this->countDown($render);
     }
 
     public function learnmoreAction()
@@ -58,12 +63,12 @@ class FrontController extends Controller
 
     public function countdownAction()
     {
-        if ($this->openDate < $this->currentDate) {
-            $direct = $this->render('Front/index.html.twig');
-
-            return $direct;
-        }
         return $this->render('Front/countdown.html.twig', array(// ...
+        ));
+    }
+
+    public function finishedAction(){
+        return $this->render('Front/end.html.twig', array(// ...
         ));
     }
 

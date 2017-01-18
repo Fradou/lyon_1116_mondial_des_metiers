@@ -17,7 +17,7 @@ class RegistrationType extends AbstractType
             'multiple' => false,
             'expanded' => true))
                 ->add('status', ChoiceType::class, array(
-                    'choices' => array('Collégien' => 'Collégien', 'Lycéen' => 'Lycéen', 'Parent' => 'Parent', 'Demandeur d\'emploi' => 'Demandeur d\'emploi', 'Adulte en réorientation' => 'Adulte en réorientation', 'Professionnel de l\'orientation et de la formation' => 'Professionnel de l\'orientation et de la formation', 'Salarié' => 'Salarié', 'Autre' => 'Autre'),
+                    'choices' => array('Collégien' => 'Collégien', 'Lycéen' => 'Lycéen', 'Etudiant'=>'Etudiant', 'Parent' => 'Parent', 'Demandeur d\'emploi' => 'Demandeur d\'emploi', 'Adulte en réorientation' => 'Adulte en réorientation', 'Professionnel de l\'orientation et de la formation' => 'Professionnel de l\'orientation et de la formation', 'Salarié' => 'Salarié', 'Autre' => 'Autre'),
                     'placeholder' => 'Choisissez votre statut'))
                 ->add('age')
                 ->add('department', ChoiceType::class, array (
