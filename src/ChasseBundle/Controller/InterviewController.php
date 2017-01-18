@@ -29,34 +29,37 @@ class InterviewController extends Controller
         if ($request->isXmlHttpRequest()){
 
             /**
+             * Get list of jobs in selected domain then treat if for use in array_diff
              * @var $repository JobRepository
              */
-            $repository = $this->getDoctrine()->getRepository('ChasseBundle:Job');
-            $datas = $repository->getJobsName($domain);
-            $datas2=[];
-            foreach($datas as $value){
-                $datas2[$value['id']]=$value['name'];
+            $joblist = $this->getDoctrine()->getRepository('ChasseBundle:Job')->getJobsName($domain);
+            $joblist_simplified=[];
+            foreach($joblist as $value){
+                $joblist_simplified[$value['id']]=$value['name'];
             }
 
             /**
+             * Get list of jobs already answered by user then treat if for use in array_diff
              * @var $repository2 InterviewRepository
              */
             $user = $this->getUser();
-            $repository2 = $this->getDoctrine()->getRepository('ChasseBundle:Interview');
-            $data = $repository2->getJobsDone($user);
-            $data2 = [];
-            foreach($data as $value){
-                $data2[$value['id']]=$value['name'];
+            $jobdone = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getJobsDone($user);
+            $jobdone_simplified = [];
+            foreach($jobdone as $value){
+                $jobdone_simplified[$value['id']]=$value['name'];
             }
 
-            $treated = array_diff($datas2, $data2);
+            /**
+             * Remove jobs already answered from lists of jobs in selected domain
+             */
+            $jobavailables = array_diff($joblist_simplified, $jobdone_simplified);
 
-            $treated2 = [];
-            foreach($treated as $key=>$value){
-                $treated2[] = ['id'=>$key, 'name'=>$value];
+            $data = [];
+            foreach($jobavailables as $key=>$value){
+                $data[] = ['id'=>$key, 'name'=>$value];
             }
 
-            return new JsonResponse(array("data" => json_encode($treated2)));
+            return new JsonResponse(array("data" => json_encode($data)));
         } else {
             throw new HttpException('500', 'Invalid call');
         }
@@ -87,8 +90,9 @@ class InterviewController extends Controller
     public function searchhelpAction(Request $request, $jobid)
     {
         if ($request->isXmlHttpRequest()){
-            /* Get job domain then query for list of suggested word for that domain */
+            /* Get job domain */
             $domain =  $this->getDoctrine()->getRepository('ChasseBundle:Job')->find($jobid)->getDomain();
+            /* Query for list of suggested word for that domain */
             $data = $this->getDoctrine()->getRepository('ChasseBundle:Answer')->searchRecommend($domain);
             return new JsonResponse(array("data" => json_encode($data)));
         } else {
@@ -101,10 +105,11 @@ class InterviewController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function jobselectAction(Request $request){
-        $em = $this->getDoctrine()->getManager();
-        $domains = $em->getRepository('ChasseBundle:Job')->getDomains();
+        /* Get list of all domains */
+        $domains = $this->getDoctrine()->getRepository('ChasseBundle:Job')->getDomains();
         $dom = [];
 
+        /* Format list before sending it in formtype */
         foreach($domains as $value){
             $dom[$value['domain']]=$value['domain'];
         }
@@ -117,8 +122,6 @@ class InterviewController extends Controller
             $jobchos = $job->getName();
             $jobchosen = $this->getDoctrine()
                 ->getRepository('ChasseBundle:Job')->find($jobchos);
-
-          /*  return $this->redirectToRoute('index', array()); */
             return $this->redirectToRoute('interview_new', array('job' => $jobchosen));
 
         }
@@ -130,7 +133,7 @@ class InterviewController extends Controller
     }
 
     /**
-     * Creates a new interview entity.
+     * Create form for user to select his keyword for the chosen job.
      *
      */
     public function newAction(Request $request, $job)
@@ -158,39 +161,5 @@ class InterviewController extends Controller
             'interview' => $interview,
             'form' => $form->createView(),
         ));
-    }
-
-    /**
-     * Deletes a interview entity.
-     *
-     */
-    public function deleteAction(Request $request, Interview $interview)
-    {
-        $form = $this->createDeleteForm($interview);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($interview);
-            $em->flush();
-        }
-
-        return $this->redirectToRoute('interview_index');
-    }
-
-    /**
-     * Creates a form to delete a interview entity.
-     *
-     * @param Interview $interview The interview entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Interview $interview)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('interview_delete', array('id' => $interview->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-            ;
     }
 }
