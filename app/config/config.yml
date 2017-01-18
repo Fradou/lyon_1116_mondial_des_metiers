@@ -63,6 +63,9 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
+    encryption: ssl
+    auth_mode: login
+
     transport: "%mailer_transport%"
     host:      "%mailer_host%"
     username:  "%mailer_user%"
@@ -78,12 +81,12 @@ fos_user:
         form:
             type: ChasseBundle\Form\RegistrationType
 
-#    registration:
- #       confirmation:
-  #          enabled: true
-   # from_email:
-    #    address:        noreply@example.com
-     #   sender_name:    Site name
+    registration:
+        confirmation:
+            enabled: true
+    from_email:
+        address:        noreply@example.com
+        sender_name:    Site name
 
 # Easy Admin
 easy_admin:
@@ -112,3 +115,5 @@ easy_admin:
             label: 'Utilisateur'
             list:
                 title: "Liste des utilisateurs / inscrits"
+
+

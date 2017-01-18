@@ -48,6 +48,11 @@ class BackController extends Controller
     }
 
     public function userStatsAction () {
+
+        //nb of registered users
+        $userManager = $this->container->get('fos_user.user_manager');
+        $users = count($userManager->findUsers());
+
         //list of email who subscribed newsletter
         $subscribers = $this->getDoctrine()->getRepository('ChasseBundle:User')->getSubscribers();
         //nb of male/female users
@@ -58,11 +63,12 @@ class BackController extends Controller
 
         //classment by age category
         $agecategory = [];
-        $agecategory[] = ["-15 ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(0,15)];
-        $agecategory[] = ["16-25 ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(16,25)];
+        $agecategory[] = ["-16 ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(0,16)];
+        $agecategory[] = ["17-20 ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(17,20)];
+        $agecategory[] = ["21-25 ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(21,25)];
         $agecategory[] = ["26-35 ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(26,35)];
         $agecategory[] = ["36-45 ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(36,45)];
-        $agecategory[] = ["46+ ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(46,100)];
+        $agecategory[] = ["46+ ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(46, 100)];
 
         //classment of most registered departments
         $departments = $this->getDoctrine()->getRepository('ChasseBundle:User')->getMostRegDepartment();
@@ -73,6 +79,7 @@ class BackController extends Controller
             "agecategory" => $agecategory,
             "departments" => $departments,
             "subscribers" => $subscribers,
+            "totalusers"       => $users,
         ));
     }
 
