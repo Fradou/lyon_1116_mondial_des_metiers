@@ -7,7 +7,6 @@ $( document ).ready(function() {
     function disabchoice () {
         $('#inputword').val("").prop('disabled', true);
         $("#noidea").prop('disabled', true);
-        $('#wordautocomp').empty();
     }
 
     // Used to reenable text field and button
@@ -33,7 +32,7 @@ $( document ).ready(function() {
     // Ajax function for autocomplete
     $("#inputword").keyup(function(){
         var wordp = $(this).val();
-        if ( wordp.length >= 1 ) {
+        if ( wordp.length >= 3 ) {
             $.ajax({
                 type: "POST",
                 url: "/interview/search/" + wordp,
@@ -51,9 +50,10 @@ $( document ).ready(function() {
 
     // Ajax function for help button
     $("#noidea").click(function(){
+        var jobid = $('#chassebundle_interview_job').val();
         $.ajax({
             type: "POST",
-            url: "/interview/searchhelp",
+            url: "/interview/searchhelp/"+ jobid,
             dataType: 'json',
             timeout: 3000,
             success: function(response){
@@ -73,12 +73,13 @@ $( document ).ready(function() {
             nbrep++;
             $(chipclicked).prop( "checked", true );
             $(this).addClass('chosen').removeClass('tochoose').append('<i class="close material-icons">close</i>').appendTo($("#chipchosen"));
+            $('#wordautocomp').empty();
             if (nbrep == 5) {
                 disabchoice();
-                $('#nbresponse').html('Vous avez atteint le maximum de réponses autorisées.');
+                $('#nbresponse').html('Tu as atteint le maximum de réponses autorisées.');
             }
             else {
-                $('#nbresponse').html('Il vous reste encore maximum ' + (5 - nbrep) + ' reponses à donner.');
+                $('#nbresponse').html('Il te reste encore maximum ' + (5 - nbrep) + ' reponses à donner.');
             }
 
         }
@@ -89,7 +90,7 @@ $( document ).ready(function() {
             if (nbrep == 4) {
                 enabchoice();
             }
-            $('#nbresponse').html('Il vous reste encore jusqu\'à ' + (5-nbrep) + ' reponses à donner.');
+            $('#nbresponse').html('Il te reste encore jusqu\'à ' + (5-nbrep) + ' reponses à donner.');
         }
     });
 });
