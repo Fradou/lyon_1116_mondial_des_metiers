@@ -121,7 +121,7 @@ label[for="chassebundle_user_comment"] {
 .content_title {
     font-size: 1.1rem;
     font-weight: bold;
-    text-align: left;
+    text-align: justify;
 }
 
 #legal_mentions span {
@@ -176,7 +176,13 @@ label[for="chassebundle_user_comment"] {
 }
 
 .buttons_panel > a {
+    text-align:center;
+    margin: 3px;
+}
+
+.buttons_panel {
     margin: auto;
+    text-align:center;
 }
 
 .btn-small {
@@ -193,4 +199,14 @@ label[for="chassebundle_user_comment"] {
 
 .chip {
     cursor: pointer;
+}
+
+#learnmore img{
+    width: 100%;
+    text-align:center;
+    height:auto;
+}
+
+#learnmore {
+    text-align: justify;
 }

@@ -5,15 +5,13 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <div class="col offset-s1 s10">
-                <h2>Merci d'avoir participé !</h2>
+            <div class="col offset-s1 s10 center-align">
+                <h1>Merci d'avoir participé !</h1>
                 <p>Tes tags ont bien été enregistrés !<br>
-                {% if vote < 3 %}
-                    Il te reste encore <span>{{ 3 - vote }}</span> métiers à renseigner avant de pouvoir participer au tirage au sort !
-                {% endif %}
+                    {% if vote < 3 %}
+                        Il te reste encore <span>{{ 3 - vote }}</span> métiers à renseigner avant de pouvoir participer au tirage au sort !
+                    {% endif %}
                 </p>
-
-
             </div>
             <div class="col offset-s1 s10 buttons_panel">
                 <a href="{{ path('job_select') }}" class="btn">
