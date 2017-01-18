@@ -19,46 +19,25 @@ class FrontController extends Controller implements OpeningController
         $this->currentDate = new DateTime();
     }
 
-    private function countDown2($render)
-    {
-        if ($this->openDate > $this->currentDate) {
-            return $this->redirectToRoute('countdown', array());
-        }
-        else if ($this->closeDate < $this->currentDate)
-        {
-            return $this->redirectToRoute('finished', array());
-        }
-        else {
-            return $render;
-        }
-    }
-
     public function indexAction()
     {
-        $render = $this->render('Front/index.html.twig', array(// ...
-        ));
-        return /*$this->countDown($render)*/$this->render('Front/index.html.twig');
+        return $this->render('Front/index.html.twig');
     }
 
     public function howtoAction()
     {
-        $render = $this->render('Front/howto.html.twig', array(// ...
-        ));
-        return /*$this->countDown($render)*/$this->render('Front/howto.html.twig');
+        return $this->render('Front/howto.html.twig');
     }
 
     public function legalmentionAction()
     {
-        $render = $this->render('Front/legalmention.html.twig', array(// ...
+        return $this->render('Front/legalmention.html.twig', array(// ...
         ));
-        return $this->countDown($render);
     }
 
     public function learnmoreAction()
     {
-        $render = $this->render('Front/learnmore.html.twig', array(// ...
-        ));
-        return /*$this->countDown($render)*/ $this->render('Front/learnmore.html.twig');
+        return $this->render('Front/learnmore.html.twig');
     }
 
     public function countdownAction()
