@@ -11,7 +11,7 @@ legalmention:
     defaults: { _controller: ChasseBundle:Front:legalmention }
 
 countdown:
-    path:     /countdown
+    path:     /ouverture-proche
     defaults: { _controller: ChasseBundle:Front:countDown }
 
 votevalid:
@@ -21,3 +21,7 @@ votevalid:
 learnmore:
     path:     /en-savoir-plus
     defaults: { _controller: ChasseBundle:Front:learnmore }
+
+finished:
+    path:     /evenement-terminé
+    defaults: { _controller: ChasseBundle:Front:finished }
