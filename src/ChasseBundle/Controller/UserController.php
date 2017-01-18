@@ -27,7 +27,7 @@ class UserController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('votevalid');
         }
 
         return $this->render('user/edit.html.twig', array(

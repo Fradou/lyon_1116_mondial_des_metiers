@@ -63,17 +63,17 @@ height: 2.5vh;
 }
 
 h1 {
-    font-size:1.6em;
+    font-size:1.75em;
     text-align:center;
 }
 
 h2 {
-    font-size: 1.3em;
+    font-size: 1.5em;
     text-align:center;
 }
 
 h3 {
-    font-size: 1.15em;
+    font-size: 1.25em;
     text-align:center;
 }
 
@@ -209,4 +209,8 @@ label[for="chassebundle_user_comment"] {
 
 #learnmore {
     text-align: justify;
+}
+
+#chassebundle_user_comment {
+    margin-bottom: 7px;
 }
