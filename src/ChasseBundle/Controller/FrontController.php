@@ -6,7 +6,7 @@ use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
-class FrontController extends Controller
+class FrontController extends Controller implements OpeningController
 {
     private $openDate;
     private $currentDate;
@@ -19,7 +19,7 @@ class FrontController extends Controller
         $this->currentDate = new DateTime();
     }
 
-    private function countDown($render)
+    private function countDown2($render)
     {
         if ($this->openDate > $this->currentDate) {
             return $this->redirectToRoute('countdown', array());
