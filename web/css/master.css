@@ -78,9 +78,17 @@ h3 {
     text-align:center;
 }
 
-/* PAGE CHOIX MOTS-CLES */
+/* Keywords choice */
 
 .jevote {
+    text-align: center;
+}
+
+.chip {
+    cursor: pointer;
+}
+
+#wordautocomp, #chipchosen {
     text-align: center;
 }
 
@@ -176,6 +184,8 @@ label[for="chassebundle_user_comment"] {
     font-size: 4em;
 }
 
+/* Other */
+
 .buttons_panel > a {
     text-align:center;
     margin: 3px;
@@ -194,14 +204,6 @@ label[for="chassebundle_user_comment"] {
     float:right;
 }
 
-#wordautocomp, #chipchosen {
-    text-align: center;
-}
-
-.chip {
-    cursor: pointer;
-}
-
 #learnmore img{
     width: 100%;
     text-align:center;
@@ -214,4 +216,29 @@ label[for="chassebundle_user_comment"] {
 
 #chassebundle_user_comment {
     margin-bottom: 7px;
+}
+
+/* Countdown page styling */
+
+#countContent {
+    text-align: center;
+    color: #2092CE;
+    margin: 30% 5% 0 5%;
+}
+
+#countdown {
+    font-size: 4.5rem;
+    line-height: 0;
+    font-weight: bold;
+}
+
+#countdown #countDay {
+    font-size: 3rem;
+    line-height: 0;
+}
+
+#countRegistration {
+    line-height: 1;
+    font-size: 1.75rem;
+    padding: 10px 0px 20px 0px;
 }
