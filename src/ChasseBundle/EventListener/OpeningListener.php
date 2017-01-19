@@ -27,25 +27,17 @@ class OpeningListener
         $controller = $event->getController();
         $request = new Request();
 
-        if (!is_array($controller)) {
-            return;
-        }
-
-        if ($controller[0] instanceof OpeningController) {
-            if ($this->openDate > $this->currentDate)
-            {
-                $request->attributes->set('_controller', 'ChasseBundle:Front:countdown');
-                $event->setController($this->resolver->getController($request));
-            }
-            else if ($this->closeDate < $this->currentDate)
-            {
-                $request->attributes->set('_controller', 'ChasseBundle:Front:finished');
-                $event->setController($this->resolver->getController($request));
-            }
-            else
-            {
-                return;
+        if (is_array($controller)) {
+            if ($controller[0] instanceof OpeningController) {
+                if ($this->openDate > $this->currentDate) {
+                    $request->attributes->set('_controller', 'ChasseBundle:Front:countdown');
+                    $event->setController($this->resolver->getController($request));
+                } else if ($this->closeDate < $this->currentDate) {
+                    $request->attributes->set('_controller', 'ChasseBundle:Front:finished');
+                    $event->setController($this->resolver->getController($request));
+                }
             }
         }
+        return;
     }
 }
