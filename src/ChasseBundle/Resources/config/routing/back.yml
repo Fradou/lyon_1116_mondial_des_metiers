@@ -3,7 +3,7 @@ stats:
     defaults: { _controller: ChasseBundle:Back:stats }
 
 userstats:
-    path:     /statistiques-utilisateurs
+    path:     /statistiques-utilisateurs/{page}
     defaults: { _controller: ChasseBundle:Back:userStats }
 
 winner:

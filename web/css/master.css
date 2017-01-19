@@ -125,6 +125,12 @@ label[for="chassebundle_user_comment"] {
     color: black;
 }
 
+/** PAGE STATS **/
+
+.userstats {
+    text-align: center;
+}
+
 /* LEGAL MENTIONS */
 
 .content_title {
@@ -173,6 +179,7 @@ label[for="chassebundle_user_comment"] {
 .index_howto {
     margin: 0.5rem 0 0.5rem 0;
 }
+
 
 /** PAGE WINNER **/
 
