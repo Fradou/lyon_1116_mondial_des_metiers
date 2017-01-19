@@ -1,6 +1,6 @@
 index:
     path:     /
-    defaults: { _controller: FOSUserBundle:Security:login }
+    defaults: { _controller: ChasseBundle:Security:login }
 
 howto:
     path:     /regles-du-jeu
