@@ -2,6 +2,8 @@
 
 namespace ChasseBundle\Controller;
 
+use ChasseBundle\Entity\User;
+use ChasseBundle\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
@@ -31,9 +33,6 @@ class BackController extends Controller
         // selected persons
         $selectedPersons = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getSelectedUsers();
 
-        //get the winner
-        $randArrayInt = random_int(0, count($selectedPersons)-1);
-        $winner = $selectedPersons[$randArrayInt];
 
         return $this->render('Back/stats.html.twig', array(
             "totalusers"    =>      $users,
@@ -43,13 +42,24 @@ class BackController extends Controller
             "mostAnsweredJobs" =>   $mostAnsweredJobs,
             "mostAnsweredDomains" => $mostAnsweredDomains,
             "selectedPersons" =>    $selectedPersons,
-            "winner"          =>    $winner,
         ));
     }
 
-    public function userStatsAction () {
+    public function userStatsAction ($page = 1) {
+        //paginator
+        $start = ($page-1) * UserRepository::MAX_RESULT;
+        $nbresults = UserRepository::MAX_RESULT;
+        $subscribers = $this->getDoctrine()->getRepository('ChasseBundle:User')->getSubscribers($start, $nbresults);
+        $total = count($subscribers);
+        $maxPage = intval($total/UserRepository::MAX_RESULT);
+
+        //nb of registered users
+        $userManager = $this->container->get('fos_user.user_manager');
+        $users = count($userManager->findUsers());
+
         //list of email who subscribed newsletter
-        $subscribers = $this->getDoctrine()->getRepository('ChasseBundle:User')->getSubscribers();
+        //$subscribers = $this->getDoctrine()->getRepository('ChasseBundle:User')->getSubscribers();
+
         //nb of male/female users
         $genders = $this->getDoctrine()->getRepository('ChasseBundle:User')->countGender();
 
@@ -58,11 +68,12 @@ class BackController extends Controller
 
         //classment by age category
         $agecategory = [];
-        $agecategory[] = ["-15 ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(0,15)];
-        $agecategory[] = ["16-25 ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(16,25)];
+        $agecategory[] = ["-16 ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(0,16)];
+        $agecategory[] = ["17-20 ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(17,20)];
+        $agecategory[] = ["21-25 ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(21,25)];
         $agecategory[] = ["26-35 ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(26,35)];
         $agecategory[] = ["36-45 ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(36,45)];
-        $agecategory[] = ["46+ ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(46,100)];
+        $agecategory[] = ["46+ ans", $this->getDoctrine()->getRepository('ChasseBundle:User')->getAgeCategories(46, 100)];
 
         //classment of most registered departments
         $departments = $this->getDoctrine()->getRepository('ChasseBundle:User')->getMostRegDepartment();
@@ -73,6 +84,10 @@ class BackController extends Controller
             "agecategory" => $agecategory,
             "departments" => $departments,
             "subscribers" => $subscribers,
+            'page'        => $page,
+            'maxPage'     => $maxPage,
+            'total'       => $total,
+            "totalusers"  => $users,
         ));
     }
 

@@ -10,21 +10,25 @@ class FrontController extends Controller
 {
     private $openDate;
     private $currentDate;
+    private $closeDate;
 
     public function __construct()
     {
-        $this->openDate = new DateTime('2017-2-2 10:00:00');
-
+        $this->openDate = new DateTime('2017-01-16 10:00:00');
+        $this->closeDate = new DateTime('2017-01-19 00:01:00');
         $this->currentDate = new DateTime();
     }
 
     private function countDown($render)
     {
         if ($this->openDate > $this->currentDate) {
-            $direct = $this->render('Front/countdown.html.twig');
-
-            return $direct;
-        } else {
+            return $this->redirectToRoute('countdown', array());
+        }
+        else if ($this->closeDate < $this->currentDate)
+        {
+            return $this->redirectToRoute('finished', array());
+        }
+        else {
             return $render;
         }
     }
@@ -47,13 +51,6 @@ class FrontController extends Controller
     {
         $render = $this->render('Front/legalmention.html.twig', array(// ...
         ));
-        return /*$this->countDown($render)*/ $this->render('Front/legalmention.html.twig');
-    }
-
-    public function inscriptAction()
-    {
-        $render = $this->render('Front/inscript.html.twig', array(// ...
-        ));
         return $this->countDown($render);
     }
 
@@ -64,28 +61,35 @@ class FrontController extends Controller
         return /*$this->countDown($render)*/ $this->render('Front/learnmore.html.twig');
     }
 
-    public function endpageAction()
-    {
-        $render = $this->render('Front/endpage.html.twig', array(// ...
-        ));
-        return /*$this->countDown($render)*/ $this->render('Front/endpage.html.twig');
-    }
-
     public function countdownAction()
     {
-        if ($this->openDate < $this->currentDate) {
-            $direct = $this->render('Front/index.html.twig');
-
-            return $direct;
-        }
         return $this->render('Front/countdown.html.twig', array(// ...
+        ));
+    }
+
+    public function finishedAction(){
+        return $this->render('Front/end.html.twig', array(// ...
         ));
     }
 
     public function voteValidAction()
     {
-        return $this->render('Front/votevalid.html.twig', array(
-            // ...
-        ));
+        $user = $this->getUser()->getId();
+
+        $repository = $this->getDoctrine()->getRepository('ChasseBundle:User');
+        $satisf = $repository->checkSatisf($user);
+
+        if ($satisf != 0){
+
+            $repository = $this->getDoctrine()->getRepository('ChasseBundle:Interview');
+            $vote = $repository->checkVote($user);
+
+            return $this->render('Front/votevalid.html.twig', array(
+                'vote' => $vote));
+        }
+        else {
+            return $this->redirectToRoute('user_edit', array(
+                'id' => $user));
+        }
     }
 }

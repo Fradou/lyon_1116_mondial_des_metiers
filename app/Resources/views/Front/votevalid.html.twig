@@ -1,31 +1,24 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}Merci d'avoir voté !{% endblock %}
+{% block title %}Vote validé - Tag ton métier{% endblock %}
 
 {% block body %}
     <div class="container">
         <div class="row">
-            <div class="col offset-s1 s10">
-                <h4>Merci d'avoir voté !</h4>
-                            <p>Votre vote a bien été enregistré !</p>
-                            <p>Il vous reste encore <span>1</span> métier à renseigner avant de pouvoir participer au tirage au sort !</p>
-
-
-                <p> Qu'avez vous pensé du salon ?</p>
-                <img src="{{ asset('/img/satisfatest.png') }}" style="height:100%; width:100%;">
-
-                <p>Un commentaire ? Une remarque ?</p>
-                <textarea name='comment' id='comment'></textarea><br />
-                <div class="bloc_sp_s"></div>
-
-                            <button href="{{ path('fos_user_profile_show') }}" type="button" class="btn">
-                                <i class="fa fa-arrow-circle-o-right"></i> Retour à l'accueil
-                            </button>
-                            <button href="{{ path('fos_user_security_logout') }}" type="button" class="btn">
-                                <i class="fa fa-arrow-circle-o-right"></i> Se déconnecter
-                            </button>
-
-
+            <div class="col offset-s1 s10 center-align">
+                <h1>Merci d'avoir participé !</h1>
+                <h2>Tes tags ont bien été enregistrés !</h2>
+                    {% if vote < 3 %}
+                <p>Il te reste encore <span>{{ 3 - vote }}</span> métiers à renseigner avant de pouvoir participer au tirage au sort !</p>
+                    {% endif %}
+            </div>
+            <div class="col offset-s1 s10 buttons_panel">
+                <a href="{{ path('job_select') }}" class="btn">
+                    Tagger un autre métier
+                </a>
+                <a href="{{ path('fos_user_security_logout') }}" class="btn">
+                    Se déconnecter
+                </a>
             </div>
         </div>
     </div>

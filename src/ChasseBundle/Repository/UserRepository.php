@@ -4,6 +4,7 @@
 namespace ChasseBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 class UserRepository extends EntityRepository
 {
@@ -17,18 +18,6 @@ class UserRepository extends EntityRepository
 
         return $qb->getScalarResult();
     }
-
-    //list of email who subscribed newsletter > ok tested on workbench : SELECT email FROM mondialbdd.user WHERE newsletter = true
-    public function getSubscribers()
-    {
-        $qb = $this->createQueryBuilder('u')
-            ->select('u.email')
-            ->where('u.newsletter=true')
-            ->getQuery();
-
-        return $qb->getScalarResult();
-    }
-
 
     //classment of the most registered status among users (student, employee, etc.) > ok tested on workbench, SELECT status, COUNT(status) FROM mondialbdd.user group by status
     public function getMostRegStatus()
@@ -54,6 +43,17 @@ class UserRepository extends EntityRepository
         return $qb->getSingleScalarResult();
     }
 
+    // check if satisfaction already update
+    public function checkSatisf($user)
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->select('u.satisfaction')
+            ->where('u.id = :user')
+            ->setParameter('user', $user)
+            ->getQuery();
+        return $qb->getSingleScalarResult();
+    }
+
     //get most registered department
     public function getMostRegDepartment()
     {
@@ -63,5 +63,30 @@ class UserRepository extends EntityRepository
             ->getQuery();
 
         return $qb->getScalarResult();
+    }
+
+    //list of email who subscribed newsletter > ok tested on workbench : SELECT email FROM mondialbdd.user WHERE newsletter = true
+    //edit : 01/18 > added paginator
+
+    /**
+     * @param $first_result integer
+     * @param int $max_results integer
+     * @return Paginator
+     */
+
+    const MAX_RESULT = 10;
+
+    public function getSubscribers($first_result, $max_results=SELF::MAX_RESULT)
+    {
+
+        $qb = $this->createQueryBuilder('user')
+            ->select('user')
+            ->where('user.newsletter=true')
+            ->setFirstResult($first_result)
+            ->setMaxResults($max_results);
+
+            $page = new Paginator($qb);
+
+        return $page;
     }
 }

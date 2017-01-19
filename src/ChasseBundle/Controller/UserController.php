@@ -18,18 +18,22 @@ class UserController extends Controller
      */
     public function editAction(Request $request, User $user)
     {
+        $repository = $this->getDoctrine()->getRepository('ChasseBundle:Interview');
+        $vote = $repository->checkVote($user);
+
         $editForm = $this->createForm('ChasseBundle\Form\UserType', $user);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('user_edit', array('id' => $user->getId()));
+            return $this->redirectToRoute('votevalid');
         }
 
         return $this->render('user/edit.html.twig', array(
             'user' => $user,
             'edit_form' => $editForm->createView(),
+            'vote' => $vote,
         ));
     }
 }

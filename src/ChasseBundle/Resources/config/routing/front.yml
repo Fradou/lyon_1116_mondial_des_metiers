@@ -10,13 +10,8 @@ legalmention:
     path:     /mentions-legales
     defaults: { _controller: ChasseBundle:Front:legalmention }
 
-inscript:
-    path:     /inscription
-    defaults: { _controller: ChasseBundle:Front:inscript }
-
-
 countdown:
-    path:     /countdown
+    path:     /ouverture-proche
     defaults: { _controller: ChasseBundle:Front:countDown }
 
 votevalid:
@@ -27,6 +22,6 @@ learnmore:
     path:     /en-savoir-plus
     defaults: { _controller: ChasseBundle:Front:learnmore }
 
-endpage:
-    path:     /fin-du-jeu
-    defaults: { _controller: ChasseBundle:Front:endpage }
+finished:
+    path:     /evenement-terminé
+    defaults: { _controller: ChasseBundle:Front:finished }
