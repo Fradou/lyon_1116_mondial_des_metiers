@@ -15,6 +15,11 @@ ChasseBundle\Entity\Answer:
         domain:
             type: string
             length: 255
+    indexes:
+        a_dom:
+            columns: ['domain']
+        a_word:
+            columns: ['word']
 
     manyToMany:
         interviews:
