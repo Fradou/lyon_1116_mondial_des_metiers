@@ -27,7 +27,7 @@
                 <tr>
                     <td>{{ gender.gender }}</td>
                     <td>{{ gender.nb }}</td>
-                    <td>{{ gender.nb/totalusers*100 }}%</td>
+                    <td>{{ (gender.nb/totalusers)*100 | round(2, 'floor') }}%</td>
 
                 </tr>
             {% endfor %}
@@ -46,7 +46,7 @@
                 <tr>
                     <td>{{ status.status }}</td>
                     <td>{{ status.nb }}</td>
-                    <td>{{ status.nb/totalusers*100 }}%</td>
+                    <td>{{ (status.nb/totalusers)*100 | round(2, 'floor')}}%</td>
                 </tr>
             {% endfor %}
         </table>
@@ -64,7 +64,7 @@
                 <tr>
                     <td>{{ department.department }}</td>
                     <td>{{ department.nb }}</td>
-                    <td>{{ department.nb/totalusers*100 }}%</td>
+                    <td>{{ (department.nb/totalusers)*100 | round(2, 'floor')}}%</td>
                 </tr>
             {% endfor %}
         </table>
@@ -82,7 +82,7 @@
                 <tr>
                     <td>{{ age[0] }}</td>
                     <td>{{ age[1] }}</td>
-                    <td>{{ age[1]/totalusers*100 }}%</td>
+                    <td>{{ (age[1]/totalusers)*100 | round(2, 'floor')}}%</td>
                 </tr>
             {% endfor %}
         </table>
