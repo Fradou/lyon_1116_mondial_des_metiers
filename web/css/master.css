@@ -233,7 +233,7 @@ label[for="chassebundle_user_comment"] {
 #countContent {
     text-align: center;
     color: #2092CE;
-    margin: 30% 5% 0 5%;
+    margin: 5% 5% 0 5%;
 }
 
 #countdown {
@@ -248,6 +248,7 @@ label[for="chassebundle_user_comment"] {
 }
 
 #countRegistration {
+    color: black;
     line-height: 1;
     font-size: 1.75rem;
     padding: 10px 0px 20px 0px;
