@@ -26,8 +26,12 @@
             <a  href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié ?</a>
         </div>
 
+
         <br>
 
         <button class="btn waves-effect waves-light" id="_submit" type="submit" name="_submit">{{ 'security.login.submit'|trans }}</button>
+        <input type="hidden" name="_target_path" value="job_select" />
+
+        <button class="btn waves-effect waves-light inscriptbtn" ><a id="countRegisterButton" href="{{ path('fos_user_registration_register') }}">PAS ENCORE INSCRIT?</a></button>
         {#<input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />#}
     </form>
