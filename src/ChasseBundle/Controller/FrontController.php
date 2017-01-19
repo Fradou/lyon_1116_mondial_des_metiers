@@ -6,19 +6,8 @@ use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
-class FrontController extends Controller implements OpeningController
+class FrontController extends Controller
 {
-    private $openDate;
-    private $currentDate;
-    private $closeDate;
-
-    public function __construct()
-    {
-        $this->openDate = new DateTime('2017-01-16 10:00:00');
-        $this->closeDate = new DateTime('2017-01-19 00:01:00');
-        $this->currentDate = new DateTime();
-    }
-
     public function indexAction()
     {
         return $this->render('Front/index.html.twig');

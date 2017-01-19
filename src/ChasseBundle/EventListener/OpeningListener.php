@@ -16,8 +16,8 @@ class OpeningListener
 
     public function __construct(\Symfony\Component\HttpKernel\Controller\ControllerResolver $resolver)
     {
-        $this->openDate = new DateTime('2017-01-12 10:00:00');
-        $this->closeDate = new DateTime('2017-01-17 00:01:00');
+        $this->openDate = new DateTime('2017-01-19 09:30:45');
+        $this->closeDate = new DateTime('2017-02-06 09:31:30');
         $this->resolver = $resolver;
     }
 
