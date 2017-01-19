@@ -33,6 +33,21 @@ ChasseBundle\Entity\User:
         comment:
             type: text
             nullable: true
+    indexes:
+        u_news:
+            columns: ['newsletter']
+        u_usrn:
+            columns: ['username']
+            type: unique
+        u_usrn_c:
+            columns: ['username_canonical']
+            type: unique
+        u_email_c:
+            columns: ['email_canonical']
+            type: unique
+        u_email:
+            columns: ['email']
+            type: unique
 
 
     oneToMany:
