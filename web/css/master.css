@@ -253,3 +253,7 @@ label[for="chassebundle_user_comment"] {
     font-size: 1.75rem;
     padding: 10px 0px 20px 0px;
 }
+
+.count_btns a {
+    margin: 0.5rem;
+}
