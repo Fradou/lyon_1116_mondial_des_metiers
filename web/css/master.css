@@ -32,17 +32,12 @@ footer img {
     height: auto;
 }
 
-footer .row {
-    margin: 0;
-    padding-top: 10px;
+.foo_region {
+    margin-bottom: 10px;
 }
 
-footer div {
-    margin: 10px 0px;
-}
-
-.foo_mention {
-    line-height: 0;
+footer p {
+    font-size: 0.8rem;
 }
 
 #checkboxfield {
@@ -189,6 +184,14 @@ label[for="chassebundle_user_comment"] {
 
 .winner h2 {
     font-size: 4em;
+}
+
+
+/* END PAGE */
+
+#end_content h1 {
+    font-size: 1.2rem;
+    color: #2092CE;
 }
 
 /* Other */

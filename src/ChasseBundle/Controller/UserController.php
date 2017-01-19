@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
  * User controller.
  *
  */
-class UserController extends Controller
+class UserController extends Controller implements OpeningController
 {
      /**
      * Displays a form to edit an existing user entity.
