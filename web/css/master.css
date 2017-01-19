@@ -256,3 +256,19 @@ label[for="chassebundle_user_comment"] {
 .count_btns a {
     margin: 0.5rem;
 }
+
+/*** PAGE LOGIN ***/
+
+button a {
+    text-decoration: none;
+    color:white;
+}
+
+@media screen and (max-width: 490px) {
+    .inscriptbtn {
+        margin-top: 20px;
+        margin-left: 20%;
+    }
+
+}
+
