@@ -16,7 +16,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
  * Interview controller.
  *
  */
-class InterviewController extends Controller
+class InterviewController extends Controller implements OpeningController
 {
     /**
      * Ajax request to display jobs once domain is chosen.

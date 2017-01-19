@@ -15,6 +15,12 @@ ChasseBundle\Entity\Job:
         domain:
             type: string
             length: 255
+    indexes:
+        j_dom:
+            columns: ['domain']
+        j_name:
+            columns: ['name']
+            sorting: 'ASC'
 
     oneToMany:
         interviews:
