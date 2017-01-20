@@ -251,3 +251,18 @@ label[for="chassebundle_user_comment"] {
     font-size: 1.75rem;
     padding: 10px 0px 20px 0px;
 }
+
+/*** PAGE LOGIN ***/
+
+button a {
+    text-decoration: none;
+    color:white;
+}
+
+@media screen and (max-width: 490px) {
+    .inscriptbtn {
+        margin-top: 20px;
+        margin-left: 20%;
+    }
+
+}
