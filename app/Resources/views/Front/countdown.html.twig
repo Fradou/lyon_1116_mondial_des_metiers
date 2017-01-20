@@ -6,10 +6,13 @@
     <div class="container">
         <div id="countContent">
             <div id="countdown"></div>
-            <div id="countRegistration">
-                <p>Envie de participer au jeu <br> Tag ton métier ?</p>
-                <a id="countRegisterButton" href="{{ path('fos_user_registration_register') }}">Préinscris-toi</a>
-            </div>
+                <div id="countRegistration">
+                    <h1>Joue à Tag ton métier<br/><small>et tente de gagner un smartphone !</small></h1>
+                </div>
+        </div>
+        <div class="center-align count_btns">
+            <a class="waves-effect waves-light btn" href="{{ path('learnmore') }}">En savoir plus</a>
+            <a class="waves-effect waves-light btn" href="{{ path('index') }}">Préinscris-toi</a>
         </div>
     </div>
 
