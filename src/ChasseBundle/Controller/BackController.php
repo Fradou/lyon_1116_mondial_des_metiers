@@ -33,7 +33,10 @@ class BackController extends Controller
 
         // selected persons
         $selectedPersons = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getSelectedUsers();
+        $eligibleuser = count($selectedPersons);
 
+
+        // 20 most answered words
         $words = $this->getDoctrine()->getRepository('ChasseBundle:Answer')->mostUsed();
 
 
@@ -44,8 +47,8 @@ class BackController extends Controller
             "nbdomains"     =>      $nbDomains,
             "mostAnsweredJobs" =>   $mostAnsweredJobs,
             "mostAnsweredDomains" => $mostAnsweredDomains,
-            "selectedPersons" =>    $selectedPersons,
             "words" => $words,
+            "eligibleuser" => $eligibleuser,
         ));
     }
 

@@ -21,6 +21,10 @@
     </div>
 
     <div>
+        Nombre d'utilisateur pouvant participer au tirage au sort : <b>{{ eligibleuser }} </b>
+    </div>
+
+    <div>
         Nombre de métiers ayant reçus des réponses : <b>{{ nbjobs }} </b>
     </div>
 
@@ -81,16 +85,6 @@
                 <tr>
                     <td>{{ word.word }}</td>
                     <td>{{ word.nb }}</td>
-                </tr>
-            {% endfor %}
-        </table>
-    </div>
-    <div>
-        <h2>Personnes pouvant participer au tirage au sort: </h2>
-        <table>
-            {% for person in selectedPersons %}
-                <tr>
-                    <td>{{ person.username }}</td>
                 </tr>
             {% endfor %}
         </table>
