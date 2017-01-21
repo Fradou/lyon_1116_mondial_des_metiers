@@ -2,6 +2,7 @@
 
 namespace ChasseBundle\Controller;
 
+use ChasseBundle\ChasseBundle;
 use ChasseBundle\Entity\User;
 use ChasseBundle\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -33,6 +34,8 @@ class BackController extends Controller
         // selected persons
         $selectedPersons = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getSelectedUsers();
 
+        $words = $this->getDoctrine()->getRepository('ChasseBundle:Answer')->mostUsed();
+
 
         return $this->render('Back/stats.html.twig', array(
             "totalusers"    =>      $users,
@@ -42,6 +45,7 @@ class BackController extends Controller
             "mostAnsweredJobs" =>   $mostAnsweredJobs,
             "mostAnsweredDomains" => $mostAnsweredDomains,
             "selectedPersons" =>    $selectedPersons,
+            "words" => $words,
         ));
     }
 

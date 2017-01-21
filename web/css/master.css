@@ -263,11 +263,7 @@ button a {
     color:white;
 }
 
-@media screen and (max-width: 490px) {
-    .inscriptbtn {
-        margin-top: 20px;
-        margin-left: 20%;
-    }
-
+.btn {
+    margin-top: 5px;
 }
 

@@ -9,7 +9,7 @@
                 <h1>Merci d'avoir participé !!</h1>
                 <h2>Tes tags ont bien été enregistrés.</h2>
                 {% if vote < 3 %}
-                    <p>Il te reste encore <span>{{ 3 - vote }}</span> métiers à renseigner avant de pouvoir participer au tirage au sort !</p>
+                    <p>Il te reste encore <span>{{ 3 - vote }}</span> métier(s) à renseigner avant de pouvoir participer au tirage au sort !</p>
                 {% endif %}
                 <p class="satis_form">Ton avis sur le salon nous intéresse ! <br/>
                     Qu'en as-tu pensé ?</p>
@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col offset-s1 s10 buttons_panel">
                 <a href="{{ path('job_select') }}" class="btn">
-                    Tagger un autre métier
+                    Tagguer un autre métier
                 </a>
                 <a href="{{ path('fos_user_security_logout') }}" class="btn">
                     Se déconnecter

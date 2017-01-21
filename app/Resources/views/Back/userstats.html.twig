@@ -19,9 +19,11 @@
         <h2> Nombre d'hommes et de femmes </h2>
         <table class="table bordered striped table-bordered centered">
             <thead>
+            <tr>
                 <th>Genre</th>
                 <th>Nombre</th>
                 <th>Pourcentage</th>
+            </tr>
             </thead>
             {% for gender in genders %}
                 <tr>
@@ -38,9 +40,11 @@
         <h2> Liste des statuts les plus enregistrés </h2>
         <table class="table bordered striped table-bordered centered">
             <thead>
+            <tr>
                 <th>Statut</th>
                 <th>Nombre</th>
                 <th>Pourcentage</th>
+            </tr>
             </thead>
             {% for status in statuses %}
                 <tr>
@@ -56,9 +60,11 @@
         <h2> Liste des départements les plus enregistrés </h2>
         <table class="table bordered striped table-bordered centered">
             <thead>
+            <tr>
             <th>Département</th>
             <th>Nombre</th>
             <th>Pourcentage</th>
+            </tr>
             </thead>
             {% for department in departments %}
                 <tr>
@@ -74,9 +80,11 @@
         <h2> Liste des catégories d'âge </h2>
         <table class="table bordered striped table-bordered centered">
             <thead>
+            <tr>
                 <th>Catégorie d'âge</th>
                 <th>Nombre</th>
                 <th>Pourcentage</th>
+            </tr>
             </thead>
             {% for age in agecategory %}
                 <tr>
@@ -92,7 +100,9 @@
         <h2> liste des inscrits à la newsletter </h2>
         <table class="table bordered striped table-bordered ">
             <thead>
+            <tr>
                 <th>Email</th>
+            </tr>
             </thead>
             {% for subscriber in subscribers %}
                 <tr><td>{{ subscriber.email }}</td></tr>
