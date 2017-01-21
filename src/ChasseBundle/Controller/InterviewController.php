@@ -11,6 +11,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use ChasseBundle\Entity\User;
+
 
 /**
  * Interview controller.
@@ -162,6 +164,52 @@ class InterviewController extends Controller implements OpeningController
             'interview' => $interview,
             'form' => $form->createView(),
             'jobname' => $jobname,
+        ));
+    }
+
+    public function voteValidAction()
+    {
+        $user = $this->getUser()->getId();
+
+        $repository = $this->getDoctrine()->getRepository('ChasseBundle:User');
+        $satisf = $repository->checkSatisf($user);
+
+        if ($satisf != 0){
+
+            $repository = $this->getDoctrine()->getRepository('ChasseBundle:Interview');
+            $vote = $repository->checkVote($user);
+
+            return $this->render('interview/votevalid.html.twig', array(
+                'vote' => $vote));
+        }
+        else {
+            return $this->redirectToRoute('user_edit', array(
+                'id' => $user));
+        }
+    }
+
+    /**
+     * Displays a form to edit an existing user entity.
+     *
+     */
+    public function satisfactionAction(Request $request, User $user)
+    {
+        $repository = $this->getDoctrine()->getRepository('ChasseBundle:Interview');
+        $vote = $repository->checkVote($user);
+
+        $editForm = $this->createForm('ChasseBundle\Form\UserType', $user);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('votevalid');
+        }
+
+        return $this->render('interview/satisfaction.html.twig', array(
+            'user' => $user,
+            'edit_form' => $editForm->createView(),
+            'vote' => $vote,
         ));
     }
 }

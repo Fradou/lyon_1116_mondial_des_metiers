@@ -9,8 +9,8 @@
 <div class="row" id="login_form">
     <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6">
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <button class="btn waves-effect waves-light inscriptbtn" ><a href="{{ path('job_select') }}">Tagger un métier</a></button>
-            <button class="btn waves-effect waves-light inscriptbtn" ><a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a></button>
+            <a class="btn waves-effect waves-light" href="{{ path('job_select') }}">Tagger un métier</a>
+            <a class="btn waves-effect waves-light" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
         {% else %}
         <form action="{{ path("fos_user_security_check") }}" method="post">
 
@@ -37,7 +37,7 @@
             <button class="btn waves-effect waves-light" id="_submit" type="submit" name="_submit">{{ 'security.login.submit'|trans }}</button>
             <input type="hidden" name="_target_path" value="job_select" />
 
-            <button class="btn waves-effect waves-light inscriptbtn" ><a id="countRegisterButton" href="{{ path('fos_user_registration_register') }}">PAS ENCORE INSCRIT ?</a></button>
+            <a class="btn waves-effect waves-light" id="countRegisterButton" href="{{ path('fos_user_registration_register') }}">PAS ENCORE INSCRIT ?</a>
             {#<input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />#}
         </form>
         {% endif %}

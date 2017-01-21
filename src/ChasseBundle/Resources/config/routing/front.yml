@@ -14,10 +14,6 @@ countdown:
     path:     /ouverture-proche
     defaults: { _controller: ChasseBundle:Front:countDown }
 
-votevalid:
-    path:     /votevalid
-    defaults: { _controller: ChasseBundle:Front:voteValid }
-
 learnmore:
     path:     /en-savoir-plus
     defaults: { _controller: ChasseBundle:Front:learnmore }

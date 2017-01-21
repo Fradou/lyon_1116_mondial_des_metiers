@@ -3,11 +3,6 @@ interview_new:
     defaults: { _controller: "ChasseBundle:Interview:new" }
     methods:  [GET, POST]
 
-interview_delete:
-    path:     /{id}/delete
-    defaults: { _controller: "ChasseBundle:Interview:delete" }
-    methods:  DELETE
-
 job_choose:
     path:     /choose/{domain}
     defaults: { _controller: "ChasseBundle:Interview:jobchoose" }
@@ -27,3 +22,12 @@ job_searchhelp:
     path:     /searchhelp/{jobid}
     defaults: { _controller: "ChasseBundle:Interview:searchhelp" }
     methods:  POST
+
+votevalid:
+    path:     /votevalid
+    defaults: { _controller: "ChasseBundle:Interview:voteValid" }
+
+user_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ChasseBundle:Interview:satisfaction" }
+    methods:  [GET, POST]

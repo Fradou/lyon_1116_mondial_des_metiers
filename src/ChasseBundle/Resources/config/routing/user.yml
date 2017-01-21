@@ -1,4 +1,0 @@
-user_edit:
-    path:     /{id}/edit
-    defaults: { _controller: "ChasseBundle:User:edit" }
-    methods:  [GET, POST]
