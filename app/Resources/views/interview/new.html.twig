@@ -31,6 +31,7 @@
         {{ form_start(form) }}
         <div class="row">
             <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6">
+                {{ form_errors(form.answers) }}
                 {{ form_row(form.bonusWord, {label:'Saisis ton mot libre :'})}}
             </div>
         </div>

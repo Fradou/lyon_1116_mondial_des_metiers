@@ -6,6 +6,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Count;
 
 class InterviewType extends AbstractType
 {
@@ -21,7 +22,13 @@ class InterviewType extends AbstractType
                 'class' => 'ChasseBundle:Answer',
                 'choice_label' => 'word',
                 'multiple' => true,
-                'expanded' => true));
+                'expanded' => true,
+                'constraints' => array(
+                    new Count(array(
+                        'min' => 1,
+                        'minMessage' => 'Choisis au moins 1 mot clé ! ',
+                        )),
+                    ),));
     }
 
     /**
