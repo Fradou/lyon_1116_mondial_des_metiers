@@ -11,8 +11,11 @@
         <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6 center-align">
 
             <a class="btn waves-effect waves-light inscriptbtn" href="{{ path('job_select') }}">Taguer un métier</a>
+            <br>
             <a class="btn waves-effect waves-light inscriptbtn" href="{{ path('fos_user_profile_show') }}">Mon profil</a>
-            <a class="btn waves-effect waves-light inscriptbtn" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
+            <br>
+            <a class="btn waves-effect waves-light inscriptbtn" href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+            <br>
         </div>
     {% else %}
         <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6">
