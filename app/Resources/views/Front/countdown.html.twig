@@ -1,24 +1,28 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}Préinscris toi en attendant le démarrage ! - Tag ton métier{% endblock %}
+{% block title %}Préinscris toi! - Tag ton métier{% endblock %}
 
 {% block body %}
     <div class="container">
         <div id="countContent">
             <div id="countdown"></div>
             <div id="countRegistration">
-                <h1>Joue à Tag ton métier<br/><small>et tente de gagner un smartphone !</small></h1>
+                <h1>Joue à Tag ton métier<br/><small>et tente de gagner un smartphone!</small></h1>
             </div>
         </div>
         <div class="center-align count_btns">
-            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                 <a class="waves-effect waves-light btn" href="{{ path('learnmore') }}">En savoir plus</a>
                 <br>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a class="waves-effect waves-light btn" href="{{ path('admin') }}">Panneau d'administration</a>
+                    <br>
+                {% endif %}
                 <a class="btn waves-effect waves-light inscriptbtn" href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
             {% else %}
                 <a class="waves-effect waves-light btn" href="{{ path('learnmore') }}">En savoir plus</a>
                 <br>
-                <a class="waves-effect waves-light btn" href="{{ path('index') }}">Préinscris-toi</a>
+                <a class="waves-effect waves-light btn" href="{{ path('fos_user_registration_register') }}">Préinscris-toi</a>
             {% endif %}
         </div>
     </div>

@@ -116,3 +116,6 @@ easy_admin:
             - User
             - Answer
             - Job
+            - { label: 'Autre'}
+            - { label: 'Retour accueil', route: 'index' }
+            - { label: 'Deconnexion', route: 'fos_user_security_logout' }
