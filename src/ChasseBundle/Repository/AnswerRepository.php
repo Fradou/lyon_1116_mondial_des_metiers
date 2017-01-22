@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class AnswerRepository extends EntityRepository
 {
+    /* Autocompolete query */
     public function searchWords($word){
         $word = $word."%";
         $qb= $this->createQueryBuilder('a')
@@ -24,12 +25,26 @@ class AnswerRepository extends EntityRepository
 
     }
 
+    /* Query for noidead button */
     public function searchRecommend($domain){
         $qb= $this->createQueryBuilder('a')
             ->select('a.word, a.id')
             ->where('a.domain LIKE :domain')
             ->setParameter('domain', $domain)
             ->setMaxResults(30)
+            ->getQuery();
+        return $qb->getResult();
+
+    }
+
+    /* Query to get the 20 most used word in surveys*/
+    public function mostUsed(){
+        $qb= $this->createQueryBuilder('a')
+            ->select('a.word, count(i) as nb')
+            ->groupBy('a.word')
+            ->innerJoin('a.interviews','i')
+            ->orderBy('nb', 'DESC')
+            ->setMaxResults(20)
             ->getQuery();
         return $qb->getResult();
 

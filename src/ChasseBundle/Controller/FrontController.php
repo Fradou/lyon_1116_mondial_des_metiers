@@ -39,25 +39,4 @@ class FrontController extends Controller
         return $this->render('Front/end.html.twig', array(// ...
         ));
     }
-
-    public function voteValidAction()
-    {
-        $user = $this->getUser()->getId();
-
-        $repository = $this->getDoctrine()->getRepository('ChasseBundle:User');
-        $satisf = $repository->checkSatisf($user);
-
-        if ($satisf != 0){
-
-            $repository = $this->getDoctrine()->getRepository('ChasseBundle:Interview');
-            $vote = $repository->checkVote($user);
-
-            return $this->render('Front/votevalid.html.twig', array(
-                'vote' => $vote));
-        }
-        else {
-            return $this->redirectToRoute('user_edit', array(
-                'id' => $user));
-        }
-    }
 }

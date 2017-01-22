@@ -54,7 +54,11 @@
         </div>
 
         <div class="center-align">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <a class="waves-effect waves-light btn" href="{{ path('job_select') }}">Taguer un métier</a>
+            {% else %}
             <a class="waves-effect waves-light btn" href="{{ path('fos_user_registration_register') }}">Je m'inscris</a>
+            {% endif %}
         </div>
     </div>
 

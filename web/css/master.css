@@ -269,6 +269,10 @@ label[for="chassebundle_interview_bonusWord"] {
     margin: 0.5rem;
 }
 
+.btn {
+    margin-top: 5px;
+}
+
 .inscriptbtn a {
     color: white;
 }

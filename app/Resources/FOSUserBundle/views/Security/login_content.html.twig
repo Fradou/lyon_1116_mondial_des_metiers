@@ -7,16 +7,20 @@
 
 <h1 class="center-align">Joue à Tag ton métier<br><small> et tente de gagner un smartphone !</h1>
 <div class="row" id="login_form">
-    <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6">
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <button class="btn waves-effect waves-light inscriptbtn" ><a href="{{ path('job_select') }}">Tagger un métier</a></button>
-            <button class="btn waves-effect waves-light inscriptbtn" ><a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a></button>
-        {% else %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6 center-align">
+
+            <a class="btn waves-effect waves-light inscriptbtn" href="{{ path('job_select') }}">Taguer un métier</a>
+            <a class="btn waves-effect waves-light inscriptbtn" href="{{ path('fos_user_profile_show') }}">Mon profil</a>
+            <a class="btn waves-effect waves-light inscriptbtn" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
+        </div>
+    {% else %}
+        <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6">
+
             <form action="{{ path("fos_user_security_check") }}" method="post">
                 {% if csrf_token %}
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
                 {% endif %}
-
                 <label for="username">{{ 'security.login.username'|trans }}</label>
                 <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
 
@@ -33,12 +37,11 @@
 
                 <br>
                 <div class="center-align">
-                    <button class="btn waves-effect waves-light" id="_submit" type="submit" name="_submit">{{ 'security.login.submit'|trans }}</button>
-                    <input type="hidden" name="_target_path" value="job_select" />
-
-                    <a class="waves-effect waves-light btn inscriptbtn" href="{{ path('fos_user_registration_register') }}">Pas encore inscrit ?</a>
+                    <button class="btn waves-effect waves-light inscriptbtn" id="_submit" type="submit" name="_submit">{{ 'security.login.submit'|trans }}</button>
+                    <a class="btn waves-effect waves-light inscriptbtn" id="countRegisterButton" href="{{ path('fos_user_registration_register') }}">PAS ENCORE INSCRIT ?</a>
                 </div>
             </form>
-        {% endif %}
-    </div>
+        </div>
+
+    {% endif %}
 </div>
