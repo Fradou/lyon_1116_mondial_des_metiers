@@ -6,13 +6,20 @@
     <div class="container">
         <div id="countContent">
             <div id="countdown"></div>
-                <div id="countRegistration">
-                    <h1>Joue à Tag ton métier<br/><small>et tente de gagner un smartphone !</small></h1>
-                </div>
+            <div id="countRegistration">
+                <h1>Joue à Tag ton métier<br/><small>et tente de gagner un smartphone !</small></h1>
+            </div>
         </div>
         <div class="center-align count_btns">
-            <a class="waves-effect waves-light btn" href="{{ path('learnmore') }}">En savoir plus</a>
-            <a class="waves-effect waves-light btn" href="{{ path('index') }}">Préinscris-toi</a>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <a class="waves-effect waves-light btn" href="{{ path('learnmore') }}">En savoir plus</a>
+                <br>
+                <a class="btn waves-effect waves-light inscriptbtn" href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+            {% else %}
+                <a class="waves-effect waves-light btn" href="{{ path('learnmore') }}">En savoir plus</a>
+                <br>
+                <a class="waves-effect waves-light btn" href="{{ path('index') }}">Préinscris-toi</a>
+            {% endif %}
         </div>
     </div>
 
