@@ -24,7 +24,6 @@ header img {
 
 footer {
     background-color: #ffffff;
-    align-self: flex-end;
 }
 
 footer img {
@@ -227,6 +226,14 @@ label[for="chassebundle_user_comment"] {
     margin-bottom: 7px;
 }
 
+label[for="inputword"] {
+    color: #E6007E;
+}
+
+label[for="chassebundle_interview_bonusWord"] {
+    color: #E6007E;
+}
+
 /* Countdown page styling */
 
 #countContent {
@@ -258,12 +265,30 @@ label[for="chassebundle_user_comment"] {
 
 /*** PAGE LOGIN ***/
 
-button a {
-    text-decoration: none;
-    color:white;
+.inscriptbtn {
+    margin: 0.5rem;
 }
 
 .btn {
     margin-top: 5px;
 }
 
+.inscriptbtn a {
+    color: white;
+}
+
+@media only screen
+and (max-device-width: 331px)
+and (orientation: portrait) {
+    .tag_btn {
+        font-size: 0.9rem;
+    }
+}
+
+@media only screen
+and (max-device-width: 313px)
+and (orientation: portrait) {
+    .tag_btn {
+        font-size: 0.8rem;
+    }
+}
