@@ -142,6 +142,7 @@ class InterviewController extends Controller implements OpeningController
         /* Get user logged and job chosen before */
         $user = $this->getUser();
         $jobchosen = $this->getDoctrine()->getRepository('ChasseBundle:Job')->find($job);
+        $jobname = $jobchosen->getName();
 
         /* Generate form and set data for user and job */
         $form = $this->createForm('ChasseBundle\Form\InterviewType', $interview);
@@ -160,6 +161,7 @@ class InterviewController extends Controller implements OpeningController
         return $this->render('interview/new.html.twig', array(
             'interview' => $interview,
             'form' => $form->createView(),
+            'jobname' => $jobname,
         ));
     }
 }

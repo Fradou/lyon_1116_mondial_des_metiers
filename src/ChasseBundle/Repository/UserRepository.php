@@ -25,6 +25,7 @@ class UserRepository extends EntityRepository
         $qb = $this->createQueryBuilder('u')
             ->select('u.status, count(u.status) as nb')
             ->groupBy('u.status')
+            ->orderBy('nb', 'DESC')
             ->getQuery();
 
         return $qb->getScalarResult();
@@ -60,6 +61,7 @@ class UserRepository extends EntityRepository
         $qb = $this->createQueryBuilder('u')
             ->select('u.department, count(u.department) as nb')
             ->groupBy('u.department')
+            ->orderBy('nb', 'DESC')
             ->getQuery();
 
         return $qb->getScalarResult();
