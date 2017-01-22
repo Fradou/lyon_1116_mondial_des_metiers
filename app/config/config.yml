@@ -86,7 +86,7 @@ fos_user:
             enabled: true
     from_email:
         address:        noreply@example.com
-        sender_name:    Site name
+        sender_name:    Tag ton métier
 
 # Easy Admin
 easy_admin:

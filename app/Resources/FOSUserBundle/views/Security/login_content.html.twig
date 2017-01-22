@@ -10,7 +10,8 @@
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6 center-align">
 
-            <a class="btn waves-effect waves-light inscriptbtn" href="{{ path('job_select') }}">Tagguer un métier</a>
+            <a class="btn waves-effect waves-light inscriptbtn" href="{{ path('job_select') }}">Taguer un métier</a>
+            <a class="btn waves-effect waves-light inscriptbtn" href="{{ path('fos_user_profile_show') }}">Mon profil</a>
             <a class="btn waves-effect waves-light inscriptbtn" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
         </div>
     {% else %}
@@ -37,7 +38,6 @@
                 <br>
                 <div class="center-align">
                     <button class="btn waves-effect waves-light inscriptbtn" id="_submit" type="submit" name="_submit">{{ 'security.login.submit'|trans }}</button>
-                    <input type="hidden" name="_target_path" value="job_select" />
                     <a class="btn waves-effect waves-light inscriptbtn" id="countRegisterButton" href="{{ path('fos_user_registration_register') }}">PAS ENCORE INSCRIT ?</a>
                 </div>
             </form>
