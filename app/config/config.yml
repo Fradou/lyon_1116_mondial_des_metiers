@@ -7,11 +7,11 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: fr
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -30,6 +30,9 @@ framework:
         handler_id:  ~
     fragments:       ~
     http_method_override: true
+  # Activate serializer for FOSRest
+    serializer:
+        enabled: true
 
 # Twig Configuration
 twig:
@@ -60,8 +63,59 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
+    encryption: ssl
+    auth_mode: login
+
     transport: "%mailer_transport%"
     host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+#FOSUser
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: ChasseBundle\Entity\User
+    registration:
+        form:
+            type: ChasseBundle\Form\RegistrationType
+
+    registration:
+        confirmation:
+            enabled: true
+    from_email:
+        address:        noreply@example.com
+        sender_name:    Tag ton métier
+
+# Easy Admin
+easy_admin:
+    entities:
+        User:
+            class: ChasseBundle\Entity\User
+            label: 'Gestion utilisateurs'
+            list:
+                title: "Liste des utilisateurs / inscrits"
+        Answer:
+            class: ChasseBundle\Entity\Answer
+            label: 'Base de mots'
+            list:
+                title: "Liste des mots inclus dans l'autocompletion"
+        Job:
+            class: ChasseBundle\Entity\Job
+            label: 'Metiers'
+            list:
+                title: "Liste des métiers"
+    design:
+        menu:
+            - { label: 'Espace AROM'}
+            - { label: 'Statistique applications', route: 'stats' }
+            - { label: 'Statistiques utilisateurs', route: 'userstats', params:{page:1}}
+            - { label: 'Loterie', route: 'winner' }
+            - { label: 'Gestion site'}
+            - User
+            - Answer
+            - Job
+            - { label: 'Autre'}
+            - { label: 'Retour accueil', route: 'index' }
+            - { label: 'Deconnexion', route: 'fos_user_security_logout' }

@@ -4,6 +4,16 @@ parameters:
 #    parameter_name: value
 
 services:
+    app.form.registration:
+        class: ChasseBundle\Form\RegistrationType
+        tags:
+            - {name: form.type, alias: app_user_registration}
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+    app.opening.action_listener:
+            class: ChasseBundle\EventListener\OpeningListener
+            arguments: ['@controller_resolver']
+            tags:
+                - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }

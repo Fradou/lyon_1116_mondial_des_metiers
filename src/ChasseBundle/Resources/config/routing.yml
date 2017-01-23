@@ -1,15 +1,12 @@
-index:
-    path:     /
-    defaults: { _controller: ChasseBundle:Front:index }
+chasse_interview:
+    resource: "@ChasseBundle/Resources/config/routing/interview.yml"
+    prefix:   /interview
 
-howto:
-    path:     /howto
-    defaults: { _controller: ChasseBundle:Front:howto }
 
-legalmention:
-    path:     /legalmention
-    defaults: { _controller: ChasseBundle:Front:legalmention }
+chasse_front:
+    resource: "@ChasseBundle/Resources/config/routing/front.yml"
+    prefix:   /
 
-inscript:
-    path:     /inscript
-    defaults: { _controller: ChasseBundle:Front:inscript }
+chasse_back:
+    resource: "@ChasseBundle/Resources/config/routing/back.yml"
+    prefix:   /back
