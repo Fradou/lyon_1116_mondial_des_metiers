@@ -12,6 +12,7 @@
         </div>
         <div class="center-align count_btns">
             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <p>{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</p>
                 <a class="waves-effect waves-light btn" href="{{ path('learnmore') }}">En savoir plus</a>
                 <br>
                 {% if is_granted('ROLE_ADMIN') %}
