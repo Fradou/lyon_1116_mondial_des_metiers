@@ -18,7 +18,9 @@ class JobRepository extends EntityRepository
             ->select(array('j.name', 'j.id'))
             ->where('j.domain = :domain')
             ->setParameter('domain', $domain)
-            ->getQuery();
+            ->getQuery()
+            ->useQueryCache(true)
+            ->useResultCache(true);
         return $qb->getResult();
     }
 
