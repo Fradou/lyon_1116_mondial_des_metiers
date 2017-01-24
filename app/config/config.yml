@@ -85,7 +85,7 @@ fos_user:
         confirmation:
             enabled: true
     from_email:
-        address:        noreply@example.com
+        address:        arom@tagtonmetier.com
         sender_name:    Tag ton métier
 
 # Easy Admin
