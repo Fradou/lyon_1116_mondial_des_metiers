@@ -92,25 +92,22 @@ class InterviewController extends Controller implements OpeningController
     public function searchhelpAction(Request $request, $jobid)
     {
         if ($request->isXmlHttpRequest()){
-            /* Get job domain and create id for cache */
-            $domain =  $this->getDoctrine()->getRepository('ChasseBundle:Job')->find($jobid)->getDomain();
-            $domcache = $domain."noidea";
+            /* Create id for cache and check if already existing, return it in that case */
+            $jobcache = $jobid."noid";
 
-            /* Checking cache and using it if available */
             $cacheDriver = new \Doctrine\Common\Cache\ApcuCache();
-            if($cacheDriver->contains($domcache))
+            if($cacheDriver->contains($jobcache))
             {
-                $entity = $cacheDriver->fetch($domcache);
-                $myService = $this->get('app.myService');
-
+                $entity = $cacheDriver->fetch($jobcache);
                 return new JsonResponse(array("data" => json_encode($entity)));
             }
 
-            /* Query for list of suggested word for that domain */
+            /* Get job's domain and query for list of suggested word for that domain */
+            $domain =  $this->getDoctrine()->getRepository('ChasseBundle:Job')->find($jobid)->getDomain();
             $data = $this->getDoctrine()->getRepository('ChasseBundle:Answer')->searchRecommend($domain);
 
             /* Cache result for futur use */
-            $cacheDriver->save($domcache, $data);
+            $cacheDriver->save($jobcache, $data, 2629000);
 
             return new JsonResponse(array("data" => json_encode($data)));
         } else {
@@ -123,11 +120,19 @@ class InterviewController extends Controller implements OpeningController
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function jobselectAction(Request $request){
-        /* Get list of all domains */
+        /* Create cache id then check if already existing (should always be the case aside from first usage else, get list of all domains*/
+        $permcache = "All_doms";
+
+        $cacheDriver = new \Doctrine\Common\Cache\ApcuCache();
+        if($cacheDriver->contains($permcache)){
+            $domains = $cacheDriver->fetch($permcache);
+        }
+        else {
         $domains = $this->getDoctrine()->getRepository('ChasseBundle:Job')->getDomains();
-        $dom = [];
+        }
 
         /* Format list before sending it in formtype */
+        $dom = [];
         foreach($domains as $value){
             $dom[$value['domain']]=$value['domain'];
         }
@@ -138,8 +143,7 @@ class InterviewController extends Controller implements OpeningController
 
         if ($form->isSubmitted()) {
             $jobchos = $job->getName();
-            $jobchosen = $this->getDoctrine()
-                ->getRepository('ChasseBundle:Job')->find($jobchos);
+            $jobchosen = $this->getDoctrine()->getRepository('ChasseBundle:Job')->find($jobchos);
             return $this->redirectToRoute('interview_new', array('job' => $jobchosen));
 
         }

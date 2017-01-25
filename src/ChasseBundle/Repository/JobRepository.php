@@ -29,7 +29,9 @@ class JobRepository extends EntityRepository
         $qb= $this->createQueryBuilder('j')
             ->select('j.domain')
             ->distinct('true')
-            ->getQuery();
+            ->getQuery()
+            ->useQueryCache(true)
+            ->useResultCache(true);
         return $qb->getResult();
 
     }
