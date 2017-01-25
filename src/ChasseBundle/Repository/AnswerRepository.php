@@ -48,7 +48,8 @@ class AnswerRepository extends EntityRepository
             ->innerJoin('a.interviews','i')
             ->orderBy('nb', 'DESC')
             ->setMaxResults(20)
-            ->getQuery();
+            ->getQuery()
+            ->useQueryCache(true);
         return $qb->getResult();
 
     }

@@ -21,6 +21,7 @@ class JobRepository extends EntityRepository
             ->getQuery()
             ->useQueryCache(true)
             ->useResultCache(true);
+
         return $qb->getResult();
     }
 
@@ -32,6 +33,7 @@ class JobRepository extends EntityRepository
             ->getQuery()
             ->useQueryCache(true)
             ->useResultCache(true);
+
         return $qb->getResult();
 
     }

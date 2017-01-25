@@ -31,10 +31,21 @@ class InterviewController extends Controller implements OpeningController
         if ($request->isXmlHttpRequest()){
 
             /**
-             * Get list of jobs in selected domain then treat if for use in array_diff
+             * Check if existing in cache, else get list of jobs in selected domain
              * @var $repository JobRepository
              */
+            $domaincache = $domain."jobc";
+
+            $cacheDriver = new \Doctrine\Common\Cache\ApcuCache();
+            if($cacheDriver->contains($domaincache))
+            {
+                $joblist = $cacheDriver->fetch($domaincache);
+            }
+            else {
             $joblist = $this->getDoctrine()->getRepository('ChasseBundle:Job')->getJobsName($domain);
+            }
+
+            /* Treatment if for use in array_diff */
             $joblist_simplified=[];
             foreach($joblist as $value){
                 $joblist_simplified[$value['id']]=$value['name'];
