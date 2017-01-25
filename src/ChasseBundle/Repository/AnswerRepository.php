@@ -32,7 +32,10 @@ class AnswerRepository extends EntityRepository
             ->where('a.domain LIKE :domain')
             ->setParameter('domain', $domain)
             ->setMaxResults(30)
-            ->getQuery();
+            ->getQuery()
+            ->useQueryCache(true)
+            ->useResultCache(true);
+
         return $qb->getResult();
 
     }

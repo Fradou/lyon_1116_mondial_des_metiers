@@ -92,10 +92,26 @@ class InterviewController extends Controller implements OpeningController
     public function searchhelpAction(Request $request, $jobid)
     {
         if ($request->isXmlHttpRequest()){
-            /* Get job domain */
+            /* Get job domain and create id for cache */
             $domain =  $this->getDoctrine()->getRepository('ChasseBundle:Job')->find($jobid)->getDomain();
+            $domcache = $domain."noidea";
+
+            /* Checking cache and using it if available */
+            $cacheDriver = new \Doctrine\Common\Cache\ApcuCache();
+            if($cacheDriver->contains($domcache))
+            {
+                $entity = $cacheDriver->fetch($domcache);
+                $myService = $this->get('app.myService');
+
+                return new JsonResponse(array("data" => json_encode($entity)));
+            }
+
             /* Query for list of suggested word for that domain */
             $data = $this->getDoctrine()->getRepository('ChasseBundle:Answer')->searchRecommend($domain);
+
+            /* Cache result for futur use */
+            $cacheDriver->save($domcache, $data);
+
             return new JsonResponse(array("data" => json_encode($data)));
         } else {
             throw new HttpException('500', 'Invalid call');
