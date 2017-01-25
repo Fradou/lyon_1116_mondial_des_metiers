@@ -5,7 +5,9 @@ namespace ChasseBundle\Controller;
 use ChasseBundle\ChasseBundle;
 use ChasseBundle\Entity\User;
 use ChasseBundle\Repository\UserRepository;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 
 class BackController extends Controller
@@ -98,6 +100,42 @@ class BackController extends Controller
         ));
     }
 
+    //ACTION TO GENERATE A CSV FILE FROM USERS
+    public function generateCsvAction() {
+        $repository = $this->getDoctrine()->getRepository('ChasseBundle:User');
+
+        $response = new StreamedResponse();
+
+        $response->setCallback(function() use ($repository) {
+            $date = new DateTime();
+            $strdate = $date->format('d-m-Y\H:i:s');
+            $filename = 'csv/inscrits-newsletter-'.$strdate.'.csv';
+
+            $handle = fopen($filename, 'w+');
+
+            fputcsv($handle, ['username', 'email', 'newsletter'], ';');
+
+            $results = $repository->getSubscribers(0);
+            //var_dump($results);
+            foreach ($results as $user) {
+                fputcsv(
+                    $handle,
+                    [$user->getUsername(), $user->getEmail(), $user->getNewsletter()],
+                    ';'
+                );
+            }
+
+            fclose($handle);
+        });
+        /*
+        $response->setStatusCode(200);
+        $response->headers->set('Content-Type', 'text/csv; charset=utf-8');
+        $response->headers->set('Content-Disposition','attachment; filename="export-users.csv"');
+        */
+
+        return $response;
+    }
+
     public function winnerAction() {
 
         // selected persons
@@ -111,5 +149,10 @@ class BackController extends Controller
         return $this->render('Back/winner.html.twig', array(
             "winner"          =>    $winner,
         ));
+    }
+
+    function __toString()
+    {
+        return strval($this->id);
     }
 }
