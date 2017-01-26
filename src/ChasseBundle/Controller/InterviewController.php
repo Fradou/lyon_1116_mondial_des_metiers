@@ -39,16 +39,18 @@ class InterviewController extends Controller implements OpeningController
             $cacheDriver = new \Doctrine\Common\Cache\ApcuCache();
             if($cacheDriver->contains($domaincache))
             {
-                $joblist = $cacheDriver->fetch($domaincache);
+                $joblist_simplified = $cacheDriver->fetch($domaincache);
             }
             else {
-            $joblist = $this->getDoctrine()->getRepository('ChasseBundle:Job')->getJobsName($domain);
-            }
-
-            /* Treatment if for use in array_diff */
-            $joblist_simplified=[];
-            foreach($joblist as $value){
-                $joblist_simplified[$value['id']]=$value['name'];
+                /* Get all jobs in chosen domain */
+                $joblist = $this->getDoctrine()->getRepository('ChasseBundle:Job')->getJobsName($domain);
+                /* Treatment for use in array_diff */
+                $joblist_simplified=[];
+                foreach($joblist as $value){
+                    $joblist_simplified[$value['id']]=$value['name'];
+                }
+                /* Cache result for futur use */
+                $cacheDriver->save($domaincache, $joblist_simplified, 2629000);
             }
 
             /**
@@ -87,7 +89,25 @@ class InterviewController extends Controller implements OpeningController
     public function jobsearchAction(Request $request, $word)
     {
         if ($request->isXmlHttpRequest()){
+            /* Creating cache id */
+            $wordcache = $word."wca";
+            $cacheDriver = new \Doctrine\Common\Cache\ApcuCache();
+
+            /* If word is only 3 letters long, checking if cache available */
+            if(strlen($word)==3){
+                if($cacheDriver->contains($wordcache))
+                {
+                    $data = $cacheDriver->fetch($wordcache);
+                    return new JsonResponse(array("data" => json_encode($data)));
+                }
+            }
+
+            /* If no cache yet, searching words for autocomplete and caching it if only 3 characters */
             $data = $this->getDoctrine()->getRepository('ChasseBundle:Answer')->searchWords($word);
+            if(strlen($word)==3){
+                $cacheDriver->save($wordcache, $data, 2629000);
+            }
+
             return new JsonResponse(array("data" => json_encode($data)));
         } else {
             throw new HttpException('500', 'Invalid call');
@@ -131,22 +151,27 @@ class InterviewController extends Controller implements OpeningController
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function jobselectAction(Request $request){
+
         /* Create cache id then check if already existing (should always be the case aside from first usage else, get list of all domains*/
         $permcache = "All_doms";
 
         $cacheDriver = new \Doctrine\Common\Cache\ApcuCache();
         if($cacheDriver->contains($permcache)){
-            $domains = $cacheDriver->fetch($permcache);
+            $dom = $cacheDriver->fetch($permcache);
         }
         else {
-        $domains = $this->getDoctrine()->getRepository('ChasseBundle:Job')->getDomains();
+            $domains = $this->getDoctrine()->getRepository('ChasseBundle:Job')->getDomains();
+
+            /* Format list before sending it in formtype */
+            $dom = [];
+            foreach($domains as $value){
+                $dom[$value['domain']]=$value['domain'];
+            }
+            /* Cache result for futur use */
+            $cacheDriver->save($permcache, $dom, 2629000);
+
         }
 
-        /* Format list before sending it in formtype */
-        $dom = [];
-        foreach($domains as $value){
-            $dom[$value['domain']]=$value['domain'];
-        }
         $job = new Job();
 
         $form = $this->createForm('ChasseBundle\Form\JobType', $job, array('domains' => $dom));
