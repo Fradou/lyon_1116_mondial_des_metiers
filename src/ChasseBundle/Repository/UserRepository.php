@@ -78,19 +78,20 @@ class UserRepository extends EntityRepository
 
     const MAX_RESULT = 10;
 
-    public function getSubscribers($first_result, $max_results=SELF::MAX_RESULT)
+    public function getSubscribers($first_result, $paginator = true)
     {
 
         $qb = $this->createQueryBuilder('user')
             ->select('user')
             ->where('user.newsletter=true')
             ->setFirstResult($first_result);
-            if($first_result == 1) {
-                $qb->setMaxResults($max_results);
+            if(true === $paginator) {
+                $qb->setMaxResults(self::MAX_RESULT);
+                $result = new Paginator($qb);
+            } else {
+                $result = $qb->getQuery()->getResult();
             }
 
-            $page = new Paginator($qb);
-
-        return $page;
+        return $result;
     }
 }
