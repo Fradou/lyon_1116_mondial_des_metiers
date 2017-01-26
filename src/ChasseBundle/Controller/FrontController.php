@@ -10,18 +10,28 @@ class FrontController extends Controller
 {
     public function howtoAction()
     {
-        return $this->render('Front/howto.html.twig');
+        // somehow create a Response object, like by rendering a template
+        $response = $this->render('Front/howto.html.twig', []);
+
+        // cache for 3600 seconds
+        $response->setSharedMaxAge(2629000);
+
+        return $response;
     }
 
     public function legalmentionAction()
     {
-        return $this->render('Front/legalmention.html.twig', array(// ...
-        ));
+        $response = $this->render('Front/legalmention.html.twig', array());
+
+        $response->setSharedMaxAge(2629000);
+
+        return $response;
     }
 
     public function learnmoreAction()
     {
-        return $this->render('Front/learnmore.html.twig');
+        return $this->render('Front/learnmore.html.twig', array(// ...
+        ));
     }
 
     public function countdownAction()
@@ -31,7 +41,11 @@ class FrontController extends Controller
     }
 
     public function finishedAction(){
-        return $this->render('Front/end.html.twig', array(// ...
+        $response = $this->render('Front/end.html.twig', array(// ...
         ));
+
+        $response->setSharedMaxAge(2629000);
+
+        return $response;
     }
 }

@@ -16,7 +16,8 @@ class InterviewRepository extends EntityRepository
     public function getCountUsers() { //function that count number of distinct entry in the table user (how many user hav at least answered to one job)
          $qb = $this->createQueryBuilder('i')
             ->select('count(DISTINCT i.user)')
-            ->getQuery();
+            ->getQuery()
+             ->useQueryCache(true);
 
              return $qb->getSingleScalarResult();
     }
@@ -24,7 +25,8 @@ class InterviewRepository extends EntityRepository
     public function getCountJobs() { //function that count the number of distinct entry for 'name' in the table (how many jobs has been answered)
         $qb = $this->createQueryBuilder('i')
             ->select('count(DISTINCT i.job)')
-            ->getQuery();
+            ->getQuery()
+            ->useQueryCache(true);
 
         return $qb->getSingleScalarResult();
     }
@@ -34,7 +36,8 @@ class InterviewRepository extends EntityRepository
         $qb = $this->createQueryBuilder('i')
             ->select('count(DISTINCT j.domain)')
             ->innerJoin('i.job', 'j')
-            ->getQuery();
+            ->getQuery()
+            ->useQueryCache(true);
 
         return $qb->getSingleScalarResult();
     }
@@ -47,7 +50,8 @@ class InterviewRepository extends EntityRepository
             ->groupBy('i.job')
             ->orderBy('total', 'DESC')
             ->setMaxResults(20)
-            ->getQuery();
+            ->getQuery()
+            ->useQueryCache(true);
 
         return $qb->getResult();
 
@@ -60,7 +64,8 @@ class InterviewRepository extends EntityRepository
             ->groupBy('j.domain')
             ->orderBy('total', 'DESC')
             ->setMaxResults(20)
-            ->getQuery();
+            ->getQuery()
+            ->useQueryCache(true);
 
         return $qb->getResult();
 
