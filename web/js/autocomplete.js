@@ -93,4 +93,9 @@ $( document ).ready(function() {
             $('#nbresponse').html('Il te reste encore jusqu\'à ' + (5-nbrep) + ' reponses à donner.');
         }
     });
+
+    //display the helper on click on question mark
+
+        $('.modal').modal();
+
 });
