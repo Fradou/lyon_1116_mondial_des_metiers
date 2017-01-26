@@ -36,16 +36,16 @@ class FrontController extends Controller
 
     public function countdownAction()
     {
+        return $this->render('Front/countdown.html.twig', array(// ...
+        ));
+    }
+
+    public function finishedAction(){
         $response = $this->render('Front/end.html.twig', array(// ...
         ));
 
         $response->setSharedMaxAge(2629000);
 
         return $response;
-    }
-
-    public function finishedAction(){
-        $response = $this->render('Front/end.html.twig', array(// ...
-        ));
     }
 }
