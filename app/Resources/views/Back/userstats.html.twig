@@ -97,18 +97,25 @@
 
         <br>
 
-        <h2> liste des inscrits à la newsletter </h2>
+        <h2> Liste des inscrits à la newsletter </h2>
+        <br>
+        <a class="btn" href="{{ path('export') }}">télécharger la liste des inscrits</a>
         <table class="table bordered striped table-bordered ">
             <thead>
             <tr>
+                <th>Prénom</th>
+                <th>Nom</th>
                 <th>Email</th>
             </tr>
             </thead>
             {% for subscriber in subscribers %}
-                <tr><td>{{ subscriber.email }}</td></tr>
+                <tr>
+                    <td>{{ subscriber.firstname }}</td>
+                    <td>{{ subscriber.lastname }}</td>
+                    <td>{{ subscriber.email }}</td>
+                </tr>
             {% endfor %}
         </table>
-
 
             <ul class="pagination">
                 <li {% if page == 1 %} class="disabled" {% endif %}>
