@@ -5,7 +5,10 @@ namespace ChasseBundle\Controller;
 use ChasseBundle\ChasseBundle;
 use ChasseBundle\Entity\User;
 use ChasseBundle\Repository\UserRepository;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 
 class BackController extends Controller
@@ -55,10 +58,9 @@ class BackController extends Controller
     public function userStatsAction ($page = 1) {
         //paginator
         $start = ($page-1) * UserRepository::MAX_RESULT;
-        $nbresults = UserRepository::MAX_RESULT;
-        $subscribers = $this->getDoctrine()->getRepository('ChasseBundle:User')->getSubscribers($start, $nbresults);
+        $subscribers = $this->getDoctrine()->getRepository('ChasseBundle:User')->getSubscribers($start);
         $total = count($subscribers);
-        $maxPage = intval($total/UserRepository::MAX_RESULT);
+        $maxPage = ceil($total/UserRepository::MAX_RESULT);
 
         //nb of registered users
         $userManager = $this->container->get('fos_user.user_manager');
@@ -96,6 +98,33 @@ class BackController extends Controller
             'total'       => $total,
             "totalusers"  => $users,
         ));
+    }
+
+    //ACTION TO GENERATE A CSV FILE FROM USERS
+    public function generateCsvAction() {
+
+            $em = $this->getDoctrine()->getEntityManager();
+
+            $results = $em->getRepository('ChasseBundle:User')->getSubscribers(1, false);
+            $date = new DateTime();
+            $strdate = $date->format('d-m-Y');
+            $filename = 'csv/inscrits-newsletter-'.$strdate.'.csv';
+            $handle = fopen($filename, 'w+');
+            $header = array();
+            fputcsv($handle, ['firstname', 'lastname', 'email'], ';');
+
+            foreach ($results as $user) {
+            fputcsv($handle,[$user->getFirstname(),$user->getLastname(), $user->getEmail()],';');
+            }
+
+            rewind($handle);
+            $content = stream_get_contents($handle);
+            fclose($handle);
+
+            return new Response($content, 200, array(
+                'Content-Type' => 'application/force-download',
+                'Content-Disposition' => 'attachment; filename="inscrits-newsletter-26-01-2017.csv"'
+            ));
     }
 
     public function winnerAction() {
