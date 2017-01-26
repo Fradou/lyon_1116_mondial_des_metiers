@@ -17,6 +17,3 @@ services:
             arguments: ['@controller_resolver']
             tags:
                 - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
-    app.myService:
-        class: ChasseBundle\Service\Cachetest
-        arguments: ['@logger']
