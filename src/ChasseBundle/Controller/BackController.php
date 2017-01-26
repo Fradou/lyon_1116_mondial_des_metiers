@@ -7,6 +7,7 @@ use ChasseBundle\Entity\User;
 use ChasseBundle\Repository\UserRepository;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 
@@ -101,38 +102,52 @@ class BackController extends Controller
 
     //ACTION TO GENERATE A CSV FILE FROM USERS
     public function generateCsvAction() {
+
+            $em = $this->getDoctrine()->getEntityManager();
+
+            $results = $em->getRepository('ChasseBundle:User')->getSubscribers(1, false);
+            $date = new DateTime();
+            $strdate = $date->format('d-m-Y');
+            $filename = 'csv/inscrits-newsletter-'.$strdate.'.csv';
+            $handle = fopen($filename, 'w+');
+            $header = array();
+            fputcsv($handle, ['firstname', 'lastname', 'email'], ';');
+
+            foreach ($results as $user) {
+            fputcsv($handle,[$user->getFirstname(),$user->getLastname(), $user->getEmail()],';');
+            }
+
+            rewind($handle);
+            $content = stream_get_contents($handle);
+            fclose($handle);
+
+            return new Response($content, 200, array(
+                'Content-Type' => 'application/force-download',
+                'Content-Disposition' => 'attachment; filename="inscrits-newsletter-26-01-2017.csv"'
+            ));
+
+/*
         $repository = $this->getDoctrine()->getRepository('ChasseBundle:User');
-
         $response = new StreamedResponse();
-
         $response->setCallback(function() use ($repository) {
             $date = new DateTime();
-            $strdate = $date->format('d-m-Y\H:m:s');
+            $strdate = $date->format('d-m-Y');
             $filename = 'csv/inscrits-newsletter-'.$strdate.'.csv';
-
             $handle = fopen($filename, 'w+');
-
-            fputcsv($handle, ['username', 'email', 'newsletter'], ';');
-
+            fputcsv($handle, ['firstname', 'lastname', 'email'], ';');
             $results = $repository->getSubscribers(1, false);
             //var_dump($results);
             foreach ($results as $user) {
-                fputcsv(
-                    $handle,
-                    [$user->getFirstname(),$user->getLastname(), $user->getEmail()],
-                    ';'
-                );
+                fputcsv($handle,[$user->getFirstname(),$user->getLastname(), $user->getEmail()],';');
             }
-
             fclose($handle);
         });
-        /*
-        $response->setStatusCode(200);
-        $response->headers->set('Content-Type', 'text/csv; charset=utf-8');
-        $response->headers->set('Content-Disposition','attachment; filename="export-users.csv"');
-        */
+        //$response->setStatusCode(200);
+        $response->headers->set('Content-Type', 'application/force-download');// 'text/csv; charset=utf-8');
+        $response->headers->set('Content-Disposition','attachment; filename="inscrits-newsletter-26-01-2017.csv"');
 
         return $response;
+*/
     }
 
     public function winnerAction() {
