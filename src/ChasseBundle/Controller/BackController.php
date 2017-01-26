@@ -108,7 +108,7 @@ class BackController extends Controller
 
         $response->setCallback(function() use ($repository) {
             $date = new DateTime();
-            $strdate = $date->format('d-m-Y\H:i:s');
+            $strdate = $date->format('d-m-Y\H:m:s');
             $filename = 'csv/inscrits-newsletter-'.$strdate.'.csv';
 
             $handle = fopen($filename, 'w+');
@@ -120,7 +120,7 @@ class BackController extends Controller
             foreach ($results as $user) {
                 fputcsv(
                     $handle,
-                    [$user->getUsername(), $user->getEmail(), $user->getNewsletter()],
+                    [$user->getFirstname(),$user->getLastname(), $user->getEmail()],
                     ';'
                 );
             }
@@ -149,10 +149,5 @@ class BackController extends Controller
         return $this->render('Back/winner.html.twig', array(
             "winner"          =>    $winner,
         ));
-    }
-
-    function __toString()
-    {
-        return strval($this->id);
     }
 }

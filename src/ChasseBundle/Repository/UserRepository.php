@@ -84,8 +84,10 @@ class UserRepository extends EntityRepository
         $qb = $this->createQueryBuilder('user')
             ->select('user')
             ->where('user.newsletter=true')
-            ->setFirstResult($first_result)
-            ->setMaxResults($max_results);
+            ->setFirstResult($first_result);
+            if($first_result == 1) {
+                $qb->setMaxResults($max_results);
+            }
 
             $page = new Paginator($qb);
 

@@ -105,7 +105,11 @@
             </tr>
             </thead>
             {% for subscriber in subscribers %}
-                <tr><td>{{ subscriber.email }}</td></tr>
+                <tr>
+                    <td>{{ subscriber.firstname }}</td>
+                    <td>{{ subscriber.lastname }}</td>
+                    <td>{{ subscriber.email }}</td>
+                </tr>
             {% endfor %}
         </table>
 
