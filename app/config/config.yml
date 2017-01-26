@@ -60,6 +60,9 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+        metadata_cache_driver: apcu
+        result_cache_driver: apcu
+        query_cache_driver: apcu
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -85,7 +88,7 @@ fos_user:
         confirmation:
             enabled: true
     from_email:
-        address:        noreply@example.com
+        address:        arom@tagtonmetier.com
         sender_name:    Tag ton métier
 
 # Easy Admin

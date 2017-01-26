@@ -18,7 +18,10 @@ class JobRepository extends EntityRepository
             ->select(array('j.name', 'j.id'))
             ->where('j.domain = :domain')
             ->setParameter('domain', $domain)
-            ->getQuery();
+            ->getQuery()
+            ->useQueryCache(true)
+            ->useResultCache(true);
+
         return $qb->getResult();
     }
 
@@ -27,7 +30,10 @@ class JobRepository extends EntityRepository
         $qb= $this->createQueryBuilder('j')
             ->select('j.domain')
             ->distinct('true')
-            ->getQuery();
+            ->getQuery()
+            ->useQueryCache(true)
+            ->useResultCache(true);
+
         return $qb->getResult();
 
     }
