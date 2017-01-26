@@ -125,29 +125,6 @@ class BackController extends Controller
                 'Content-Type' => 'application/force-download',
                 'Content-Disposition' => 'attachment; filename="inscrits-newsletter-26-01-2017.csv"'
             ));
-
-/*
-        $repository = $this->getDoctrine()->getRepository('ChasseBundle:User');
-        $response = new StreamedResponse();
-        $response->setCallback(function() use ($repository) {
-            $date = new DateTime();
-            $strdate = $date->format('d-m-Y');
-            $filename = 'csv/inscrits-newsletter-'.$strdate.'.csv';
-            $handle = fopen($filename, 'w+');
-            fputcsv($handle, ['firstname', 'lastname', 'email'], ';');
-            $results = $repository->getSubscribers(1, false);
-            //var_dump($results);
-            foreach ($results as $user) {
-                fputcsv($handle,[$user->getFirstname(),$user->getLastname(), $user->getEmail()],';');
-            }
-            fclose($handle);
-        });
-        //$response->setStatusCode(200);
-        $response->headers->set('Content-Type', 'application/force-download');// 'text/csv; charset=utf-8');
-        $response->headers->set('Content-Disposition','attachment; filename="inscrits-newsletter-26-01-2017.csv"');
-
-        return $response;
-*/
     }
 
     public function winnerAction() {
