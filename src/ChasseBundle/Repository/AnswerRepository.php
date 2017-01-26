@@ -31,7 +31,6 @@ class AnswerRepository extends EntityRepository
             ->select('a.word, a.id')
             ->where('a.domain LIKE :domain')
             ->setParameter('domain', $domain)
-            ->setMaxResults(30)
             ->getQuery();
         return $qb->getResult();
 
