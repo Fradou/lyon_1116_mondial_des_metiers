@@ -100,7 +100,7 @@ class InterviewRepository extends EntityRepository
 
     public function getSelectedUsers() {
         $qb = $this->createQueryBuilder('i')
-            ->select('u.username, u.email')
+            ->select('u.firstname, u.lastname, u.email')
             ->innerJoin('i.user', 'u')
             ->groupBy('u.username')
             ->having('count(u.username) >= 3')
