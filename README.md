@@ -20,8 +20,8 @@ Application de vote destinée au Mondial des métiers de Lyon.
 3) Aller vérifier que les modules sont biens dans mods-available de apache2 et CLI.   
 Sur Debian 8 les symlinks devraient être déjà fait, si symlink manquant faire 4, sinon aller directement à 5.   
 4) Créer apcu.ini et apc.ini s'ils ne sont pas présent dans php/7.0/mods-available :  
- * Un apcu.ini avec extension=apcu.so  
- * Un apc.ini avec extension=apc.so  
+=> Un apcu.ini avec extension=apcu.so  
+=> Un apc.ini avec extension=apc.so  
 Puis faire les symlink depuis les conf.f de apache2 et cli.    
 5) Dans php.ini, rajoutez les lignes suivantes :    
 apc.shm_size=264    
