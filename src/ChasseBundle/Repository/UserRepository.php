@@ -14,7 +14,8 @@ class UserRepository extends EntityRepository
         $qb = $this->createQueryBuilder('u')
             ->select('u.gender, count(u.gender) as nb')
             ->groupBy('u.gender')
-            ->getQuery();
+            ->getQuery()
+            ->useQueryCache(true);
 
         return $qb->getScalarResult();
     }
@@ -26,7 +27,8 @@ class UserRepository extends EntityRepository
             ->select('u.status, count(u.status) as nb')
             ->groupBy('u.status')
             ->orderBy('nb', 'DESC')
-            ->getQuery();
+            ->getQuery()
+            ->useQueryCache(true);
 
         return $qb->getScalarResult();
     }
@@ -39,7 +41,8 @@ class UserRepository extends EntityRepository
             ->andWhere('u.age <= :ageMax')
             ->setParameter('ageMin', $ageMin)
             ->setParameter('ageMax', $ageMax)
-            ->getQuery();
+            ->getQuery()
+            ->useQueryCache(true);
 
         return $qb->getSingleScalarResult();
     }
@@ -51,7 +54,8 @@ class UserRepository extends EntityRepository
             ->select('u.satisfaction')
             ->where('u.id = :user')
             ->setParameter('user', $user)
-            ->getQuery();
+            ->getQuery()
+            ->useQueryCache(true);
         return $qb->getSingleScalarResult();
     }
 
@@ -62,7 +66,8 @@ class UserRepository extends EntityRepository
             ->select('u.department, count(u.department) as nb')
             ->groupBy('u.department')
             ->orderBy('nb', 'DESC')
-            ->getQuery();
+            ->getQuery()
+            ->useQueryCache(true);
 
         return $qb->getScalarResult();
     }

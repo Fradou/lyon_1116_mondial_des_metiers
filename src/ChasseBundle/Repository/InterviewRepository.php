@@ -77,7 +77,8 @@ class InterviewRepository extends EntityRepository
             ->innerJoin('i.user', 'u')
             ->where('u.id = :id')
             ->setParameter('id', $id)
-            ->getQuery();
+            ->getQuery()
+            ->useQueryCache(true);
 
         return $qb->getSingleScalarResult();
 
@@ -91,7 +92,9 @@ class InterviewRepository extends EntityRepository
             ->innerJoin('i.user', 'u')
             ->innerJoin('i.job', 'j')
             ->setParameter('user', $user)
-            ->getQuery();
+            ->getQuery()
+            ->useQueryCache(true);
+
         return $qb->getResult();
     }
 
@@ -101,7 +104,8 @@ class InterviewRepository extends EntityRepository
             ->innerJoin('i.user', 'u')
             ->groupBy('u.username')
             ->having('count(u.username) >= 3')
-            ->getQuery();
+            ->getQuery()
+            ->useQueryCache(true);
 
         return $qb->getScalarResult();
     }
