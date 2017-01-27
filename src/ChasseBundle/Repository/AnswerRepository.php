@@ -31,8 +31,10 @@ class AnswerRepository extends EntityRepository
             ->select('a.word, a.id')
             ->where('a.domain LIKE :domain')
             ->setParameter('domain', $domain)
-            ->setMaxResults(30)
-            ->getQuery();
+            ->getQuery()
+            ->useQueryCache(true)
+            ->useResultCache(true);
+
         return $qb->getResult();
 
     }
@@ -45,7 +47,8 @@ class AnswerRepository extends EntityRepository
             ->innerJoin('a.interviews','i')
             ->orderBy('nb', 'DESC')
             ->setMaxResults(20)
-            ->getQuery();
+            ->getQuery()
+            ->useQueryCache(true);
         return $qb->getResult();
 
     }
