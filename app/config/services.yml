@@ -11,9 +11,3 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
-
-    app.opening.action_listener:
-            class: ChasseBundle\EventListener\OpeningListener
-            arguments: ['@controller_resolver']
-            tags:
-                - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
